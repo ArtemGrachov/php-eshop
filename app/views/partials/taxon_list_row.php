@@ -1,12 +1,12 @@
 <tr>
     <td>
-        <?= $taxon['id'] ?>
+        <?= $taxon->id ?>
     </td>
     <td>
-        <?= $taxon['name'] ?>
+        <?= $taxon->name ?>
     </td>
     <td>
-        <?= $taxon['description'] ?>
+        <?= $taxon->description ?>
     </td>
     <td>
         --
@@ -14,7 +14,7 @@
     <td>
         <div class="buttons">
             <a
-                href="/admin/taxons/edit?id=<?= $taxon['id'] ?>"
+                href="/admin/taxons/edit?id=<?= $taxon->id ?>"
                 class="button is-info"
             >
                 Edit

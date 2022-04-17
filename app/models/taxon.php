@@ -14,9 +14,13 @@ class ModelTaxon {
         $statement = $db->prepare($query);
         $statement->execute();
 
-        $taxons = $statement->fetchAll();
+        $rawTaxons = $statement->fetchAll();
 
         $statement->closeCursor();
+
+        $taxons = array_map(function($rawTaxon) {
+            return new ModelTaxon($rawTaxon);
+        }, $rawTaxons);
 
         return $taxons;
     }
@@ -30,11 +34,11 @@ class ModelTaxon {
         $statement->bindValue(':taxonId', $taxonId);
         $statement->execute();
 
-        $course = $statement->fetch();
+        $taxon = $statement->fetch();
 
         $statement->closeCursor();
 
-        return new ModelTaxon($course);
+        return new ModelTaxon($taxon);
     }
 
     public function __construct($payload) {

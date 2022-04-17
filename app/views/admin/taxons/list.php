@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="mb-4">
-        <a href="/admin" class="has-text-link">
+        <a href="/admin">
             Return to dashboard
         </a>
     </div>

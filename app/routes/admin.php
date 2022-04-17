@@ -2,6 +2,7 @@
 require_once(__DIR__.'/../controllers/admin/dashboard.php');
 require_once(__DIR__.'/../controllers/admin/taxons/form.php');
 require_once(__DIR__.'/../controllers/admin/taxons/list.php');
+require_once(__DIR__.'/../controllers/admin/products/form.php');
 
 $routes_admin = [
     '/' => [
@@ -16,6 +17,12 @@ $routes_admin = [
             'edit' => [
                 'GET' => 'ControllerAdminTaxonsForm/edit',
                 'POST' => 'ControllerAdminTaxonsForm/save'
+            ]
+        ],
+        'products' => [
+            'create' => [
+                'GET' => 'ControllerAdminProductsForm/index',
+                'POST' => 'ControllerAdminProductsForm/create'
             ]
         ],
         '/' => [

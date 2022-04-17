@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="mb-4">
-        <a href="/admin/taxons" class="has-text-link">
+        <a href="/admin/taxons">
             Return to taxon list
         </a>
     </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Message</label>
+                    <label class="label">Description</label>
                     <div class="control">
                         <textarea
                             class="textarea"

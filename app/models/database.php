@@ -26,5 +26,7 @@ class Database {
             $dbuser,
             $dbpassword
         );
+
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 }
