@@ -9,11 +9,37 @@ class Router {
     }
 
     public function requestHandler ($method, $path) {
-        $pathConfig = $this->routes['/']['/']['GET'];
-        $pathConfigNames = explode('/', $pathConfig);
+        $pathArr = explode('/', $path);
 
-        $controllerClassName = $pathConfigNames[0];
-        $methodName = $pathConfigNames[1];
+        $pathRoot = array_reduce(
+            $pathArr,
+            function($acc, $curr) {
+                if (is_null($acc)) {
+                    return null;
+                }
+
+                $segment = $curr === '' ? '/' : $curr;
+
+                if (empty($acc[$segment])) {
+                    return null;
+                }
+
+                return $acc[$segment];
+            }, $this->routes
+        );
+
+        $pathConfig = null;
+
+        $pathConfig = empty($pathRoot[$method]) ? null : $pathRoot[$method];
+
+        if (is_null($pathConfig)) {
+            $controllerClassName = 'ControllerError';
+            $methodName = 'view';
+        } else {
+            $pathConfigNames = explode('/', $pathConfig);
+            $controllerClassName = $pathConfigNames[0];
+            $methodName = $pathConfigNames[1];
+        }
 
         $controller = new $controllerClassName;
         $controller->$methodName();
