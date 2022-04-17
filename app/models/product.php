@@ -19,9 +19,13 @@ class ModelProduct {
         $statement = $db->prepare($query);
         $statement->execute();
 
-        $products = $statement->fetchAll();
+        $rawProducts = $statement->fetchAll();
 
         $statement->closeCursor();
+
+        $products = array_map(function($rawTaxon) {
+            return new ModelProduct($rawTaxon);
+        }, $rawProducts);
 
         return $products;
     }
@@ -39,7 +43,7 @@ class ModelProduct {
 
         $statement->closeCursor();
 
-        return new ModelTaxon($product);
+        return new ModelProduct($product);
     }
 
     public function __construct($payload) {
