@@ -3,5 +3,9 @@ $config = [
     'host' => '',
     'dbname' => '',
     'dbuser' => '',
-    'dbpassword' => ''
+    'dbpassword' => '',
+    'admin' => [
+        'username' => 'admin',
+        'password' => 'admin'
+    ]
 ];

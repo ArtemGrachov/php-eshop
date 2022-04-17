@@ -9,26 +9,17 @@ class Router {
     }
 
     public function requestHandler ($method, $path) {
-        $pathArr = explode('/', $path);
+        $segments = explode('/', $path);
+        $segmentsFiltered = array_filter($segments, function($segment) {
+            return strlen($segment) > 0;
+        });
+        $pathFormatted = implode('/', $segmentsFiltered);
 
-        $pathRoot = array_reduce(
-            $pathArr,
-            function($acc, $curr) {
-                if (is_null($acc)) {
-                    return null;
-                }
+        if (strlen($pathFormatted) === 0) {
+            $pathFormatted = '/';
+        }
 
-                $segment = $curr === '' ? '/' : $curr;
-
-                if (empty($acc[$segment])) {
-                    return null;
-                }
-
-                return $acc[$segment];
-            }, $this->routes
-        );
-
-        $pathConfig = null;
+        $pathRoot = $this->getRouteConfig($this->routes, $pathFormatted);
 
         $pathConfig = empty($pathRoot[$method]) ? null : $pathRoot[$method];
 
@@ -43,5 +34,32 @@ class Router {
 
         $controller = new $controllerClassName;
         $controller->$methodName();
+    }
+
+
+    private function getRouteConfig ($routeConfig, $path, $prefix = '') {
+        $result = null;
+
+        foreach ($routeConfig as $routeKey => $routeValue) {
+            if ($routeKey === '/') {
+                $combinedKey = $prefix;
+            } else {
+                $combinedKey = $prefix . $routeKey;
+            }
+
+            if (strlen($combinedKey) === 0) {
+                $combinedKey = '/';
+            }
+
+            if ($combinedKey === $path) {
+                if (!empty($routeValue['/'])) {
+                    $result = $this->getRouteConfig($routeValue, $path, $combinedKey);
+                } else {
+                    $result = $routeValue;
+                }
+            }
+        }
+
+        return $result;
     }
 }
