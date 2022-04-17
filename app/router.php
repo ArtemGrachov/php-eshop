@@ -44,7 +44,11 @@ class Router {
             if ($routeKey === '/') {
                 $combinedKey = $prefix;
             } else {
-                $combinedKey = $prefix . $routeKey;
+                if (strlen($prefix) > 0) {
+                    $combinedKey = $prefix . '/' . $routeKey;
+                } else {
+                    $combinedKey = $routeKey;
+                }
             }
 
             if (strlen($combinedKey) === 0) {
@@ -57,6 +61,12 @@ class Router {
                 } else {
                     $result = $routeValue;
                 }
+            } else if (gettype($routeValue) !== 'string') {
+                $result = $this->getRouteConfig($routeValue, $path, $combinedKey);
+            }
+
+            if (!is_null($result)) {
+                break;
             }
         }
 
