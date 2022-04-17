@@ -1,4 +1,6 @@
 <?php
+require_once('app/config/config.php');
+require_once('app/models/database.php');
 require_once('app/router.php');
 require_once('app/routes/index.php');
 
