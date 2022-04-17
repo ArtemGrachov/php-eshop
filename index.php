@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Index page</h1>
     <?= 'Hello world' ?>
 </body>
 </html>
