@@ -1,3 +1,13 @@
+<?php
+    if (isset($taxon)) {
+        $taxonName = $taxon->name;
+        $taxonDescription = $taxon->description;
+    } else {
+        $taxonName = '';
+        $taxonDescription = '';
+    }
+?>
+
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
 
 <div class="container">
@@ -9,7 +19,7 @@
 
     <div class="columns">
         <div class="column is-half">
-            <form action="/admin/taxons/create" method="post">
+            <form action="<?= $formAction ?>" method="post">
                 <div class="field">
                     <label
                         for="name"
@@ -24,6 +34,7 @@
                             name="name"
                             placeholder="Name"
                             required
+                            value="<?= $taxonName ?>"
                         />
                     </div>
                 </div>
@@ -37,7 +48,7 @@
                             cols="30"
                             rows="10"
                             placeholder="Description"
-                        ></textarea>
+                        ><?= $taxonDescription ?></textarea>
                     </div>
                 </div>
                 <div class="field is-grouped">
