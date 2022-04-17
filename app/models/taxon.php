@@ -17,6 +17,5 @@ class ModelTaxon {
         $statement->execute();
 
         $statement->closeCursor();
-        echo 'done';
     }
 }

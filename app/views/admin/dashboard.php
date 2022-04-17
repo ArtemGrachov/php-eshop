@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Admin</title>
-</head>
-<body>
-    <h1>Admin dashboard</h1>
-</body>
-</html>
+<?php include(__DIR__ . '/../../views/partials/admin_header.php'); ?>
+
+<div class="container">
+
+</div>
+
+<?php include(__DIR__ . '/../../views/partials/admin_footer.php'); ?>

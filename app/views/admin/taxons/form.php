@@ -1,31 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/admin/taxons/create" method="post">
-        <div>
-            <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                required
-            />
+<?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
+
+<div class="container">
+    <div class="mb-4">
+        <a href="/admin/taxons" class="has-text-link">
+            Return to taxon list
+        </a>
+    </div>
+
+    <div class="columns">
+        <div class="column is-half">
+            <form action="/admin/taxons/create" method="post">
+                <div class="field">
+                    <label
+                        for="name"
+                        class="label"
+                    >
+                        Name
+                    </label>
+                    <div class="control">
+                        <input
+                            class="input"
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                        <textarea
+                            class="textarea"
+                            name="description"
+                            id="description"
+                            cols="30"
+                            rows="10"
+                            placeholder="Description"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div>
-            <textarea
-                name="description"
-                id="description"
-                cols="30"
-                rows="10"
-                placeholder="Description"
-            ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+    </div>
+</div>
+
+<?php include(__DIR__ . '/../../../views/partials/admin_footer.php'); ?>
