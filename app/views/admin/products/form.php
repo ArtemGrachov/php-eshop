@@ -80,7 +80,11 @@
                 </div>
                 <div class="field">
                     <label class="checkbox">
-                        <input type="checkbox" name="tracking">
+                        <input
+                            type="checkbox"
+                            name="tracking"
+                            <?= $productTracking ? 'checked' : '' ?>
+                        >
                         Tracked
                     </label>
                 </div>

@@ -27,6 +27,10 @@ $routes_admin = [
             'create' => [
                 'GET' => 'ControllerAdminProductsForm/index',
                 'POST' => 'ControllerAdminProductsForm/create'
+            ],
+            'edit' => [
+                'GET' => 'ControllerAdminProductsForm/edit',
+                'POST' => 'ControllerAdminProductsForm/save'
             ]
         ],
         '/' => [

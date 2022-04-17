@@ -27,4 +27,39 @@ class ControllerAdminProductsForm {
 
         header('Location: /admin/products');
     }
+
+    public function edit() {
+        $title = 'Edit product';
+        $productId = $_GET['id'];
+        $formAction = "/admin/products/edit?id=$productId";
+
+        $product = ModelProduct::getProduct($productId);
+        $taxons = ModelTaxon::getTaxons();
+
+        include(__DIR__ . '/../../../views/admin/products/form.php');
+    }
+
+    public function save() {
+        $productId = $_GET['id'];
+
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $stock = $_POST['stock'];
+        $tracking = $_POST['tracking'];
+        $taxonId = $_POST['taxonId'];
+
+        $product = ModelProduct::getProduct($productId);
+
+        $product->name = $name;
+        $product->price = $price;
+        $product->description = $description;
+        $product->stock = $stock;
+        $product->tracking = $tracking;
+        $product->taxonId = $taxonId;
+
+        $product->save();
+
+        header('Location: /admin/products');
+    }
 }
