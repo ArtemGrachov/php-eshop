@@ -1,6 +1,9 @@
 <?php include(__DIR__ . '/../partials/header.php'); ?>
 
 <div class="container py-5 px-4">
+    <div class="mb-5">
+        <?php include(__DIR__ . '/../partials/breadcrumbs.php'); ?>
+    </div>
     <div class="columns">
         <div class="column is-6">
             <div class="product-image scalable-image-wrap mb-4">

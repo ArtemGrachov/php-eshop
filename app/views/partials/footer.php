@@ -5,7 +5,9 @@
                     Developed for educational purposes
                 </div>
                 <div>
-                    Artem Grachov | 2022
+                    Artem Grachov
+                    <span class="mx-3">|</span>
+                    2022
                 </div>
             </div>
         </div>
