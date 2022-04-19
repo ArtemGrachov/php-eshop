@@ -28,3 +28,7 @@ body {
 .product-image {
     padding-top: 100%;
 }
+
+.cart-form-counter {
+    max-width: 100px;
+}

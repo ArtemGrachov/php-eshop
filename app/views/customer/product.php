@@ -17,7 +17,10 @@
             <div class="is-size-5 mb-5">
                 $<?= $product->price ?>
             </div>
-            <p>
+            <div class="mb-5">
+                <?php include(__DIR__ . '/../partials/product_cart_form.php'); ?>
+            </div>
+            <p class="my-0">
                 <?= $product->description ?>
             </p>
         </div>
