@@ -10,13 +10,14 @@ class ModelProduct {
     public $tracking = null;
     public $taxonId = null;
 
-    public static function getProducts() {
+    public static function getProducts($limit = 4) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
-                  FROM products P ORDER BY P.id';
+                  FROM products P ORDER BY P.id LIMIT :limit';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
         $statement->execute();
 
         $rawProducts = $statement->fetchAll();

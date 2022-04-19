@@ -1,0 +1,30 @@
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.min-h-full {
+    min-height: 100%;
+}
+
+.scalable-image-wrap {
+    position: relative;
+}
+
+.scalable-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: contain;
+    object-position: center;
+}
+
+.product-image {
+    padding-top: 100%;
+}
