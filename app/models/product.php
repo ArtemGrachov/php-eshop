@@ -90,4 +90,18 @@ class ModelProduct {
             $statement->closeCursor();
         }
     }
+
+    public function remove() {
+        $db = Database::getInstance()->db;
+
+        $query = 'DELETE FROM products WHERE ID = :productId';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':productId', $this->id);
+        $statement->execute();
+
+        $statement->closeCursor();
+
+        $this->id = null;
+    }
 }

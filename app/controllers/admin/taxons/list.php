@@ -8,4 +8,11 @@ class ControllerAdminTaxonsList {
 
         include(__DIR__ . '/../../../views/admin/taxons/list.php');
     }
+
+    public function remove () {
+        $taxonId = $_POST['id'];
+        $taxon = ModelTaxon::getTaxon($taxonId);
+        $taxon->remove();
+        header('Location: /admin/taxons');
+    }
 }

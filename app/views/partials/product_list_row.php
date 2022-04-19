@@ -25,9 +25,12 @@
             >
                 Edit
             </a>
-            <button class="button is-danger">
-                Delete
-            </button>
+            <form action="/admin/products/delete" method="POST">
+                <input type="hidden" name="id" value="<?= $product->id ?>" />
+                <button class="button is-danger">
+                    Delete
+                </button>
+            </form>
         </div>
     </td>
 </tr>
