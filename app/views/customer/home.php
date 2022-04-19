@@ -1,4 +1,4 @@
-<?php include(__DIR__ . '/../views/partials/header.php'); ?>
+<?php include(__DIR__ . '/../../views/partials/header.php'); ?>
 
 <div class="container py-5 px-4">
     <div class="columns">
@@ -15,7 +15,7 @@
             <div class="columns is-multiline">
                 <?php foreach ($products as $product): ?>
                     <div class="column is-3">
-                        <?php include(__DIR__ . '/partials/product_card.php'); ?>
+                        <?php include(__DIR__ . '../../partials/product_card.php'); ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -23,4 +23,4 @@
     </div>
 </div>
 
-<?php include(__DIR__ . '/../views/partials/footer.php'); ?>
+<?php include(__DIR__ . '/../../views/partials/footer.php'); ?>
