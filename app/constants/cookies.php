@@ -1,0 +1,3 @@
+<?php
+
+$ORDER_TOKEN = 'ORDER_TOKEN';
