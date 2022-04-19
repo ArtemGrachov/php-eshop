@@ -18,6 +18,9 @@ $routes_admin = [
             'edit' => [
                 'GET' => 'ControllerAdminTaxonsForm/edit',
                 'POST' => 'ControllerAdminTaxonsForm/save'
+            ],
+            'delete' => [
+                'POST' => 'ControllerAdminTaxonsForm/remove'
             ]
         ],
         'products' => [

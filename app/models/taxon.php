@@ -52,23 +52,37 @@ class ModelTaxon {
 
         if (is_null($this->id)) {
             $query = 'INSERT INTO taxons (name, description) VALUES (:name, :description)';
-    
+
             $statement = $db->prepare($query);
             $statement->bindValue(':name', $this->name);
             $statement->bindValue(':description', $this->description);
             $statement->execute();
-    
+
             $statement->closeCursor();
         } else {
             $query = 'UPDATE taxons SET name = :name, description = :description WHERE id=:taxonId';
-    
+
             $statement = $db->prepare($query);
             $statement->bindValue(':taxonId', $this->id);
             $statement->bindValue(':name', $this->name);
             $statement->bindValue(':description', $this->description);
             $statement->execute();
-    
+
             $statement->closeCursor();
         }
+    }
+
+    public function remove() {
+        $db = Database::getInstance()->db;
+
+        $query = 'DELETE FROM taxons WHERE ID = :taxonId';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':taxonId', $this->id);
+        $statement->execute();
+
+        $statement->closeCursor();
+
+        $this->id = null;
     }
 }

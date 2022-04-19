@@ -46,4 +46,11 @@ class ControllerAdminTaxonsForm {
 
         header('Location: /admin/taxons');
     }
+
+    public function remove () {
+        $taxonId = $_POST['id'];
+        $taxon = ModelTaxon::getTaxon($taxonId);
+        $taxon->remove();
+        header('Location: /admin/taxons');
+    }
 }
