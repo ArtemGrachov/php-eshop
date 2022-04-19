@@ -1,9 +1,24 @@
-<?php include(__DIR__ . '/../views/partials/header.php'); ?>
+<?php include(__DIR__ . '/../partials/header.php'); ?>
 
 <div class="container py-5 px-4">
     <div class="columns">
-        <h1 class="title">Product</h1>
+        <div class="column is-6">
+            <div class="product-image scalable-image-wrap mb-4">
+                <div class="scalable-image has-background-info-light"></div>
+            </div>
+        </div>
+        <div class="column is-6">
+            <h1 class="title mb-2">
+                <?= $product->name ?>
+            </h1>
+            <div class="is-size-5 mb-5">
+                $<?= $product->price ?>
+            </div>
+            <p>
+                <?= $product->description ?>
+            </p>
+        </div>
     </div>
 </div>
 
-<?php include(__DIR__ . '/../views/partials/footer.php'); ?>
+<?php include(__DIR__ . '/../partials/footer.php'); ?>
