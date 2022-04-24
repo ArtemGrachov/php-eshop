@@ -3,6 +3,7 @@
     <div class="is-flex is-align-items-center">
         <div class="cart-form-counter mr-2">
             <input
+                name="quantity"
                 class="input is-rounded has-text-centered"
                 type="number"
                 value="0"

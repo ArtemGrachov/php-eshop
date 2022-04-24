@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/database.php');
+require_once(__DIR__ . '/../models/order_item.php');
 
 class ModelOrder {
     public $id = null;
@@ -94,5 +95,44 @@ class ModelOrder {
 
             $statement->closeCursor();
         }
+    }
+
+    public function addItem($productId, $quantity) {
+        $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+
+        foreach ($orderItems as $item) {
+            if ($item->productId === $productId) {
+                $orderItem = $item;
+                break;
+            }
+        }
+
+        if (!isset($orderItem)) {
+            $orderItem = ModelOrderItem::createByProductAndQuantity($productId, (int) $quantity);
+            $orderItem->orderId = $this->id;
+        } else {
+            $orderItem->updateQuantity($orderItem->quantity + $quantity);
+        }
+
+        $orderItem->save();
+    }
+
+    public function updateItem($productId, $quantity) {
+        $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+
+        foreach ($orderItems as $item) {
+            if ($item->productId === $productId) {
+                $orderItem = $item;
+                break;
+            }
+        }
+
+        if (!isset($orderItem)) {
+            throw 'Order item not found';
+        } else {
+            $orderItem->updateQuantity($quantity);
+        }
+
+        $orderItem->save();
     }
 }
