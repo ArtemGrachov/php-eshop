@@ -135,4 +135,18 @@ class ModelOrder {
 
         $orderItem->save();
     }
+
+    public function __get($property) {
+        if ($property !== 'itemsCount') {
+            return null;
+        }
+
+        $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+
+        $itemsCount = array_reduce($orderItems, function($acc, $curr) {
+            return $acc + $curr->quantity;
+        }, 0);
+
+        return $itemsCount;
+    }
 }
