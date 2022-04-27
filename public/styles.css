@@ -32,3 +32,18 @@ body {
 .cart-form-counter {
     max-width: 100px;
 }
+
+.list-reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+}
+
+.max-w-600px {
+    max-width: 600px;
+}

@@ -2,6 +2,7 @@
 require_once(__DIR__.'/../controllers/customer/home.php');
 require_once(__DIR__.'/../controllers/customer/product.php');
 require_once(__DIR__.'/../controllers/customer/order.php');
+require_once(__DIR__.'/../controllers/customer/cart.php');
 
 $routes_customer = [
     '/' => [
@@ -14,5 +15,8 @@ $routes_customer = [
         'add' => [
             'POST' => 'ControllerOrder/addOrCreate'
         ]
+    ],
+    'cart' => [
+        'GET' => 'ControllerCart/view'
     ]
 ];
