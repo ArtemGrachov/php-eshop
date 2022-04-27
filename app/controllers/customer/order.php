@@ -53,4 +53,34 @@ class ControllerOrder {
 
         return $order;
     }
+
+    public function update() {
+        global $ORDER_TOKEN;
+
+        $productId = $_POST['productId'];
+        $quantity = $_POST['quantity'];
+
+        if (!isset($productId)) {
+            throw 'Product ID not set';
+        }
+
+        if (!isset($quantity)) {
+            throw 'Quantity not set';
+        }
+
+        if (isset($_COOKIE[$ORDER_TOKEN])) {
+            $orderToken = $_COOKIE[$ORDER_TOKEN];
+
+            $order = ModelOrder::getOrderByToken($orderToken);
+        }
+
+        if (!$order) {
+            return;
+        }
+
+        $order->updateItem($productId, $quantity);
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
 }

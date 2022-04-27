@@ -14,6 +14,9 @@ $routes_customer = [
     'order' => [
         'add' => [
             'POST' => 'ControllerOrder/addOrCreate'
+        ],
+        'update' => [
+            'POST' => 'ControllerOrder/update'
         ]
     ],
     'cart' => [
