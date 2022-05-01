@@ -6,7 +6,22 @@
     </div>
     <div class="columns">
         <div class="column is-8">
-            frms
+            <form action="/checkout" method="POST">
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/checkout_customer_form_part.php'); ?>
+                </div>
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/checkout_address_form_part.php'); ?>
+                </div>
+                <button class="button is-success is-large">
+                    <span class="icon mr-2">
+                        <span class="material-icons">
+                            done
+                        </span>
+                    </span>
+                    Submit order
+                </button>
+            </form>
         </div>
         <div class="column is-4">
             <div class="mb-4">
