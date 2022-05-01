@@ -137,16 +137,24 @@ class ModelOrder {
     }
 
     public function __get($property) {
-        if ($property !== 'itemsCount') {
-            return null;
+        switch ($property) {
+            case 'itemsCount':
+                $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+
+                $itemsCount = array_reduce($orderItems, function($acc, $curr) {
+                    return $acc + $curr->quantity;
+                }, 0);
+
+                return $itemsCount;
+            case 'totalPrice':
+                $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+                $totalPrice = array_reduce($orderItems, function ($acc, $curr) {
+                    return $acc + $curr->total;
+                }, 0);
+
+                return $totalPrice;
+            default:
+                return null;
         }
-
-        $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
-
-        $itemsCount = array_reduce($orderItems, function($acc, $curr) {
-            return $acc + $curr->quantity;
-        }, 0);
-
-        return $itemsCount;
     }
 }

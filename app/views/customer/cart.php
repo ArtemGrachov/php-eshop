@@ -34,7 +34,7 @@
                             Total price:
                         </td>
                         <td class="has-text-right">
-                            $1000.99
+                            $<?= $order->totalPrice ?>
                         </td>
                     </tr>
                 </table>
