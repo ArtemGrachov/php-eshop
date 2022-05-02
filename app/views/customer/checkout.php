@@ -13,6 +13,9 @@
                 <div class="mb-4">
                     <?php include(__DIR__ . '/../partials/checkout_address_form_part.php'); ?>
                 </div>
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/cart_summary.php'); ?>
+                </div>
                 <button class="button is-success is-large">
                     <span class="icon mr-2">
                         <span class="material-icons">
@@ -24,6 +27,9 @@
             </form>
         </div>
         <div class="column is-4">
+            <h2 class="is-size-5 mb-4">
+                Cart cummary
+            </h2>
             <div class="mb-4">
                 <ul class="list-reset">
                     <?php
@@ -39,6 +45,24 @@
                     ?>
                 </ul>
             </div>
+            <table class="table is-fullwidth has-background-info-light">
+                <tr class="is-size-6">
+                    <td>
+                        Total items:
+                    </td>
+                    <td class="has-text-right">
+                        <?= $order->itemsCount ?>
+                    </td>
+                </tr>
+                <tr class="is-size-6 has-text-weight-semibold">
+                    <td>
+                        Total price:
+                    </td>
+                    <td class="has-text-right">
+                        $<?= $order->totalPrice ?>
+                    </td>
+                </tr>
+            </table>
             <div class="is-flex is-justify-content-flex-end">
                 <a
                     href="/cart"

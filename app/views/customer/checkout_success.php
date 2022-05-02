@@ -25,25 +25,8 @@
             ?>
         </ul>
         <?php if (!is_null($order)): ?>
-            <div class="has-background-info-light p-4 mb-4">
-                <table class="table is-fullwidth has-background-info-light">
-                    <tr>
-                        <td>
-                            Total items:
-                        </td>
-                        <td class="has-text-right">
-                            <?= $order->itemsCount ?>
-                        </td>
-                    </tr>
-                    <tr class="is-size-5 has-text-weight-semibold">
-                        <td>
-                            Total price:
-                        </td>
-                        <td class="has-text-right">
-                            $<?= $order->totalPrice ?>
-                        </td>
-                    </tr>
-                </table>
+            <div class="mb-4">
+                <?php include(__DIR__ . '/../partials/cart_summary.php'); ?>
             </div>
         <?php endif; ?>
         <div class="is-flex is-justify-content-flex-end">
