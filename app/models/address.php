@@ -77,6 +77,8 @@ class ModelAddress {
             $statement->execute();
 
             $statement->closeCursor();
+
+            $this->id = (int) $db->lastInsertId();
         } else {
             $query = 'UPDATE addresses SET country = :country, region = :region, city = :city,
                       street = :street, houseNumber = :houseNumber,

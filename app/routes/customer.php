@@ -24,6 +24,7 @@ $routes_customer = [
         'GET' => 'ControllerCart/view'
     ],
     'checkout' => [
-        'GET' => 'ControllerCheckout/view'
+        'GET' => 'ControllerCheckout/view',
+        'POST' => 'ControllerCheckout/submit'
     ]
 ];

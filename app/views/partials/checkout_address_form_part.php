@@ -3,45 +3,121 @@
         Customer address
     </h2>
     <div class="field">
-        <label class="label">Country</label>
+        <label
+            for="country"
+            class="label"
+        >
+            Country
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Country">
+            <input
+                class="input"
+                name="country"
+                type="text"
+                placeholder="Country"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Region</label>
+        <label
+            for="region"
+            class="label"
+        >
+            Region
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Region">
+            <input
+                class="input"
+                name="region"
+                type="text"
+                placeholder="Region"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">City</label>
+        <label
+            for="city"
+            class="label"
+        >
+            City
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="City">
+            <input
+                class="input"
+                name="city"
+                type="text"
+                placeholder="City"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Street</label>
+        <label
+            for="street"
+            class="label"
+        >
+            Street
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Street">
+            <input
+                class="input"
+                name="street"
+                type="text"
+                placeholder="Street"
+                value="test"
+            >
         </div>
     </div>
     <div class="field">
-        <label class="label">House number</label>
+        <label
+            for="houseNumber"
+            class="label"
+        >
+            House number
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="House number">
+            <input
+                class="input"
+                name="houseNumber"
+                type="text"
+                placeholder="House number"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Appartment number</label>
+        <label
+            for="appartmentNumber"
+            class="label"
+        >
+            Appartment number
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Appartment number">
+            <input
+                class="input"
+                name="appartmentNumber"
+                type="text"
+                placeholder="Appartment number"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Notes</label>
+        <label
+            for="notes"
+            class="label"
+        >
+            Notes
+        </label>
         <div class="control">
-            <textarea class="textarea" placeholder="Notes" rows="5"></textarea>
+            <textarea
+                name="notes"
+                class="textarea"
+                placeholder="Notes"
+                rows="5"
+            ></textarea>
         </div>
     </div>
 </div>

@@ -7,6 +7,8 @@ class ModelOrder {
     public $state = null;
     public $note = null;
     public $token = null;
+    public $customerId = null;
+    public $addressId = null;
 
     public static function getOrders() {
         $db = Database::getInstance()->db;
@@ -53,6 +55,8 @@ class ModelOrder {
         $this->state = isset($payload['state']) ? $payload['state'] : null;
         $this->note = isset($payload['note']) ? $payload['note'] : null;
         $this->token = isset($payload['token']) ? $payload['token'] : null;
+        $this->customerId = isset($payload['customerId']) ? $payload['customerId'] : null;
+        $this->addressId = isset($payload['addressId']) ? $payload['addressId'] : null;
     }
 
     public function remove() {
@@ -73,17 +77,21 @@ class ModelOrder {
         $db = Database::getInstance()->db;
 
         if (is_null($this->id)) {
-            $query = 'INSERT INTO orders (state, note, token) VALUES (:state, :note, :token)';
+            $query = 'INSERT INTO orders (state, note, token, customerId, addressId)
+                      VALUES (:state, :note, :token, :customerId, :addressId)';
 
             $statement = $db->prepare($query);
             $statement->bindValue(':state', $this->state);
             $statement->bindValue(':note', $this->note);
             $statement->bindValue(':token', $this->token);
+            $statement->bindValue(':customerId', $this->customerId);
+            $statement->bindValue(':addressId', $this->addressId);
             $statement->execute();
 
             $statement->closeCursor();
         } else {
-            $query = 'UPDATE orders SET state = :state, note = :note, token = :token 
+            $query = 'UPDATE orders SET state = :state, note = :note, token = :token,
+                      customerId = :customerId, addressId = :addressId
                       WHERE id=:orderId';
 
             $statement = $db->prepare($query);
@@ -91,6 +99,8 @@ class ModelOrder {
             $statement->bindValue(':state', $this->state);
             $statement->bindValue(':note', $this->note);
             $statement->bindValue(':token', $this->token);
+            $statement->bindValue(':customerId', $this->customerId);
+            $statement->bindValue(':addressId', $this->addressId);
             $statement->execute();
 
             $statement->closeCursor();

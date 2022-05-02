@@ -3,48 +3,117 @@
         Customer information
     </h2>
     <div class="field">
-        <label class="label">First name</label>
+        <label
+            for="firstName"
+            class="label"
+        >
+            First name
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="First name">
+            <input
+                class="input"
+                name="firstName"
+                type="text"
+                placeholder="First name"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Last name</label>
+        <label
+            for="lastName"
+            class="label"
+        >
+            Last name
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Last name">
+            <input
+                class="input"
+                name="lastName"
+                type="text"
+                placeholder="Last name"
+                value="test"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Email</label>
+        <label
+            for="email"
+            class="label"
+        >
+            Email
+        </label>
         <div class="control">
-            <input class="input" type="email" placeholder="Email">
+            <input
+                class="input"
+                name="email"
+                type="email"
+                placeholder="Email"
+                value="test@test.com"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Phone number</label>
+        <label
+            for="phoneNumber"
+            class="label"
+        >
+            Phone number
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Phone number">
+            <input
+                class="input"
+                name="phoneNumber"
+                type="text"
+                placeholder="Phone number"
+                value="test"
+            />
         </div>
     </div>
 
     <div class="field">
         <div class="control">
             <label class="checkbox">
-                <input type="checkbox">
+                <input
+                    type="checkbox"
+                    name="isCompany"
+                >
                 Is company
             </label>
         </div>
     </div>
     <div class="field">
-        <label class="label">Company name</label>
-        <div class="control">
-            <input class="input" type="text" placeholder="Company name">
+        <label
+            for="companyName"
+            class="label"
+        >
+            Company name
+        </label>
+        <div
+            class="control"
+        >
+            <input
+                class="input"
+                name="companyName"
+                type="text"
+                placeholder="Company name"
+            />
         </div>
     </div>
     <div class="field">
-        <label class="label">Company VAT number</label>
+        <label
+            for="companyVatNumber"
+            class="label"
+        >
+            Company VAT number
+        </label>
         <div class="control">
-            <input class="input" type="text" placeholder="Company VAT number">
+            <input
+                class="input"
+                name="companyVatNumber"
+                type="text"
+                placeholder="Company VAT number"
+            />
         </div>
     </div>
 </div>

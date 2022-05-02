@@ -76,6 +76,8 @@ class ModelCustomer {
             $statement->execute();
 
             $statement->closeCursor();
+
+            $this->id = (int) $db->lastInsertId();
         } else {
             $query = 'UPDATE customers SET name = firstName = :firstName, lastName = :lastName,
                       email = :email, phoneNumber = :phoneNumber, isCompany = :isCompany,
