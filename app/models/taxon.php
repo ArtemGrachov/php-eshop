@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/database.php');
+require_once(__DIR__ . '/../models/product.php');
 
 class ModelTaxon {
     public $id = null;
@@ -84,5 +85,16 @@ class ModelTaxon {
         $statement->closeCursor();
 
         $this->id = null;
+    }
+
+    public function __get($property) {
+        switch ($property) {
+            case 'productsCount':
+                $orderItems = ModelProduct::getProductsByTaxon($this->id);
+
+                return count($orderItems);
+            default:
+                return null;
+        }
     }
 }

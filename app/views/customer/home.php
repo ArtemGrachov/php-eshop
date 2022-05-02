@@ -5,8 +5,8 @@
         <div class="column is-2">
             <?php foreach ($taxons as $taxon): ?>
                 <div>
-                    <a href="#">
-                        <?= $taxon->name ?> (5)
+                    <a href="/taxon?id=<?= $taxon->id ?>">
+                        <?= $taxon->name ?> (<?= $taxon->productsCount ?>)
                     </a>
                 </div>
             <?php endforeach; ?>
