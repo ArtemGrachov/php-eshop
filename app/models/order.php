@@ -89,6 +89,8 @@ class ModelOrder {
             $statement->execute();
 
             $statement->closeCursor();
+
+            $this->id = (int) $db->lastInsertId();
         } else {
             $query = 'UPDATE orders SET state = :state, note = :note, token = :token,
                       customerId = :customerId, addressId = :addressId
