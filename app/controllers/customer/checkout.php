@@ -84,6 +84,26 @@ class ControllerCheckout {
         setcookie($ORDER_TOKEN, '', time() - 300, '/');
     }
 
+    private function viewSuccess($order, $email) {
+        if (is_null($order)) {
+            $orderItems = [];
+        } else {
+            $orderItems = ModelOrderItem::getOrderItemsByOrder($order->id);
+        }
+
+        $breadcrumbs = [
+            [
+                'link' => '/',
+                'label' => 'Home'
+            ],
+            [
+                'label' => 'Checkout'
+            ]
+        ];
+
+        include(__DIR__ . '/../../views/customer/checkout_success.php');
+    }
+
     public function view() {
         $order = $this->getOrder();
 
@@ -159,8 +179,6 @@ class ControllerCheckout {
             'notes' => $notes
         ]);
 
-        var_dump($customer);
-
         $customer->save();
         $address->save();
 
@@ -168,11 +186,9 @@ class ControllerCheckout {
         $order->addressId = $address->id;
         $order->state = $ORDER_STATUSES['COMPLETED'];
 
-        var_dump($order);
-
         $order->save();
         $this->unsetOrder();
 
-        echo 'Order success';
+        $this->viewSuccess($order, $customer->email);
     }
 }
