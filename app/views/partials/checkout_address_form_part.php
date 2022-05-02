@@ -1,3 +1,4 @@
+<?php require_once(__DIR__ . '/../../widgets/form_error.php'); ?>
 <div class="has-background-white-bis p-4">
     <h2 class="is-size-5 mb-4">
         Customer address
@@ -7,17 +8,18 @@
             for="country"
             class="label"
         >
-            Country
+            Country *
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['country']) ? ' is-danger' : '' ?>"
                 name="country"
                 type="text"
                 placeholder="Country"
-                value="test"
+                value="<?= $formValue['country'] ?? '' ?>"
             />
         </div>
+        <?php (new WidgetFormError($formErrors['country'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
@@ -28,64 +30,68 @@
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['region']) ? ' is-danger' : '' ?>"
                 name="region"
                 type="text"
                 placeholder="Region"
-                value="test"
+                value="<?= $formValue['region'] ?? '' ?>"
             />
         </div>
+        <?php (new WidgetFormError($formErrors['region'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
             for="city"
             class="label"
         >
-            City
+            City *
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['city']) ? ' is-danger' : '' ?>"
                 name="city"
                 type="text"
                 placeholder="City"
-                value="test"
+                value="<?= $formValue['city'] ?? '' ?>"
             />
         </div>
+        <?php (new WidgetFormError($formErrors['city'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
             for="street"
             class="label"
         >
-            Street
+            Street *
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['street']) ? ' is-danger' : '' ?>"
                 name="street"
                 type="text"
                 placeholder="Street"
-                value="test"
+                value="<?= $formValue['street'] ?? '' ?>"
             >
         </div>
+        <?php (new WidgetFormError($formErrors['street'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
             for="houseNumber"
             class="label"
         >
-            House number
+            House number *
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['houseNumber']) ? ' is-danger' : '' ?>"
                 name="houseNumber"
                 type="text"
                 placeholder="House number"
-                value="test"
+                value="<?= $formValue['houseNumber'] ?? '' ?>"
             />
         </div>
+        <?php (new WidgetFormError($formErrors['houseNumber'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
@@ -96,13 +102,14 @@
         </label>
         <div class="control">
             <input
-                class="input"
+                class="input<?= isset($formErrors['appartmentNumber']) ? ' is-danger' : '' ?>"
                 name="appartmentNumber"
                 type="text"
                 placeholder="Appartment number"
-                value="test"
+                value="<?= $formValue['appartmentNumber'] ?? '' ?>"
             />
         </div>
+        <?php (new WidgetFormError($formErrors['appartmentNumber'] ?? []))->render(); ?>
     </div>
     <div class="field">
         <label
@@ -114,10 +121,11 @@
         <div class="control">
             <textarea
                 name="notes"
-                class="textarea"
+                class="textarea<?= isset($formErrors['notes']) ? ' is-danger' : '' ?>"
                 placeholder="Notes"
                 rows="5"
-            ></textarea>
+            ><?= $formValue['notes'] ?? '' ?></textarea>
         </div>
+        <?php (new WidgetFormError($formErrors['notes'] ?? []))->render(); ?>
     </div>
 </div>

@@ -104,8 +104,10 @@ class ControllerCheckout {
         include(__DIR__ . '/../../views/customer/checkout_success.php');
     }
 
-    public function view() {
-        $order = $this->getOrder();
+    private function viewInit($data) {
+        $order = $data['order'];
+        $formErrors = $data['formErrors'];
+        $formValue = $data['formValue'];
 
         if (is_null($order)) {
             $orderItems = [];
@@ -126,6 +128,16 @@ class ControllerCheckout {
         include(__DIR__ . '/../../views/customer/checkout.php');
     }
 
+    public function view() {
+        $order = $this->getOrder();
+
+        $this->viewInit([
+            'order' => $order,
+            'formErrors' => [],
+            'formValue' => []
+        ]);
+    }
+
     public function submit() {
         global $ORDER_STATUSES;
 
@@ -140,7 +152,11 @@ class ControllerCheckout {
         $formErrors = $this->validateSubmitForm($_POST);
 
         if (count($formErrors)) {
-            echo 'Form is invalid';
+            $this->viewInit([
+                'order' => $order,
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
             return;
         }
 
