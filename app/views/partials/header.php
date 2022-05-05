@@ -23,6 +23,9 @@ $widgetCartCounter = new WidgetCartCounter();
             <h1 class="is-size-4">
                 PHP E-Commerce Example
             </h1>
+            <div class="ml-auto mr-4">
+                <?php include(__DIR__ . '/search_product_form.php'); ?>
+            </div>
             <a href="/cart" class="button is-info">
             <?php $widgetCartCounter->render(); ?>
             </a>

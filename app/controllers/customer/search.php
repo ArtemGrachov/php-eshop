@@ -18,6 +18,7 @@ class ControllerSearch {
         ];
 
         $title = "Search results: $query";
+        $serchFormQuery = $query;
 
         include(__DIR__ . '/../../views/customer/products.php');
     }
