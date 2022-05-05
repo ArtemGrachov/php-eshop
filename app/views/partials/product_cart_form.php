@@ -7,7 +7,7 @@
                 class="input is-rounded has-text-centered"
                 type="number"
                 value="0"
-                min="0"
+                min="1"
                 max="<?= $product->tracking ? $product->stock : '' ?>"
             />
         </div>
