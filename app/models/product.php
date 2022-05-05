@@ -94,10 +94,10 @@ class ModelProduct {
     public function __construct($payload) {
         $this->id = isset($payload['id']) ? $payload['id'] : null;
         $this->name = isset($payload['name']) ? $payload['name'] : null;
-        $this->price = isset($payload['price']) ? $payload['price'] : null;
+        $this->price = isset($payload['price']) ? (int) $payload['price'] : null;
         $this->description = isset($payload['description']) ? $payload['description'] : null;
-        $this->stock = isset($payload['stock']) ? $payload['stock'] : null;
-        $this->tracking = isset($payload['tracking']) ? $payload['tracking'] : null;
+        $this->stock = isset($payload['stock']) ? (int) $payload['stock'] : null;
+        $this->tracking = isset($payload['tracking']) ? (bool) $payload['tracking'] : null;
         $this->taxonId = isset($payload['taxonId']) ? $payload['taxonId'] : null;
     }
 
@@ -148,5 +148,16 @@ class ModelProduct {
         $statement->closeCursor();
 
         $this->id = null;
+    }
+
+    public function __get($property) {
+        switch ($property) {
+            case 'isOutOfStock':
+                return $this->tracking && $this->stock === 0;
+            case 'runningOutOfStock':
+                return $this->tracking && $this->stock <= 5;
+            default:
+                return null;
+        }
     }
 }

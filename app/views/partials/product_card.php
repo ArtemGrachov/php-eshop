@@ -11,8 +11,19 @@
         <div class="title is-6 mb-2">
             <?= $product->name ?>
         </div>
-        <div class="has-color-dark mt-auto">
-            <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
+        <div class="mt-auto">
+            <?php if ($product->isOutOfStock): ?>
+                <span class="tag is-danger">Out of stock</span>
+            <?php else: ?>
+                <?php if ($product->runningOutOfStock): ?>
+                    <span class="tag is-warning mb-2">
+                        Is running out of stock
+                    </span>
+                <?php endif ?>
+                <div class="has-color-dark">
+                    <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
+                </div>
+            <?php endif ?>
         </div>
     </a>
 </article>
