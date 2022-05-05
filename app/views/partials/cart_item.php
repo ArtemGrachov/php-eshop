@@ -33,6 +33,6 @@
         </form>
     </div>
     <div class="is-flex-grow-0 is-flex-shrink-0 is-size-6 has-text-weight-semibold has-text-right">
-        $<?= $cartItem->total ?>
+        <?= number_format($cartItem->total, 2, '.', ' ') ?>&nbsp;UAH
     </div>
 </li>

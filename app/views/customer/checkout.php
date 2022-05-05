@@ -38,7 +38,7 @@
                         Total price:
                     </td>
                     <td class="has-text-right">
-                        $<?= $order->totalPrice ?>
+                        <?= number_format($order->totalPrice, 2, '.', ' ') ?>&nbsp;UAH
                     </td>
                 </tr>
             </table>
