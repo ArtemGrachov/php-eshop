@@ -5,28 +5,7 @@
         <?php include(__DIR__ . '/../partials/breadcrumbs.php'); ?>
     </div>
     <div class="columns">
-        <div class="column is-8">
-            <form action="/checkout" method="POST">
-                <div class="mb-4">
-                    <?php include(__DIR__ . '/../partials/checkout_customer_form_part.php'); ?>
-                </div>
-                <div class="mb-4">
-                    <?php include(__DIR__ . '/../partials/checkout_address_form_part.php'); ?>
-                </div>
-                <div class="mb-4">
-                    <?php include(__DIR__ . '/../partials/cart_summary.php'); ?>
-                </div>
-                <button class="button is-success is-large">
-                    <span class="icon mr-2">
-                        <span class="material-icons">
-                            done
-                        </span>
-                    </span>
-                    Submit order
-                </button>
-            </form>
-        </div>
-        <div class="column is-4">
+        <div class="column is-4 order-1-tablet">
             <h2 class="is-size-5 mb-4">
                 Cart cummary
             </h2>
@@ -76,6 +55,27 @@
                     Edit cart
                 </a>
             </div>
+        </div>
+        <div class="column is-8">
+            <form action="/checkout" method="POST">
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/checkout_customer_form_part.php'); ?>
+                </div>
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/checkout_address_form_part.php'); ?>
+                </div>
+                <div class="mb-4">
+                    <?php include(__DIR__ . '/../partials/cart_summary.php'); ?>
+                </div>
+                <button class="button is-success is-large">
+                    <span class="icon mr-2">
+                        <span class="material-icons">
+                            done
+                        </span>
+                    </span>
+                    Submit order
+                </button>
+            </form>
         </div>
     </div>
 </div>

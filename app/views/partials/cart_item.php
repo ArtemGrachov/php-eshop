@@ -8,7 +8,7 @@
     <div class="is-flex-grow-1 is-flex-shrink-1 ">
         <a
             href="/product?id=<?= $cartItem->productId ?>"
-            class="is-size-5 has-text-weight-semibold"
+            class="is-size-5-tablet has-text-weight-semibold"
         >
             <?= $cartItem->name ?>
         </a>

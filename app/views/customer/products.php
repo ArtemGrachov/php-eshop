@@ -9,7 +9,7 @@
     </h1>
     <div class="columns is-multiline mb-4">
         <?php foreach ($products as $product): ?>
-            <div class="column is-3">
+            <div class="column is-6-mobile is-4-tablet is-3-desktop">
                 <?php include(__DIR__ . '../../partials/product_card.php'); ?>
             </div>
         <?php endforeach; ?>

@@ -20,7 +20,7 @@ $widgetCartCounter = new WidgetCartCounter();
 <div class="is-flex is-flex-direction-column min-h-full">
     <div class="has-background-link has-text-white is-flex-grow-0 is-flex-shrink-0	">
         <div class="container header-container">
-            <h1 class="is-size-4 header-logo mr-4">
+            <h1 class="is-size-4-tablet header-logo mr-4">
                 <a
                     href="/"
                     class="has-text-white"
