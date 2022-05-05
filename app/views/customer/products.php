@@ -14,7 +14,7 @@
             </div>
         <?php endforeach; ?>
     </div>
-    <?php if (!is_null($description)): ?>
+    <?php if (isset($description) && !is_null($description)): ?>
         <div>
             <?= $description ?>
         </div>

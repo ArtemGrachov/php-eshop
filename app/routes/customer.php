@@ -5,6 +5,7 @@ require_once(__DIR__.'/../controllers/customer/order.php');
 require_once(__DIR__.'/../controllers/customer/cart.php');
 require_once(__DIR__.'/../controllers/customer/checkout.php');
 require_once(__DIR__.'/../controllers/customer/taxon.php');
+require_once(__DIR__.'/../controllers/customer/search.php');
 
 $routes_customer = [
     '/' => [
@@ -15,6 +16,11 @@ $routes_customer = [
     ],
     'taxon' => [
         'GET' => 'ControllerTaxon/viewTaxonProducts'
+    ],
+    'search' => [
+        'product' => [
+            'GET' => 'ControllerSearch/viewSearchProducts'
+        ]
     ],
     'order' => [
         'add' => [

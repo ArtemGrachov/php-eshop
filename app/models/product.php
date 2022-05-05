@@ -53,6 +53,28 @@ class ModelProduct {
         return $products;
     }
 
+    public static function getProductsBySearchQuery($searchQuery, $limit = 4) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
+                  FROM products P WHERE (P.name LIKE :query) ORDER BY P.id LIMIT :limit';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':query', "%$searchQuery%");
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->execute();
+
+        $rawProducts = $statement->fetchAll();
+
+        $statement->closeCursor();
+
+        $products = array_map(function($rawTaxon) {
+            return new ModelProduct($rawTaxon);
+        }, $rawProducts);
+
+        return $products;
+    }
+
     public static function getProduct($productId) {
         $db = Database::getInstance()->db;
 
