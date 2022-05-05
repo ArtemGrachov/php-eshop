@@ -10,7 +10,7 @@ class ModelProduct {
     public $tracking = null;
     public $taxonId = null;
 
-    public static function getProducts($limit = 4) {
+    public static function getProducts($limit = 999) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
@@ -31,7 +31,7 @@ class ModelProduct {
         return $products;
     }
 
-    public static function getProductsByTaxon($taxonId, $limit = 4) {
+    public static function getProductsByTaxon($taxonId, $limit = 999) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
@@ -53,7 +53,7 @@ class ModelProduct {
         return $products;
     }
 
-    public static function getProductsBySearchQuery($searchQuery, $limit = 4) {
+    public static function getProductsBySearchQuery($searchQuery, $limit = 999) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId

@@ -1,18 +1,18 @@
-<article class="box">
+<article class="box p-0 is-flex is-flex-direction-column product-card">
     <a href="/product?id=<?= $product->id ?>">
-        <div class="product-image scalable-image-wrap mb-4">
+        <div class="product-image scalable-image-wrap">
             <div class="scalable-image has-background-info-light"></div>
         </div>
     </a>
-    <div class="is-flex is-justify-content-space-between is-align-items-center">
-        <a
-            href="/product?id=<?= $product->id ?>"
-            class="title is-6 mb-0 mr-2"
-        >
+    <a
+        href="/product?id=<?= $product->id ?>"
+        class="p-4 is-flex is-flex-direction-column is-flex-grow-1"
+    >
+        <div class="title is-6 mb-2">
             <?= $product->name ?>
-        </a>
-        <div class="ml-2">
+        </div>
+        <div class="has-color-dark mt-auto">
             $<?= $product->price ?>
         </div>
-    </div>
+    </a>
 </article>

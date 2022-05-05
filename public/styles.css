@@ -80,6 +80,11 @@ body {
     flex: 0 0 auto;
 }
 
+.product-card {
+    height: 100%;
+    overflow: hidden;
+}
+
 @media (min-width: 768px) {
     .header-search {
         order: 0;
