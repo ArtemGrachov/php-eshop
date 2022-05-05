@@ -13,7 +13,7 @@
             <?= $cartItem->name ?>
         </a>
         <div class="is-size-6">
-            <?= number_format($cartItem->price, 2, '.', '') ?>&nbsp;UAH
+            <?= number_format($cartItem->price, 2, '.', ' ') ?>&nbsp;UAH
         </div>
     </div>
     <div class="is-flex-grow-0 is-flex-shrink-0 is-size-6 has-text-weight-semibold has-text-right">

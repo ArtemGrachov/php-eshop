@@ -13,7 +13,7 @@
             <?= $cartItem->name ?>
         </a>
         <div class="is-size-6 mb-2">
-            <?= number_format($cartItem->price, 2, '.', '') ?>&nbsp;UAH
+            <?= number_format($cartItem->price, 2, '.', ' ') ?>&nbsp;UAH
         </div>
         <form action="/order/update" method="POST">
             <input type="hidden" name="productId" value="<?= $cartItem->productId ?>" />

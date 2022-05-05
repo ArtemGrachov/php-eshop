@@ -21,7 +21,7 @@
                     </span>
                 <?php endif ?>
                 <div class="has-color-dark">
-                    <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
+                    <?= number_format($product->price, 2, '.', ' ') ?>&nbsp;UAH
                 </div>
             <?php endif ?>
         </div>

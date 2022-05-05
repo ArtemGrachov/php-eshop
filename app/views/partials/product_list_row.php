@@ -6,7 +6,7 @@
         <?= $product->name ?>
     </td>
     <td>
-        <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
+        <?= number_format($product->price, 2, '.', ' ') ?>&nbsp;UAH
     </td>
     <td>
         <?= $product->description ?>
