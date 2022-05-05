@@ -19,15 +19,20 @@ $widgetCartCounter = new WidgetCartCounter();
 
 <div class="is-flex is-flex-direction-column min-h-full">
     <div class="has-background-link has-text-white is-flex-grow-0 is-flex-shrink-0	">
-        <div class="container p-4 is-flex is-justify-content-space-between is-align-items-center">
-            <h1 class="is-size-4">
-                PHP E-Commerce Example
+        <div class="container header-container">
+            <h1 class="is-size-4 header-logo mr-4">
+                <a
+                    href="/"
+                    class="has-text-white"
+                >
+                    PHP E-Commerce Example
+                </a>
             </h1>
-            <div class="ml-auto mr-4">
+            <div class="ml-md-auto mr-md-4 header-search">
                 <?php include(__DIR__ . '/search_product_form.php'); ?>
             </div>
-            <a href="/cart" class="button is-info">
-            <?php $widgetCartCounter->render(); ?>
+            <a href="/cart" class="button is-info header-cart">
+                <?php $widgetCartCounter->render(); ?>
             </a>
         </div>
     </div>

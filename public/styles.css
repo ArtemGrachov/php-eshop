@@ -56,3 +56,36 @@ body {
     width: 50px;
     height: 50px;
 }
+
+.header-container {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header-logo {
+    flex: 1 1 auto;
+    margin-right: 16px;
+}
+
+.header-search {
+    order: 1;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.header-cart {
+    flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+    .header-search {
+        order: 0;
+        width: auto;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: 16px;
+    }
+}
