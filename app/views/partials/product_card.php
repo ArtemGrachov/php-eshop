@@ -12,7 +12,7 @@
             <?= $product->name ?>
         </div>
         <div class="has-color-dark mt-auto">
-            $<?= $product->price ?>
+            <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
         </div>
     </a>
 </article>

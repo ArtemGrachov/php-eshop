@@ -15,7 +15,7 @@
                 <?= $product->name ?>
             </h1>
             <div class="is-size-5 mb-5">
-                $<?= $product->price ?>
+                <?= number_format($product->price, 2, '.', '') ?>&nbsp;UAH
             </div>
             <div class="mb-5">
                 <?php include(__DIR__ . '/../partials/product_cart_form.php'); ?>

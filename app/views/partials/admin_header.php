@@ -11,11 +11,12 @@
 <body>
 
 <div class="has-background-light mb-5">
-    <div class="container">
-        <div class="py-4">
-            <h1 class="is-size-4">
-                <?= $title ?>
-            </h1>
-        </div>
+    <div class="container py-4 is-flex is-align-items-center is-justify-content-space-between">
+        <h1 class="is-size-4">
+            <?= $title ?>
+        </h1>
+        <a href="/">
+            Go to the shop
+        </a>
     </div>
 </div>
