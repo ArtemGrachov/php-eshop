@@ -10,6 +10,9 @@
     <div class="mb-4">
         <a href="/admin/orders">Orders</a>
     </div>
+    <div class="mb-4">
+        <a href="/admin/addresses">Addresses</a>
+    </div>
 </div>
 
 <?php include(__DIR__ . '/../../views/partials/admin_footer.php'); ?>

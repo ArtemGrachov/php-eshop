@@ -86,6 +86,7 @@ class ModelAddress {
                       WHERE id=:addressId';
 
             $statement = $db->prepare($query);
+            $statement->bindValue(':addressId', $this->id);
             $statement->bindValue(':country', $this->country);
             $statement->bindValue(':region', $this->region);
             $statement->bindValue(':city', $this->city);
