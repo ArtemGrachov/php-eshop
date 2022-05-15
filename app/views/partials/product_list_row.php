@@ -15,7 +15,7 @@
         <?= $product->tracking ? $product->stock : '-' ?>
     </td>
     <td>
-        --
+        <?= $product->taxon ? $product->taxon->name : '--' ?>
     </td>
     <td>
         <div class="buttons">

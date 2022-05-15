@@ -9,7 +9,7 @@
         <?= $taxon->description ?>
     </td>
     <td>
-        --
+        <?= $taxon->productsCount ?>
     </td>
     <td>
         <div class="buttons">

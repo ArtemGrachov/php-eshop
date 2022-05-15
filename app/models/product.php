@@ -156,6 +156,12 @@ class ModelProduct {
                 return $this->tracking && $this->stock === 0;
             case 'runningOutOfStock':
                 return $this->tracking && $this->stock <= 5;
+            case 'taxon':
+                if (is_null($this->taxonId)) {
+                    return null;
+                }
+
+                return ModelTaxon::getTaxon($this->taxonId);
             default:
                 return null;
         }
