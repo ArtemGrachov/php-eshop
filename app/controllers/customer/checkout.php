@@ -200,7 +200,7 @@ class ControllerCheckout {
 
         $order->customerId = $customer->id;
         $order->addressId = $address->id;
-        $order->state = $ORDER_STATUSES['COMPLETED'];
+        $order->state = $ORDER_STATUSES['PENDING'];
 
         $order->save();
         $this->unsetOrder();
