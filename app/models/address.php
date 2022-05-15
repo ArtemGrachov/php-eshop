@@ -112,4 +112,10 @@ class ModelAddress {
 
         $this->id = null;
     }
+
+    public function toText() {
+        $result = "$this->country, $this->region, $this->city <br /> $this->street, $this->houseNumber, $this->appartmentNumber <br /> $this->notes";
+
+        return $result;
+    }
 }

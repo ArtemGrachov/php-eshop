@@ -112,4 +112,14 @@ class ModelCustomer {
 
         $this->id = null;
     }
+
+    public function toText() {
+        $result = "$this->firstName $this->lastName <br /> $this->email <br /> $this->phoneNumber";
+
+        if ($this->isCompany) {
+            $result . "<br />$this->companyName, $this->companyVatNumber";
+        }
+
+        return $result;
+    }
 }

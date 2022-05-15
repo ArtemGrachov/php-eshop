@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__ . '/../models/database.php');
 require_once(__DIR__ . '/../models/order_item.php');
+require_once(__DIR__ . '/../models/address.php');
+require_once(__DIR__ . '/../models/customer.php');
 
 class ModelOrder {
     public $id = null;
@@ -27,6 +29,27 @@ class ModelOrder {
         }, $rawOrders);
 
         return $orders;
+    }
+
+    public static function getOrder($orderId) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT * FROM orders WHERE id = :id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $orderId);
+        $statement->execute();
+
+        $order = $statement->fetch();
+
+        
+        $statement->closeCursor();
+
+        if (!$order) {
+            return null;
+        }
+
+        return new ModelOrder($order);
     }
 
     public static function getOrderByToken($token) {
@@ -165,6 +188,18 @@ class ModelOrder {
                 }, 0);
 
                 return $totalPrice;
+            case 'address':
+                if (is_null($this->addressId)) {
+                    return null;
+                }
+
+                return ModelAddress::getAddress($this->addressId);
+            case 'customer':
+                if (is_null($this->customerId)) {
+                    return null;
+                }
+
+                return ModelCustomer::getCustomer($this->customerId);
             default:
                 return null;
         }
