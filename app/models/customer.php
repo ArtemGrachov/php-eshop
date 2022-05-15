@@ -14,7 +14,7 @@ class ModelCustomer {
     public static function getCustomers() {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT C.id, C.firstName, C.firstName, C.email, C.phoneNumber, C.isCompany,
+        $query = 'SELECT C.id, C.firstName, C.lastName, C.email, C.phoneNumber, C.isCompany,
                   C.companyName, C.companyVatNumber FROM customers C ORDER BY C.id';
 
         $statement = $db->prepare($query);
@@ -113,13 +113,24 @@ class ModelCustomer {
         $this->id = null;
     }
 
-    public function toText() {
-        $result = "$this->firstName $this->lastName <br /> $this->email <br /> $this->phoneNumber";
-
-        if ($this->isCompany) {
-            $result .= "<br />$this->companyName, $this->companyVatNumber";
+    public function __get($property) {
+        switch ($property) {
+            case 'textFull':
+                $result = "$this->firstName $this->lastName <br /> $this->email <br /> $this->phoneNumber";
+        
+                if ($this->isCompany) {
+                    $result .= "<br />$this->companyName, $this->companyVatNumber";
+                }
+        
+                return $result;
+            case 'textShort':
+                if ($this->isCompany) {
+                    return "$this->companyName, $this->companyVatNumber ($this->firstName $this->lastName)";
+                } else {
+                    return "$this->firstName $this->lastName, $this->email, $this->phoneNumber";
+                }
+            default:
+                return null;
         }
-
-        return $result;
     }
 }

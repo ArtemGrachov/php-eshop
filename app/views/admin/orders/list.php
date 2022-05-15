@@ -26,10 +26,10 @@
     </table>
     <div class="buttons">
         <a
-            href="/admin/products/create"
+            href="/admin/orders/create"
             class="button is-link"
         >
-            Create product
+            Create order
         </a>
     </div>
 </div>

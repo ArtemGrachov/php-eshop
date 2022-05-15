@@ -9,10 +9,10 @@
         <?= $order->state ?>
     </td>
     <td>
-        <?= $order->customer ? $order->customer->toText() : '-' ?>
+        <?= $order->customer ? $order->customer->textFull : '-' ?>
     </td>
     <td>
-        <?= $order->address ? $order->address->toText() : '-' ?>
+        <?= $order->address ? $order->address->textFull : '-' ?>
     </td>
     <td>
         <?= $order->note ?>

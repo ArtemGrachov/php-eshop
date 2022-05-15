@@ -4,6 +4,7 @@ require_once(__DIR__.'/../controllers/admin/taxons/form.php');
 require_once(__DIR__.'/../controllers/admin/taxons/list.php');
 require_once(__DIR__.'/../controllers/admin/products/form.php');
 require_once(__DIR__.'/../controllers/admin/products/list.php');
+require_once(__DIR__.'/../controllers/admin/orders/form.php');
 require_once(__DIR__.'/../controllers/admin/orders/list.php');
 
 $routes_admin = [
@@ -43,6 +44,14 @@ $routes_admin = [
         'orders' => [
             '/' => [
                 'GET' => 'ControllerAdminOrdersList/index'
+            ],
+            'create' => [
+                'GET' => 'ControllerAdminOrdersForm/index',
+                'POST' => 'ControllerAdminOrdersForm/create'
+            ],
+            'edit' => [
+                'GET' => 'ControllerAdminOrdersForm/edit',
+                'POST' => 'ControllerAdminOrdersForm/save'
             ],
             'delete' => [
                 'POST' => 'ControllerAdminOrdersList/remove'

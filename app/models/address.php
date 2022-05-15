@@ -14,7 +14,7 @@ class ModelAddress {
     public static function getAddresses() {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT A.country, A.region, A.city, A.street, A.houseNumber, A.appartmentNumber,
+        $query = 'SELECT A.id, A.country, A.region, A.city, A.street, A.houseNumber, A.appartmentNumber,
                   A.notes FROM addresses A ORDER BY A.id';
 
         $statement = $db->prepare($query);
@@ -113,9 +113,18 @@ class ModelAddress {
         $this->id = null;
     }
 
-    public function toText() {
-        $result = "$this->country, $this->region, $this->city <br /> $this->street, $this->houseNumber, $this->appartmentNumber <br /> $this->notes";
-
-        return $result;
+    public function __get($property) {
+        switch ($property) {
+            case 'textFull':
+                $result = "$this->country, $this->region, $this->city <br /> $this->street, $this->houseNumber, $this->appartmentNumber <br /> $this->notes";
+        
+                return $result;
+            case 'textShort':
+                $result = "$this->city, $this->street, $this->houseNumber, $this->appartmentNumber";
+        
+                return $result;
+            default:
+                return null;
+        }
     }
 }
