@@ -117,7 +117,7 @@ class ModelCustomer {
         $result = "$this->firstName $this->lastName <br /> $this->email <br /> $this->phoneNumber";
 
         if ($this->isCompany) {
-            $result . "<br />$this->companyName, $this->companyVatNumber";
+            $result .= "<br />$this->companyName, $this->companyVatNumber";
         }
 
         return $result;
