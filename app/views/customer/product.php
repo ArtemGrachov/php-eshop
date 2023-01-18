@@ -6,8 +6,14 @@
     </div>
     <div class="columns">
         <div class="column is-6">
-            <div class="product-image scalable-image-wrap mb-4">
-                <div class="scalable-image has-background-info-light"></div>
+            <div class="product-image scalable-image-wrap has-background-info-light mb-4">
+                <?php if ($product->image): ?>
+                    <img
+                        alt="<?= $product->name ?>"
+                        src="<?= $product->imagePath ?>"
+                        class="scalable-image"
+                    />
+                <?php endif ?>
             </div>
         </div>
         <div class="column is-6">

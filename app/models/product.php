@@ -166,6 +166,12 @@ class ModelProduct {
                 }
 
                 return ModelTaxon::getTaxon($this->taxonId);
+            case 'imagePath':
+                if ($this->image) {
+                    return '/public/images/products/'.$this->image;
+                }
+
+                return null;
             default:
                 return null;
         }
