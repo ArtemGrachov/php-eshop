@@ -131,6 +131,11 @@ class ControllerCheckout {
     public function view() {
         $order = $this->getOrder();
 
+        if (!$order) {
+            header("Location: /cart");
+            return;
+        }
+
         $this->viewInit([
             'order' => $order,
             'formErrors' => [],
