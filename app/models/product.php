@@ -124,7 +124,7 @@ class ModelProduct {
         } else {
             $query = 'UPDATE products SET name = :name, price = :price, description = :description,
                       stock = :stock, tracking = :tracking, taxonId = :taxonId, image = :image WHERE id=:productId';
-    
+
             $statement = $db->prepare($query);
             $statement->bindValue(':productId', $this->id);
             $statement->bindValue(':name', $this->name);
@@ -135,7 +135,7 @@ class ModelProduct {
             $statement->bindValue(':taxonId', $this->taxonId);
             $statement->bindValue(':image', $this->image);
             $statement->execute();
-    
+
             $statement->closeCursor();
         }
     }

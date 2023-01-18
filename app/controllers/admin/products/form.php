@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../../../models/product.php');
 require_once(__DIR__ . '/../../../models/taxon.php');
+require_once(__DIR__ . '/../../../utils/files.php');
 
 class ControllerAdminProductsForm {
     public function index() {
@@ -28,7 +29,7 @@ class ControllerAdminProductsForm {
 
             $imageName = bin2hex(openssl_random_pseudo_bytes(10));
 
-            move_uploaded_file($imageTmpName, 'public/images/products/'.$imageName);
+            move_uploaded_file($imageTmpName, filePathProductImage($imageName));
 
             $payload['image'] = $imageName;
         }
@@ -69,6 +70,21 @@ class ControllerAdminProductsForm {
         $product->stock = $stock;
         $product->tracking = $tracking;
         $product->taxonId = $taxonId;
+
+        if (isset($_FILES['image'])){
+            $image = $_FILES['image'];
+            $imageTmpName = $_FILES['image']['tmp_name'];
+
+            $imageName = bin2hex(openssl_random_pseudo_bytes(10));
+
+            if (!is_null($product->image)) {
+                unlink(filePathProductImage($product->image));
+            }
+
+            move_uploaded_file($imageTmpName, filePathProductImage($imageName));
+
+            $product->image = $imageName;
+        }
 
         $product->save();
 
