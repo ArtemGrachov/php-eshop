@@ -22,7 +22,19 @@ class ControllerAdminProductsForm {
             'taxonId' => $_POST['taxonId']
         ];
 
+        if (isset($_FILES['image'])){
+            $image = $_FILES['image'];
+            $imageTmpName = $_FILES['image']['tmp_name'];
+
+            $imageName = bin2hex(openssl_random_pseudo_bytes(10));
+
+            move_uploaded_file($imageTmpName, 'public/images/products/'.$imageName);
+
+            $payload['image'] = $imageName;
+        }
+
         $product = new ModelProduct($payload);
+
         $product->save();
 
         header('Location: /admin/products');

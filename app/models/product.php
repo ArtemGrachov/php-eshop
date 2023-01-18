@@ -9,11 +9,12 @@ class ModelProduct {
     public $stock = null;
     public $tracking = null;
     public $taxonId = null;
+    public $image = null;
 
     public static function getProducts($limit = 999) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
+        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
                   FROM products P ORDER BY P.id LIMIT :limit';
 
         $statement = $db->prepare($query);
@@ -34,7 +35,7 @@ class ModelProduct {
     public static function getProductsByTaxon($taxonId, $limit = 999) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
+        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
                   FROM products P WHERE P.taxonId = :taxonId ORDER BY P.id LIMIT :limit';
 
         $statement = $db->prepare($query);
@@ -56,7 +57,7 @@ class ModelProduct {
     public static function getProductsBySearchQuery($searchQuery, $limit = 999) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId
+        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
                   FROM products P WHERE (P.name LIKE :query) ORDER BY P.id LIMIT :limit';
 
         $statement = $db->prepare($query);
@@ -99,14 +100,15 @@ class ModelProduct {
         $this->stock = isset($payload['stock']) ? (int) $payload['stock'] : null;
         $this->tracking = isset($payload['tracking']) ? (bool) $payload['tracking'] : null;
         $this->taxonId = isset($payload['taxonId']) ? $payload['taxonId'] : null;
+        $this->image = isset($payload['image']) ? $payload['image'] : null;
     }
 
     public function save() {
         $db = Database::getInstance()->db;
 
         if (is_null($this->id)) {
-            $query = 'INSERT INTO products (name, price, description, stock, tracking, taxonId)
-                      VALUES (:name, :price, :description, :stock, :tracking, :taxonId)';
+            $query = 'INSERT INTO products (name, price, description, stock, tracking, taxonId, image)
+                      VALUES (:name, :price, :description, :stock, :tracking, :taxonId, :image)';
 
             $statement = $db->prepare($query);
             $statement->bindValue(':name', $this->name);
@@ -115,12 +117,13 @@ class ModelProduct {
             $statement->bindValue(':stock', $this->stock);
             $statement->bindValue(':tracking', $this->tracking === 'on' ? 1 : 0);
             $statement->bindValue(':taxonId', $this->taxonId);
+            $statement->bindValue(':image', $this->image);
             $statement->execute();
     
             $statement->closeCursor();
         } else {
             $query = 'UPDATE products SET name = :name, price = :price, description = :description,
-                      stock = :stock, tracking = :tracking, taxonId = :taxonId WHERE id=:productId';
+                      stock = :stock, tracking = :tracking, taxonId = :taxonId, image = :image WHERE id=:productId';
     
             $statement = $db->prepare($query);
             $statement->bindValue(':productId', $this->id);
@@ -130,6 +133,7 @@ class ModelProduct {
             $statement->bindValue(':stock', $this->stock);
             $statement->bindValue(':tracking', $this->tracking === 'on' ? 1 : 0);
             $statement->bindValue(':taxonId', $this->taxonId);
+            $statement->bindValue(':image', $this->image);
             $statement->execute();
     
             $statement->closeCursor();

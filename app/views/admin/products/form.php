@@ -27,7 +27,28 @@
 
     <div class="columns">
         <div class="column is-half">
-            <form action="<?= $formAction ?>" method="post">
+            <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data">
+                <div class="field">
+                    <label
+                        for="image"
+                        class="label"
+                    >
+                        Image
+                    </label>
+                    <div class="file is-boxed">
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="image">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                </div>
                 <div class="field">
                     <label
                         for="name"
