@@ -22,15 +22,19 @@
             <div class="mb-4">
                 <?php include(__DIR__ . '/../partials/cart_summary.php'); ?>
             </div>
+            <div class="is-flex is-justify-content-flex-end">
+                <a
+                    href="/checkout"
+                    class="button is-success is-medium"
+                >
+                    Checkout
+                </a>
+            </div>
+        <?php else: ?>
+            <div class="is-size-3 has-text-centered">
+                The cart is empty
+            </div>
         <?php endif; ?>
-        <div class="is-flex is-justify-content-flex-end">
-            <a
-                href="/checkout"
-                class="button is-success is-medium"
-            >
-                Checkout
-            </a>
-        </div>
     </div>
 </div>
 
