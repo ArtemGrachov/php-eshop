@@ -13,6 +13,9 @@
     <div class="mb-4">
         <a href="/admin/addresses">Addresses</a>
     </div>
+    <div class="mb-4">
+        <a href="/admin/users">Users</a>
+    </div>
 </div>
 
 <?php include(__DIR__ . '/../../views/partials/admin_footer.php'); ?>
