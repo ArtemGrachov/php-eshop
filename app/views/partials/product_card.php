@@ -1,7 +1,13 @@
 <article class="box p-0 is-flex is-flex-direction-column product-card">
     <a href="/product?id=<?= $product->id ?>">
-        <div class="product-image scalable-image-wrap">
-            <div class="scalable-image has-background-info-light"></div>
+        <div class="product-image scalable-image-wrap has-background-info-light">
+            <?php if ($product->image): ?>
+                <img
+                    alt="<?= $product->name ?>"
+                    src="<?= $product->imagePath ?>"
+                    class="scalable-image"
+                />
+            <?php endif ?>
         </div>
     </a>
     <a
