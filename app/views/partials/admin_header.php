@@ -1,3 +1,10 @@
+<?php
+require_once(__DIR__ . '/../../models/user.php');
+
+$auth = new ServiceAuth();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +19,19 @@
 
 <div class="has-background-light mb-5">
     <div class="container py-4 is-flex is-align-items-center is-justify-content-space-between">
-        <h1 class="is-size-4">
+        <h1 class="is-size-4 mr-auto">
             <?= $title ?>
         </h1>
-        <a href="/">
+        <a
+            href="/"
+            class="mr-4"
+        >
             Go to the shop
         </a>
+        <?php if ($auth->isAuthenticated()): ?>
+            <a href="/admin/auth/sign-out">
+                Logout
+            </a>
+        <?php endif; ?>
     </div>
 </div>

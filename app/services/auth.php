@@ -30,7 +30,7 @@ class ServiceAuth {
     }
 
     public function isAuthenticated() {
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['userId'])) {
             return true;
         }
 
