@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/database.php');
+require_once(__DIR__ . '/../services/auth.php');
 
 class ModelUser {
     public $id = null;
@@ -43,6 +44,22 @@ class ModelUser {
         return new ModelUser($user);
     }
 
+    public static function getUserByUsername($username) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT * FROM users WHERE username = :username';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':username', $username);
+        $statement->execute();
+
+        $user = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return new ModelUser($user);
+    }
+
     public function __construct($payload) {
         $this->id = isset($payload['id']) ? $payload['id'] : null;
         $this->email = isset($payload['email']) ? $payload['email'] : null;
@@ -61,7 +78,7 @@ class ModelUser {
             $statement->bindValue(':email', $this->email);
             $statement->bindValue(':username', $this->username);
             $statement->bindValue(':role', $this->role);
-            $statement->bindValue(':password', $this->generatePassword($this->password));
+            $statement->bindValue(':password', ServiceAuth::generatePassword($this->password));
             $statement->execute();
 
             $statement->closeCursor();
@@ -76,7 +93,7 @@ class ModelUser {
             $statement->bindValue(':username', $this->username);
 
             if ($this->password) {
-                $statement->bindValue(':password', $this->generatePassword($this->password));
+                $statement->bindValue(':password', ServiceAuth::generatePassword($this->password));
             }
 
             $statement->execute();
@@ -97,9 +114,5 @@ class ModelUser {
         $statement->closeCursor();
 
         $this->id = null;
-    }
-
-    private function generatePassword($rawPassword) {
-        return password_hash($rawPassword, PASSWORD_BCRYPT);
     }
 }
