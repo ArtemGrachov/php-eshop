@@ -71,7 +71,7 @@ class ControllerAdminProductsForm {
         $product->tracking = $tracking;
         $product->taxonId = $taxonId;
 
-        if (isset($_FILES['image'])){
+        if ($_FILES['image']['size'] != 0) {
             $image = $_FILES['image'];
             $imageTmpName = $_FILES['image']['tmp_name'];
 
