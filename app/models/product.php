@@ -151,6 +151,10 @@ class ModelProduct {
 
         $statement->closeCursor();
 
+        if (!is_null($this->image)) {
+            unlink(filePathProductImage($this->image));
+        }
+
         $this->id = null;
     }
 
