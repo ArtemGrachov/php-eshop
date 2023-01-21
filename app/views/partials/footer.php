@@ -19,7 +19,7 @@
                         Artem Grachov
                     </a>
                     <span class="mx-3">|</span>
-                    2022
+                    2023
                 </div>
             </div>
         </div>
