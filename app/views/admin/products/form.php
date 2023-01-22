@@ -1,20 +1,4 @@
-<?php
-    if (isset($product)) {
-        $productName = $product->name;
-        $productPrice = $product->price;
-        $productDescription = $product->description;
-        $productStock = $product->stock;
-        $productTracking = $product->tracking;
-        $productTaxonId = $product->taxonId;
-    } else {
-        $productName = '';
-        $productPrice = 0;
-        $productDescription = '';
-        $productStock = 0;
-        $productTracking = false;
-        $productTaxonId = null;
-    }
-?>
+<?php require_once(__DIR__ . '/../../../widgets/form_error.php'); ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
 
@@ -48,6 +32,7 @@
                         </span>
                       </label>
                     </div>
+                    <?php (new WidgetFormError($formErrors['image'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -62,10 +47,10 @@
                             type="text"
                             name="name"
                             placeholder="Name"
-                            required
-                            value="<?= $productName ?>"
+                            value="<?= $formValue['name'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label class="label">Description</label>
@@ -77,8 +62,9 @@
                             cols="30"
                             rows="10"
                             placeholder="Description"
-                        ><?= $productDescription ?></textarea>
+                        ><?= $formValue['description'] ?></textarea>
                     </div>
+                    <?php (new WidgetFormError($formErrors['description'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -93,18 +79,18 @@
                             type="number"
                             name="price"
                             placeholder="Price"
-                            required
                             step="0.01"
-                            value="<?= $productPrice ?>"
+                            value="<?= $formValue['price'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['price'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label class="checkbox">
                         <input
                             type="checkbox"
                             name="tracking"
-                            <?= $productTracking ? 'checked' : '' ?>
+                            <?= ($formValue['tracking'] ?? false) ? 'checked' : '' ?>
                         >
                         Tracked
                     </label>
@@ -122,10 +108,10 @@
                             type="number"
                             name="stock"
                             placeholder="Stock"
-                            required
-                            value="<?= $productStock ?>"
+                            value="<?= $formValue['stock'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['stock'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label for="taxonId" class="label">
@@ -133,10 +119,11 @@
                     </label>
                     <div class="select">
                         <?php
-                            $taxonSelectValue = $productTaxonId;
+                            $taxonSelectValue = $formValue['taxonId'];
                             include(__DIR__ . '/../../partials/taxon_select.php')
                         ?>
                     </div>
+                    <?php (new WidgetFormError($formErrors['taxonId'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
