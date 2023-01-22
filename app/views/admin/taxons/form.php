@@ -1,11 +1,5 @@
 <?php
-    if (isset($taxon)) {
-        $taxonName = $taxon->name;
-        $taxonDescription = $taxon->description;
-    } else {
-        $taxonName = '';
-        $taxonDescription = '';
-    }
+    require_once(__DIR__ . '/../../../widgets/form_error.php');
 ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
@@ -33,10 +27,10 @@
                             type="text"
                             name="name"
                             placeholder="Name"
-                            required
-                            value="<?= $taxonName ?>"
+                            value="<?= $formValue['name'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label class="label">Description</label>
@@ -48,8 +42,9 @@
                             cols="30"
                             rows="10"
                             placeholder="Description"
-                        ><?= $taxonDescription ?></textarea>
+                        ><?= $formValue['description'] ?></textarea>
                     </div>
+                    <?php (new WidgetFormError($formErrors['description'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">

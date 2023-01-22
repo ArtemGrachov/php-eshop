@@ -6,10 +6,37 @@ class ControllerAdminTaxonsForm {
     use TraitPageAdminAuth;
 
     public function index() {
-        $title = 'Create taxon';
-        $formAction = '/admin/taxons/create';
+        $this->viewInit([
+            'title' => 'Create taxon',
+            'formAction' => '/admin/taxons/create',
+            'formErrors' => [],
+            'formValue' => [
+                'name' => '',
+                'description' => ''
+            ]
+        ]);
+    }
+
+    private function viewInit($data) {
+        $title = $data['title'];
+        $formAction = $data['formAction'];
+        $formErrors = $data['formErrors'];
+        $formValue = $data['formValue'];
+        $taxon = $data['taxon'];
 
         include(__DIR__ . '/../../../views/admin/taxons/form.php');
+    }
+
+    private function validateForm($formValue) {
+        $formErrors = [];
+
+        $name = $_POST['name'];
+
+        if (!$name) {
+            $formErrors['name'] = ['required' => true];
+        }
+
+        return $formErrors;
     }
 
     public function create() {
@@ -18,6 +45,18 @@ class ControllerAdminTaxonsForm {
             'description' => $_POST['description']
         ];
 
+        $formErrors = $this->validateForm($_POST);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => 'Create taxon',
+                'formAction' => '/admin/taxons/create',
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
+
         $taxon = new ModelTaxon($payload);
         $taxon->save();
 
@@ -25,13 +64,20 @@ class ControllerAdminTaxonsForm {
     }
 
     public function edit() {
-        $title = 'Edit taxon';
         $taxonId = $_GET['id'];
-        $formAction = "/admin/taxons/edit?id=$taxonId";
 
         $taxon = ModelTaxon::getTaxon($taxonId);
 
-        include(__DIR__ . '/../../../views/admin/taxons/form.php');
+        $this->viewInit([
+            'title' => 'Edit taxon',
+            'formAction' => "/admin/taxons/edit?id=$taxonId",
+            'taxon' => $taxon,
+            'formErrors' => [],
+            'formValue' => [
+                'name' => $taxon->name,
+                'description' => $taxon->description
+            ]
+        ]);
     }
 
     public function save() {
@@ -41,6 +87,19 @@ class ControllerAdminTaxonsForm {
         $description = $_POST['description'];
 
         $taxon = ModelTaxon::getTaxon($taxonId);
+
+        $formErrors = $this->validateForm($_POST);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => 'Edit taxon',
+                'formAction' => "/admin/taxons/edit?id=$taxonId",
+                'taxon' => $taxon,
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
 
         $taxon->name = $name;
         $taxon->description = $description;
