@@ -34,7 +34,7 @@ class ModelOrderItem {
         $product = ModelProduct::getProduct($productId);
 
         if (!$product) {
-            throw 'Product not found';
+            throw new Exception('Product not found');
         }
 
         return new ModelOrderItem([

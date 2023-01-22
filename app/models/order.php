@@ -163,7 +163,7 @@ class ModelOrder {
         }
 
         if (!isset($orderItem)) {
-            throw 'Order item not found';
+            throw new Exception('Order item not found');
         } else {
             $orderItem->updateQuantity($quantity);
         }

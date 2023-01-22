@@ -9,11 +9,11 @@ class ControllerOrder {
         $quantity = $_POST['quantity'];
 
         if (!isset($productId)) {
-            throw 'Product ID not set';
+            throw new Exception('Product ID not set');
         }
 
         if (!isset($quantity)) {
-            throw 'Quantity not set';
+            throw new Exception('Quantity not set');
         }
 
         if (isset($_COOKIE[$ORDER_TOKEN])) {
@@ -57,15 +57,15 @@ class ControllerOrder {
     public function update() {
         global $ORDER_TOKEN;
 
-        $productId = $_POST['productId'];
-        $quantity = $_POST['quantity'];
+        $productId = (int) $_POST['productId'];
+        $quantity = (int) $_POST['quantity'];
 
         if (!isset($productId)) {
-            throw 'Product ID not set';
+            throw new Exception('Product ID not set');
         }
 
         if (!isset($quantity)) {
-            throw 'Quantity not set';
+            throw new Exception('Quantity not set');
         }
 
         if (isset($_COOKIE[$ORDER_TOKEN])) {
