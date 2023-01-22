@@ -1,23 +1,6 @@
 <?php
+    require_once(__DIR__ . '/../../../widgets/form_error.php');
     global $ORDER_STATUSES;
-
-    if (isset($address)) {
-        $addressCountry = $address->country;
-        $addressRegion = $address->region;
-        $addressCity = $address->city;
-        $addressStreet = $address->street;
-        $addressHouseNumber = $address->houseNumber;
-        $addressAppartmentNumber = $address->appartmentNumber;
-        $addressNotes = $address->notes;
-    } else {
-        $addressCountry = '';
-        $addressRegion = '';
-        $addressCity = '';
-        $addressStreet = '';
-        $addressHouseNumber = '';
-        $addressAppartmentNumber = '';
-        $addressNotes = '';
-    }
 ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
@@ -46,10 +29,10 @@
                             type="text"
                             name="country"
                             placeholder="Country"
-                            required
-                            value="<?= $addressCountry ?>"
+                            value="<?= $formValue['country'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['country'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -65,10 +48,10 @@
                             type="text"
                             name="region"
                             placeholder="Region"
-                            required
-                            value="<?= $addressRegion ?>"
+                            value="<?= $formValue['region'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['region'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -84,10 +67,10 @@
                             type="text"
                             name="city"
                             placeholder="City"
-                            required
-                            value="<?= $addressCity ?>"
+                            value="<?= $formValue['city'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['city'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -103,10 +86,10 @@
                             type="text"
                             name="street"
                             placeholder="Street"
-                            required
-                            value="<?= $addressStreet ?>"
+                            value="<?= $formValue['street'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['street'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -122,10 +105,10 @@
                             type="text"
                             name="houseNumber"
                             placeholder="House number"
-                            required
-                            value="<?= $addressHouseNumber ?>"
+                            value="<?= $formValue['houseNumber'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['houseNumber'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -141,10 +124,10 @@
                             type="text"
                             name="appartmentNumber"
                             placeholder="Appartment number"
-                            required
-                            value="<?= $addressAppartmentNumber ?>"
+                            value="<?= $formValue['appartmentNumber'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['appartmentNumber'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label class="label">Notes</label>
@@ -156,8 +139,9 @@
                             cols="30"
                             rows="10"
                             placeholder="Notes"
-                        ><?= $addressNotes ?></textarea>
+                        ><?= $formValue['notes'] ?></textarea>
                     </div>
+                    <?php (new WidgetFormError($formErrors['notes'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">

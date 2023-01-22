@@ -1,6 +1,4 @@
-<?php
-    require_once(__DIR__ . '/../../../widgets/form_error.php');
-?>
+<?php require_once(__DIR__ . '/../../../widgets/form_error.php'); ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
 
