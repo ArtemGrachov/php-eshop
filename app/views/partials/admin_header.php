@@ -29,7 +29,7 @@ $auth = new ServiceAuth();
             Go to the shop
         </a>
         <?php if ($auth->isAuthenticated()): ?>
-            <a href="/admin/auth/sign-out">
+            <a href="/admin/sign-out">
                 Logout
             </a>
         <?php endif; ?>

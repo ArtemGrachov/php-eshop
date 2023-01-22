@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../controllers/admin/dashboard.php');
 require_once(__DIR__.'/../controllers/admin/auth.php');
+require_once(__DIR__.'/../controllers/admin/sign-out.php');
 require_once(__DIR__.'/../controllers/admin/taxons/form.php');
 require_once(__DIR__.'/../controllers/admin/taxons/list.php');
 require_once(__DIR__.'/../controllers/admin/products/form.php');
@@ -98,10 +99,10 @@ $routes_admin = [
             '/' => [
                 'GET' => 'ControllerAdminAuth/index',
                 'POST' => 'ControllerAdminAuth/signIn'
-            ],
-            'sign-out' => [
-                'GET' => 'ControllerAdminAuth/signOut'
             ]
+        ],
+        'sign-out' => [
+            'GET' => 'ControllerAdminSignOut/signOut'
         ],
         '/' => [
             'GET' => 'ControllerAdminDashboard/index'

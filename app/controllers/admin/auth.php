@@ -1,8 +1,11 @@
 <?php
 require_once(__DIR__ . '/../../services/auth.php');
 require_once(__DIR__ . '/../../models/user.php');
+require_once(__DIR__ . '/../../traits/page-admin-guest.php');
 
 class ControllerAdminAuth {
+    use TraitPageAdminGuest;
+
     public function index() {
         $title = 'Authentication';
         $formAction = '/admin/auth';
@@ -37,13 +40,5 @@ class ControllerAdminAuth {
         $_SESSION['userId'] = $user->id;
 
         header('Location: /admin');
-    }
-
-    public function signOut() {
-        session_start();
-        $_SESSION = array();
-        session_destroy();
-
-        header('Location: /admin/auth');
     }
 }
