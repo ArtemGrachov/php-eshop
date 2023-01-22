@@ -6,7 +6,7 @@
         <?= $product->name ?>
     </td>
     <td>
-        <?= number_format($product->price, 2, '.', ' ') ?>&nbsp;UAH
+        <?= ServiceCurrency::getInstance()->formatPrice($product->price); ?>
     </td>
     <td>
         <?= $product->description ?>

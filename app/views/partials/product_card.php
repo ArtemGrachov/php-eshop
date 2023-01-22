@@ -27,7 +27,7 @@
                     </span>
                 <?php endif ?>
                 <div class="has-color-dark">
-                    <?= number_format($product->price, 2, '.', ' ') ?>&nbsp;UAH
+                    <?= ServiceCurrency::getInstance()->formatPrice($product->price); ?>
                 </div>
             <?php endif ?>
         </div>

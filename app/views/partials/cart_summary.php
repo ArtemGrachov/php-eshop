@@ -13,7 +13,7 @@
                 Total price:
             </td>
             <td class="has-text-right">
-                <?= number_format($order->totalPrice, 2, '.', ' ') ?>&nbsp;UAH
+                <?= ServiceCurrency::getInstance()->formatPrice($order->totalPrice); ?>
             </td>
         </tr>
     </table>

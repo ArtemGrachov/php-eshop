@@ -29,7 +29,7 @@
                     </span>
                 <?php endif ?>
                 <div class="is-size-5 mb-5">
-                    <?= number_format($product->price, 2, '.', ' ') ?>&nbsp;UAH
+                    <?= ServiceCurrency::getInstance()->formatPrice($product->price); ?>
                 </div>
             <?php endif ?>
             <div class="mb-5">

@@ -14,7 +14,7 @@ class ControllerAdminAuth {
     }
 
     public function __construct() {
-        $this->auth = new ServiceAuth();
+        $this->auth = ServiceAuth::getInstance();
     }
 
     public function signIn() {

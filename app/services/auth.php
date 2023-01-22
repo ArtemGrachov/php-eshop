@@ -3,8 +3,6 @@
 class ServiceAuth {
     private static $instance = null;
 
-    public $db = null;
-
     public static function getInstance() {
         if (null === static::$instance) {
             static::$instance = new static();
@@ -16,6 +14,8 @@ class ServiceAuth {
     public static function generatePassword($rawPassword) {
         return password_hash($rawPassword, PASSWORD_BCRYPT);
     }
+
+    private function __construct() {}
 
     public function init() {
         session_start();

@@ -6,10 +6,11 @@ require_once('app/models/database.php');
 require_once('app/router.php');
 require_once('app/routes/index.php');
 require_once('app/services/auth.php');
+require_once('app/services/currency.php');
 
 $router = new Router($app_routes);
 
-$auth = new ServiceAuth();
+$auth = ServiceAuth::getInstance();
 $auth->init();
 
 $method = $_SERVER['REQUEST_METHOD'];

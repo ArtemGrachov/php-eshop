@@ -13,7 +13,7 @@
             <?= $cartItem->name ?>
         </a>
         <div class="is-size-6 mb-2">
-            <?= number_format($cartItem->price, 2, '.', ' ') ?>&nbsp;UAH
+            <?= ServiceCurrency::getInstance()->formatPrice($cartItem->price); ?>
         </div>
         <form action="/order/update" method="POST">
             <input type="hidden" name="productId" value="<?= $cartItem->productId ?>" />
@@ -33,6 +33,6 @@
         </form>
     </div>
     <div class="is-flex-grow-0 is-flex-shrink-0 is-size-6 has-text-weight-semibold has-text-right">
-        <?= number_format($cartItem->total, 2, '.', ' ') ?>&nbsp;UAH
+        <?= ServiceCurrency::getInstance()->formatPrice($cartItem->total); ?>
     </div>
 </li>

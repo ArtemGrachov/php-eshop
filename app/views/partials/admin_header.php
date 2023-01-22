@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../../models/user.php');
 
-$auth = new ServiceAuth();
+$auth = ServiceAuth::getInstance();
 ?>
 
 
