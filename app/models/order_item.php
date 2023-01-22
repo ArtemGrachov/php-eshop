@@ -117,10 +117,23 @@ class ModelOrderItem {
     }
 
     public function __get($property) {
-        if ($property !== 'total') {
-            return null;
-        }
+        switch ($property) {
+            case 'total':
+                return $this->quantity * $this->price;
+            case 'image':
+                $product = ModelProduct::getProduct($this->productId);
 
-        return $this->quantity * $this->price;
+                if (!$product) {
+                    return null;
+                }
+
+                return $product->image;
+            case 'imagePath':
+                if ($this->image) {
+                    return '/public/images/products/'.$this->image;
+                }
+            default:
+                return null;
+        }
     }
 }
