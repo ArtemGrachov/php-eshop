@@ -2,8 +2,11 @@
 require_once(__DIR__ . '/../../../models/product.php');
 require_once(__DIR__ . '/../../../models/taxon.php');
 require_once(__DIR__ . '/../../../utils/files.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminProductsForm {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Create product';
         $formAction = '/admin/products/create';

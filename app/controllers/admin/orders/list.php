@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/order.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminOrdersList {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Orders';
         $orders = ModelOrder::getOrders();

@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/taxon.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminTaxonsList {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Taxons';
         $taxons = ModelTaxon::getTaxons();

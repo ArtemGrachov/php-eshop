@@ -2,8 +2,11 @@
 require_once(__DIR__ . '/../../../models/order.php');
 require_once(__DIR__ . '/../../../models/customer.php');
 require_once(__DIR__ . '/../../../models/address.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminOrdersForm {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Create order';
         $formAction = '/admin/orders/create';

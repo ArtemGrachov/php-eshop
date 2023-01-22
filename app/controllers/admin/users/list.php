@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/user.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminUsersList {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Users';
         $users = ModelUser::getUsers();

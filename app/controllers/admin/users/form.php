@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/user.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminUsersForm {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Create user';
         $formAction = '/admin/users/create';

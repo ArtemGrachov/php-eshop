@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/address.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminAddressesForm {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Create address';
         $formAction = '/admin/addresses/create';

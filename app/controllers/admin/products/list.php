@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/product.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminProductsList {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Products';
         $products = ModelProduct::getProducts();

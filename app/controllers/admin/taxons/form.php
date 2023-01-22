@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/../../../models/taxon.php');
+require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 
 class ControllerAdminTaxonsForm {
+    use TraitPageAdminAuth;
+
     public function index() {
         $title = 'Create taxon';
         $formAction = '/admin/taxons/create';
