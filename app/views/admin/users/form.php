@@ -1,12 +1,4 @@
-<?php
-    if (isset($user)) {
-        $username = $user->username;
-        $userEmail = $user->email;
-    } else {
-        $username = '';
-        $userEmail = '';
-    }
-?>
+<?php require_once(__DIR__ . '/../../../widgets/form_error.php'); ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
 
@@ -33,10 +25,10 @@
                             type="text"
                             name="username"
                             placeholder="Name"
-                            required
-                            value="<?= $username ?>"
+                            value="<?= $formValue['username'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['username'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -51,10 +43,10 @@
                             type="email"
                             name="email"
                             placeholder="Email"
-                            required
-                            value="<?= $userEmail ?>"
+                            value="<?= $formValue['email'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['email'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -69,11 +61,9 @@
                             type="password"
                             name="password"
                             placeholder="Password"
-                            <?php if (!isset($user)): ?>
-                                required
-                            <?php endif ?>
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['password'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">

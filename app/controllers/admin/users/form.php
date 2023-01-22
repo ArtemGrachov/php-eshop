@@ -5,20 +5,69 @@ require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 class ControllerAdminUsersForm {
     use TraitPageAdminAuth;
 
-    public function index() {
-        $title = 'Create user';
-        $formAction = '/admin/users/create';
+    private function viewInit($data) {
+        $title = $data['title'];
+        $formAction = $data['formAction'];
+        $formErrors = $data['formErrors'];
+        $formValue = $data['formValue'];
 
         include(__DIR__ . '/../../../views/admin/users/form.php');
     }
 
+    private function validateForm($formValue, $user = null) {
+        $formErrors = [];
+
+        $email = $_POST['email'] ?? null;
+        $username = $_POST['username'] ?? null;
+        $password = $_POST['password'] ?? null;
+
+        if (!$email) {
+            $formErrors['email'] = ['required' => true];
+        }
+
+        if (!$username) {
+            $formErrors['username'] = ['required' => true];
+        }
+
+        if (!$password && !$user) {
+            $formErrors['password'] = ['required' => true];
+        }
+
+        return $formErrors;
+    }
+
+    public function index() {
+        $this->viewInit([
+            'title' => 'Create user',
+            'formAction' => '/admin/users/create',
+            'formErrors' => [],
+            'formValue' => [
+                'email' => '',
+                'username' => '',
+                'password' => ''
+            ]
+        ]);
+    }
+
     public function create() {
         $payload = [
-            'email' => isset($_POST['email']) ? $_POST['email'] : null,
-            'username' => isset($_POST['username']) ? $_POST['username'] : null,
-            'password' => isset($_POST['password']) ? $_POST['password'] : null,
+            'email' => $_POST['email'] ?? null,
+            'username' => $_POST['username'] ?? null,
+            'password' => $_POST['password'] ?? null,
             'role' => 'admin'
         ];
+
+        $formErrors = $this->validateForm($_POST);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => 'Create user',
+                'formAction' => '/admin/users/create',
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
 
         $user = new ModelUser($payload);
         $user->save();
@@ -27,13 +76,19 @@ class ControllerAdminUsersForm {
     }
 
     public function edit() {
-        $title = 'Edit user';
         $userId = $_GET['id'];
-        $formAction = "/admin/users/edit?id=$userId";
-
         $user = ModelUser::getUser($userId);
 
-        include(__DIR__ . '/../../../views/admin/users/form.php');
+        $this->viewInit([
+            'title' => "Edit user $user->email",
+            'formAction' => "/admin/users/edit?id=$userId",
+            'formErrors' => [],
+            'formValue' => [
+                'email' => $user->email,
+                'username' => $user->username,
+                'password' => $user->password
+            ]
+        ]);
     }
 
     public function save() {
@@ -44,6 +99,18 @@ class ControllerAdminUsersForm {
         $password = isset($_POST['password']) ? $_POST['password'] : null;
 
         $user = ModelUser::getUser($userId);
+
+        $formErrors = $this->validateForm($_POST, $user);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => "Edit user $user->email",
+                'formAction' => "/admin/users/edit?id=$userId",
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
 
         $user->email = $email;
         $user->username = $username;
