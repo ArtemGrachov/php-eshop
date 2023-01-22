@@ -33,6 +33,15 @@ class Router {
         }
 
         $controller = new $controllerClassName;
+
+        if (method_exists($controller, 'routerValidation')) {
+            $result = $controller->routerValidation();
+
+            if (!$result) {
+                return;
+            }
+        }
+
         $controller->$methodName();
     }
 
