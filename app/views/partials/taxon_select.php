@@ -1,4 +1,4 @@
-<select name="taxonId" required>
+<select name="taxonId">
     <option value="">
         Please, select
     </option>

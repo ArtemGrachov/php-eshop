@@ -1,4 +1,4 @@
-<select name="state" required>
+<select name="state">
     <option value="">
         Please, select
     </option>

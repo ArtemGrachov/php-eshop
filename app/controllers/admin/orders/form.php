@@ -7,11 +7,62 @@ require_once(__DIR__ . '/../../../traits/page-admin-auth.php');
 class ControllerAdminOrdersForm {
     use TraitPageAdminAuth;
 
+    private function validateForm($formValue) {
+        $formErrors = [];
+
+        $state = $_POST['state'] ?? null;
+        $note = $_POST['note'] ?? null;
+        $token = $_POST['token'] ?? null;
+        $customerId = $_POST['customerId'] ?? null;
+        $addressId = $_POST['addressId'] ?? null;
+
+        if (!$state) {
+            $formErrors['state'] = ['required' => true];
+        }
+
+        if (!$note) {
+            $formErrors['note'] = ['required' => true];
+        }
+
+        if (!$token) {
+            $formErrors['token'] = ['required' => true];
+        }
+
+        if (!$customerId) {
+            $formErrors['customerId'] = ['required' => true];
+        }
+
+        if (!$addressId) {
+            $formErrors['addressId'] = ['required' => true];
+        }
+
+        return $formErrors;
+    }
+
     public function index() {
-        $title = 'Create order';
-        $formAction = '/admin/orders/create';
+        global $ORDER_STATUSES;
+
+        $this->viewInit([
+            'title' => 'Create order',
+            'formAction' => '/admin/orders/create',
+            'formErrors' => [],
+            'formValue' => [
+                'state' => $ORDER_STATUSES['NEW'],
+                'note' => '',
+                'token' => '',
+                'customerId' => null,
+                'addressId' => null
+            ]
+        ]);
+    }
+
+    private function viewInit($data) {
+        $title = $data['title'];
         $customers = ModelCustomer::getCustomers();
         $addresses = ModelAddress::getAddresses();
+        $formAction = $data['formAction'];
+        $formErrors = $data['formErrors'];
+        $formValue = $data['formValue'];
 
         include(__DIR__ . '/../../../views/admin/orders/form.php');
     }
@@ -25,6 +76,18 @@ class ControllerAdminOrdersForm {
             'addressId' => (int) $_POST['addressId']
         ];
 
+        $formErrors = $this->validateForm($_POST);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => 'Create order',
+                'formAction' => '/admin/orders/create',
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
+
         $order = new ModelOrder($payload);
         $order->save();
 
@@ -33,14 +96,21 @@ class ControllerAdminOrdersForm {
 
     public function edit() {
         $orderId = $_GET['id'];
-        $title = "Edit order $orderId";
-        $formAction = "/admin/orders/edit?id=$orderId";
 
         $order = ModelOrder::getOrder($orderId);
-        $customers = ModelCustomer::getCustomers();
-        $addresses = ModelAddress::getAddresses();
 
-        include(__DIR__ . '/../../../views/admin/orders/form.php');
+        $this->viewInit([
+            'title' => "Edit order $orderId",
+            'formAction' => "/admin/orders/edit?id=$orderId",
+            'formErrors' => [],
+            'formValue' => [
+                'state' => $order->state,
+                'note' => $order->note,
+                'token' => $order->token,
+                'customerId' => $order->customerId,
+                'addressId' => $order->addressId
+            ]
+        ]);
     }
 
     public function save() {
@@ -53,6 +123,19 @@ class ControllerAdminOrdersForm {
         $addressId = $_POST['addressId'];
 
         $order = ModelOrder::getOrder($orderId);
+
+        $formErrors = $this->validateForm($_POST);
+
+        if (count($formErrors)) {
+            $this->viewInit([
+                'title' => "Edit order $orderId",
+                'formAction' => "/admin/orders/edit?id=$orderId",
+                'order' => $order,
+                'formErrors' => $formErrors,
+                'formValue' => $_POST
+            ]);
+            return;
+        }
 
         $order->state = $state;
         $order->note = $note;

@@ -1,21 +1,6 @@
 <?php
+    require_once(__DIR__ . '/../../../widgets/form_error.php');
     require_once(__DIR__ . '/../../../widgets/order_state_select.php');
-
-    global $ORDER_STATUSES;
-
-    if (isset($order)) {
-        $orderState = $order->state;
-        $orderNote = $order->note;
-        $orderToken = $order->token;
-        $orderCustomerId = $order->customerId;
-        $orderAddressId = $order->addressId;
-    } else {
-        $orderState = $ORDER_STATUSES['NEW'];
-        $orderNote = '';
-        $orderToken = '';
-        $orderCustomerId = null;
-        $orderAddressId = null;
-    }
 ?>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_header.php'); ?>
@@ -43,18 +28,19 @@
                             type="text"
                             name="token"
                             placeholder="Token"
-                            required
-                            value="<?= $orderToken ?>"
+                            value="<?= $formValue['token'] ?>"
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['token'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label for="state" class="label">
                         State
                     </label>
                     <div class="select is-fullwidth">
-                        <?php (new WidgetOrderStateSelect($orderState))->render(); ?>
+                        <?php (new WidgetOrderStateSelect($formValue['state']))->render(); ?>
                     </div>
+                    <?php (new WidgetFormError($formErrors['state'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label for="customerId" class="label">
@@ -62,10 +48,11 @@
                     </label>
                     <div class="select is-fullwidth">
                         <?php
-                            $customerSelectValue = $orderCustomerId;
+                            $customerSelectValue = $formValue['customerId'];
                             include(__DIR__ . '/../../partials/customer_select.php')
                         ?>
                     </div>
+                    <?php (new WidgetFormError($formErrors['customerId'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label for="addressId" class="label">
@@ -73,10 +60,11 @@
                     </label>
                     <div class="select is-fullwidth">
                         <?php
-                            $addressSelectValue = $orderAddressId;
+                            $addressSelectValue = $formValue['addressId'];
                             include(__DIR__ . '/../../partials/address_select.php')
                         ?>
                     </div>
+                    <?php (new WidgetFormError($formErrors['addressId'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label class="label">Note</label>
@@ -88,8 +76,9 @@
                             cols="30"
                             rows="10"
                             placeholder="Note"
-                        ><?= $orderNote ?></textarea>
+                        ><?= $formValue['note'] ?></textarea>
                     </div>
+                    <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">

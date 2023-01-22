@@ -1,4 +1,4 @@
-<select name="customerId" required>
+<select name="customerId">
     <option value="">
         Please, select
     </option>
