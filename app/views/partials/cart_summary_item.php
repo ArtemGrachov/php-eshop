@@ -1,9 +1,15 @@
 <li class="p-2 is-flex is-align-items-center is-size-6<?= isset($itemClassNames) ? (' ' . $itemClassNames) : '' ?>">
     <a
         href="/product?id=<?= $cartItem->productId ?>"
-        class="cart-summary-item-image scalable-image-wrap is-flex-grow-0 is-flex-shrink-0 mr-4"
+        class="cart-summary-item-image scalable-image-wrap is-flex-grow-0 is-flex-shrink-0 mr-4 has-background-info-light"
     >
-        <div class="scalable-image has-background-info-light"></div>
+        <?php if ($cartItem->imagePath): ?>
+            <img
+                alt="<?= $cartItem->name ?>"
+                src="<?= $cartItem->imagePath ?>"
+                class="scalable-image"
+            />
+        <?php endif ?>
     </a>
     <div class="is-flex-grow-1 is-flex-shrink-1">
         <a
