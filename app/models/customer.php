@@ -11,13 +11,15 @@ class ModelCustomer {
     public $companyName = null;
     public $companyVatNumber = null;
 
-    public static function getCustomers() {
+    public static function getCustomers($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT C.id, C.firstName, C.lastName, C.email, C.phoneNumber, C.isCompany,
-                  C.companyName, C.companyVatNumber FROM customers C ORDER BY C.id';
+                  C.companyName, C.companyVatNumber FROM customers C ORDER BY C.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawCustomers = $statement->fetchAll();

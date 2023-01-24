@@ -10,13 +10,24 @@ class ModelOrderItem {
     public $productId = null;
     public $orderId = null;
 
-    public static function getOrderItemsByOrder($orderId) {
+    public static function getOrderItemsByOrder($orderId, $limit = null, $offset = null) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT * FROM order_items WHERE orderId = :orderId';
+        $query = 'SELECT * FROM order_items WHERE orderId = :orderId'
+            . ($limit ? ' LIMIT :limit' : '')
+            . ($offset ? ' OFFSET :offset' : '');
 
         $statement = $db->prepare($query);
         $statement->bindValue(':orderId', $orderId);
+
+        if ($limit) {
+            $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        }
+
+        if ($offset) {
+            $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
+        }
+
         $statement->execute();
 
         $rawOrderItems = $statement->fetchAll();

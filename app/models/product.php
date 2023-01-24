@@ -11,14 +11,15 @@ class ModelProduct {
     public $taxonId = null;
     public $image = null;
 
-    public static function getProducts($limit = 999) {
+    public static function getProducts($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P ORDER BY P.id LIMIT :limit';
+                  FROM products P ORDER BY P.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawProducts = $statement->fetchAll();
@@ -32,15 +33,16 @@ class ModelProduct {
         return $products;
     }
 
-    public static function getProductsByTaxon($taxonId, $limit = 999) {
+    public static function getProductsByTaxon($taxonId, $limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P WHERE P.taxonId = :taxonId ORDER BY P.id LIMIT :limit';
+                  FROM products P WHERE P.taxonId = :taxonId ORDER BY P.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':taxonId', $taxonId, PDO::PARAM_INT);
         $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawProducts = $statement->fetchAll();
@@ -54,15 +56,16 @@ class ModelProduct {
         return $products;
     }
 
-    public static function getProductsBySearchQuery($searchQuery, $limit = 999) {
+    public static function getProductsBySearchQuery($searchQuery, $limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P WHERE (P.name LIKE :query) ORDER BY P.id LIMIT :limit';
+                  FROM products P WHERE (P.name LIKE :query) ORDER BY P.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':query', "%$searchQuery%");
         $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawProducts = $statement->fetchAll();

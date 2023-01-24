@@ -12,12 +12,14 @@ class ModelOrder {
     public $customerId = null;
     public $addressId = null;
 
-    public static function getOrders() {
+    public static function getOrders($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT * FROM orders';
+        $query = 'SELECT * FROM orders LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawOrders = $statement->fetchAll();

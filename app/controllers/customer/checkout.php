@@ -112,7 +112,7 @@ class ControllerCheckout {
         if (is_null($order)) {
             $orderItems = [];
         } else {
-            $orderItems = ModelOrderItem::getOrderItemsByOrder($order->id);
+            $orderItems = ModelOrderItem::getOrderItemsByOrder($order->id, 999);
         }
 
         $breadcrumbs = [

@@ -9,12 +9,14 @@ class ModelUser {
     public $password = null;
     public $role = null;
 
-    public static function getUsers() {
+    public static function getUsers($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT U.id, U.email, U.username, U.role FROM users U ORDER BY U.id';
+        $query = 'SELECT U.id, U.email, U.username, U.role FROM users U ORDER BY U.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawUsers = $statement->fetchAll();

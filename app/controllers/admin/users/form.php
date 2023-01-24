@@ -29,7 +29,23 @@ class ControllerAdminUsersForm {
             $formErrors['username'] = ['required' => true];
         }
 
-        if (!$password && !$user) {
+        if ($password) {
+            if (strlen($password) < 8) {
+                $formErrors['password'] = ['minLength' => 8];
+            }
+
+            if (!preg_match('/(.*[a-z].*)/', $password)) {
+                $formErrors['password'] = ['lowerCase' => true];
+            }
+
+            if (!preg_match('/(.*[A-Z].*)/', $password)) {
+                $formErrors['password'] = ['upperCase' => true];
+            }
+
+            if (!preg_match('/(.*\d.*)/', $password)) {
+                $formErrors['password'] = ['digits' => true];
+            }
+        } else if (!$user) {
             $formErrors['password'] = ['required' => true];
         }
 

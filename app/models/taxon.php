@@ -7,12 +7,14 @@ class ModelTaxon {
     public $name = null;
     public $description = null;
 
-    public static function getTaxons() {
+    public static function getTaxons($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
-        $query = 'SELECT T.id, T.name, T.description FROM taxons T ORDER BY T.id';
+        $query = 'SELECT T.id, T.name, T.description FROM taxons T ORDER BY T.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawTaxons = $statement->fetchAll();

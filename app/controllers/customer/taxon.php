@@ -1,10 +1,19 @@
 <?php
 require_once(__DIR__ . '/../../models/product.php');
+require_once(__DIR__ . '/../../constants/pagination.php');
 
 class ControllerTaxon {
     public function viewTaxonProducts() {
+        global $PAGINATION_LIMIT;
+
         $taxonId = $_GET['id'];
-        $products = ModelProduct::getProductsByTaxon($taxonId, 12);
+        $page = $_GET['page'] ?? 1;
+
+        $products = ModelProduct::getProductsByTaxon(
+            $taxonId,
+            $PAGINATION_LIMIT,
+            ($page - 1) * $PAGINATION_LIMIT
+        );
 
         $taxon = ModelTaxon::getTaxon($taxonId);
 

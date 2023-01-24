@@ -20,9 +20,13 @@ class WidgetFormError {
 
     private function getErrorMessage($errorCode) {
         $errorMessages = [
-            'required' => 'This field is required'
+            'required' => 'This field is required',
+            'minLength' => 'Minimum length is {minLength}',
+            'lowerCase' => 'At least one lower case symbol is required',
+            'upperCase' => 'At least one upper case symbol is required',
+            'digits' => 'At least one digit is required'
         ];
-        
+
         return $this->customMessages[$errorCode] ??
             $errorMessages[$errorCode] ??
             null;

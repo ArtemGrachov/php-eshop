@@ -11,13 +11,15 @@ class ModelAddress {
     public $appartmentNumber = null;
     public $notes = null;
 
-    public static function getAddresses() {
+    public static function getAddresses($limit = 999, $offset = 0) {
         $db = Database::getInstance()->db;
 
         $query = 'SELECT A.id, A.country, A.region, A.city, A.street, A.houseNumber, A.appartmentNumber,
-                  A.notes FROM addresses A ORDER BY A.id';
+                  A.notes FROM addresses A ORDER BY A.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
+        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawAddresses = $statement->fetchAll();

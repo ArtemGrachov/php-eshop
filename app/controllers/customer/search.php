@@ -1,11 +1,19 @@
 <?php
 require_once(__DIR__ . '/../../models/product.php');
+require_once(__DIR__ . '/../../constants/pagination.php');
 
 class ControllerSearch {
     public function viewSearchProducts() {
-        $query = $_GET['query'];
+        global $PAGINATION_LIMIT;
 
-        $products = ModelProduct::getProductsBySearchQuery($query, 12);
+        $query = $_GET['query'] ?? '';
+        $page = $_GET['page'] ?? 1;
+
+        $products = ModelProduct::getProductsBySearchQuery(
+            $query,
+            $PAGINATION_LIMIT,
+            ($page - 1) * $PAGINATION_LIMIT
+        );
 
         $breadcrumbs = [
             [
