@@ -1,4 +1,7 @@
-<?php include(__DIR__ . '/../../views/partials/header.php'); ?>
+<?php
+    require_once(__DIR__ . '/../../widgets/pagination.php');
+    include(__DIR__ . '/../../views/partials/header.php');
+?>
 
 <div class="container py-5 px-4">
     <div class="mb-5">
@@ -13,6 +16,9 @@
                 <?php include(__DIR__ . '../../partials/product_card.php'); ?>
             </div>
         <?php endforeach; ?>
+    </div>
+    <div class="py-6">
+        <?php (new WidgetPagination($totalPages, $currentPage))->render(); ?>
     </div>
     <?php if (isset($description) && !is_null($description)): ?>
         <div>

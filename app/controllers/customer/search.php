@@ -7,12 +7,13 @@ class ControllerSearch {
         global $PAGINATION_LIMIT;
 
         $query = $_GET['query'] ?? '';
-        $page = $_GET['page'] ?? 1;
+        $currentPage = $_GET['page'] ?? 1;
+        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProductsBySearchQuery(
             $query,
             $PAGINATION_LIMIT,
-            ($page - 1) * $PAGINATION_LIMIT
+            ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
         $breadcrumbs = [

@@ -10,11 +10,12 @@ class ControllerAdminOrdersList {
         global $PAGINATION_LIMIT;
 
         $title = 'Orders';
-        $page = $_GET['page'] ?? 1;
+        $currentPage = $_GET['page'] ?? 1;
+        $totalPages = 99; // @todo
 
         $orders = ModelOrder::getOrders(
             $PAGINATION_LIMIT,
-            ($page - 1) * $PAGINATION_LIMIT
+            ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
         include(__DIR__ . '/../../../views/admin/orders/list.php');

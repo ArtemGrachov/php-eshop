@@ -7,12 +7,13 @@ class ControllerTaxon {
         global $PAGINATION_LIMIT;
 
         $taxonId = $_GET['id'];
-        $page = $_GET['page'] ?? 1;
+        $currentPage = $_GET['page'] ?? 1;
+        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProductsByTaxon(
             $taxonId,
             $PAGINATION_LIMIT,
-            ($page - 1) * $PAGINATION_LIMIT
+            ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
         $taxon = ModelTaxon::getTaxon($taxonId);

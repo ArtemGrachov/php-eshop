@@ -10,11 +10,12 @@ class ControllerAdminProductsList {
         global $PAGINATION_LIMIT;
 
         $title = 'Products';
-        $page = $_GET['page'] ?? 1;
+        $currentPage = $_GET['page'] ?? 1;
+        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProducts(
             $PAGINATION_LIMIT,
-            ($page - 1) * $PAGINATION_LIMIT
+            ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
         include(__DIR__ . '/../../../views/admin/products/list.php');
