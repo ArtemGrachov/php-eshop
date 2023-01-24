@@ -12,7 +12,7 @@ class WidgetPagination {
     }
 
     public function render() {
-        $offset = 2;
+        $offset = 1;
 
         $showPagination = $this->totalPages > 1;
         $showPrevious = $this->currentPage > 1;
@@ -24,7 +24,7 @@ class WidgetPagination {
         $nextPage = $this->currentPage + 1;
 
         $showFirstPage = $this->currentPage > ($offset + 1);
-        $showLastPage = $this->currentPage < ($this->totalPages - $offset);
+        $showLastPage = $this->currentPage < ($this->totalPages - $offset + 2);
 
         $showEllipsisPrev = ($this->currentPage - ($offset + 1)) > 1;
         $showEllipsisNext = ($this->currentPage + ($offset + 1)) < $lastPage;
