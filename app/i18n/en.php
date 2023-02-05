@@ -259,5 +259,9 @@ $TRANSLATIONS = [
             'placeholder_query' => 'Type a query...',
             'label_submit' => 'Search'
         ]
+    ],
+    'error' => [
+        'internal_server_error' => 'Internal server error',
+        'not_found' => 'Not found'
     ]
 ];

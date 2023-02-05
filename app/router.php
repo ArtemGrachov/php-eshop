@@ -23,26 +23,33 @@ class Router {
 
         $pathConfig = empty($pathRoot[$method]) ? null : $pathRoot[$method];
 
-        if (is_null($pathConfig)) {
-            $controllerClassName = 'ControllerError';
-            $methodName = 'view';
-        } else {
-            $pathConfigNames = explode('/', $pathConfig);
-            $controllerClassName = $pathConfigNames[0];
-            $methodName = $pathConfigNames[1];
-        }
-
-        $controller = new $controllerClassName;
-
-        if (method_exists($controller, 'routerValidation')) {
-            $result = $controller->routerValidation();
-
-            if (!$result) {
-                return;
+        try {
+            if (is_null($pathConfig)) {
+                throw new ExtendedException(
+                    'Not found',
+                    ['code' => 404]
+                );
+            } else {
+                $pathConfigNames = explode('/', $pathConfig);
+                $controllerClassName = $pathConfigNames[0];
+                $methodName = $pathConfigNames[1];
             }
-        }
 
-        $controller->$methodName();
+            $controller = new $controllerClassName;
+
+            if (method_exists($controller, 'routerValidation')) {
+                $result = $controller->routerValidation();
+
+                if (!$result) {
+                    return;
+                }
+            }
+
+            $controller->$methodName();
+        } catch (Exception $e) {
+            $controller = new ControllerError($e);
+            $controller->view();
+        }
     }
 
 

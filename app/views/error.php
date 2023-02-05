@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Error</h1>
-</body>
-</html>
+<?php include(__DIR__ . '/partials/header.php'); ?>
+
+<div class="is-flex is-flex-direction-column is-flex-grow-1 is-flex-shrink-1 pa-5">
+    <div class="m-auto has-text-centered">
+        <h1 class="title">
+          <?= $errorTitle ?>
+        </h1>
+        <p class="subtitle">
+          <?= $errorDescription ?>
+        </p>
+    </div>
+</div>
+
+<?php include(__DIR__ . '/partials/footer.php'); ?>
