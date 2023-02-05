@@ -92,7 +92,7 @@ class ModelTaxon {
     public function __get($property) {
         switch ($property) {
             case 'productsCount':
-                $orderItems = ModelProduct::getProductsByTaxon($this->id);
+                $orderItems = ModelProduct::getProducts([ 'taxonId' => $this->id ]);
 
                 return count($orderItems);
             default:

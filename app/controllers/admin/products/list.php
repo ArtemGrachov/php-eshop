@@ -14,6 +14,7 @@ class ControllerAdminProductsList {
         $totalPages = 99; // @todo
 
         $products = ModelProduct::getProducts(
+            null,
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
         );

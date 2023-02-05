@@ -7,7 +7,7 @@ class ControllerHome {
     public function view() {
         global $PAGINATION_LIMIT;
 
-        $products = ModelProduct::getProducts($PAGINATION_LIMIT);
+        $products = ModelProduct::getProducts(null, $PAGINATION_LIMIT);
         $taxons = ModelTaxon::getTaxons();
 
         include(__DIR__ . '/../../views/customer/home.php');

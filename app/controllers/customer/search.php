@@ -10,8 +10,8 @@ class ControllerSearch {
         $currentPage = $_GET['page'] ?? 1;
         $totalPages = 99; // @todo
 
-        $products = ModelProduct::getProductsBySearchQuery(
-            $query,
+        $products = ModelProduct::getProducts(
+            [ 'query' => $query ],
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
         );

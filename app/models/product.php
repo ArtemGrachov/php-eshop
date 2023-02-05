@@ -11,61 +11,47 @@ class ModelProduct {
     public $taxonId = null;
     public $image = null;
 
-    public static function getProducts($limit = 999, $offset = 0) {
+    public static function getProducts($params = null, $limit = 999, $offset = 0) {
+        $hasSearchQuery = isset($params['query']);
+        $hasTaxonId = isset($params['taxonId']);
+
         $db = Database::getInstance()->db;
 
+        $whereStr = '';
+
+        if ($params) {
+            $where = [];
+
+            if ($hasSearchQuery) {
+                array_push($where, '(P.name LIKE :query)');
+            }
+
+            if ($hasTaxonId) {
+                array_push($where, 'P.taxonId = :taxonId');
+            }
+
+            if (!empty($where)) {
+                $whereStr = ' WHERE ' . implode(' AND ', $where) . ' ';
+            }
+        }
+
         $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P ORDER BY P.id LIMIT :limit OFFSET :offset';
+                  FROM products P ' . $whereStr . 'ORDER BY P.id LIMIT :limit OFFSET :offset';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
         $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
-        $statement->execute();
 
-        $rawProducts = $statement->fetchAll();
+        if ($hasTaxonId) {
+            $taxonId = $params['taxonId'];
+            $statement->bindValue(':taxonId', $taxonId, PDO::PARAM_INT);
+        }
 
-        $statement->closeCursor();
+        if ($hasSearchQuery) {
+            $searchQuery = $params['query'];
+            $statement->bindValue(':query', "%$searchQuery%");
+        }
 
-        $products = array_map(function($rawTaxon) {
-            return new ModelProduct($rawTaxon);
-        }, $rawProducts);
-
-        return $products;
-    }
-
-    public static function getProductsByTaxon($taxonId, $limit = 999, $offset = 0) {
-        $db = Database::getInstance()->db;
-
-        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P WHERE P.taxonId = :taxonId ORDER BY P.id LIMIT :limit OFFSET :offset';
-
-        $statement = $db->prepare($query);
-        $statement->bindValue(':taxonId', $taxonId, PDO::PARAM_INT);
-        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
-        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
-        $statement->execute();
-
-        $rawProducts = $statement->fetchAll();
-
-        $statement->closeCursor();
-
-        $products = array_map(function($rawTaxon) {
-            return new ModelProduct($rawTaxon);
-        }, $rawProducts);
-
-        return $products;
-    }
-
-    public static function getProductsBySearchQuery($searchQuery, $limit = 999, $offset = 0) {
-        $db = Database::getInstance()->db;
-
-        $query = 'SELECT P.id, P.name, P.price, P.description, P.stock, P.tracking, P.taxonId, P.image
-                  FROM products P WHERE (P.name LIKE :query) ORDER BY P.id LIMIT :limit OFFSET :offset';
-
-        $statement = $db->prepare($query);
-        $statement->bindValue(':query', "%$searchQuery%");
-        $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
-        $statement->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $statement->execute();
 
         $rawProducts = $statement->fetchAll();
