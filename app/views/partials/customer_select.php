@@ -1,6 +1,6 @@
 <select name="customerId">
     <option value="">
-        Please, select
+        <?= ServiceI18n::t('common.select_placeholder') ?>
     </option>
     <?php foreach ($customers as $customer): ?>
         <option

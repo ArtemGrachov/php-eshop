@@ -29,15 +29,15 @@
                 href="/admin/addresses/edit?id=<?= $address->id ?>"
                 class="button is-info"
             >
-                Edit
+                <?= ServiceI18n::t('common.edit') ?>
             </a>
             <form action="/admin/addresses/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $address->id ?>" />
                 <button
                     class="button is-danger delete-trigger"
-                    data-question="Are you sure you want to delete address &quot;<?= implode(', ', [$address->country, $address->region, $address->city, $address->street, $address->houseNumber, $address->appartmentNumber]) ?>&quot;?"
+                    data-question="<?= ServiceI18n::t('partials.address_list_row.delete_question', [ 'address' => implode(', ', [$address->country, $address->region, $address->city, $address->street, $address->houseNumber, $address->appartmentNumber]) ]) ?>"
                 >
-                    Delete
+                    <?= ServiceI18n::t('common.delete') ?>
                 </button>
             </form>
         </div>

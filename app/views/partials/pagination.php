@@ -13,7 +13,7 @@ function generateLink($page) {
         class="pagination-previous"
         href="<?= generateLink($prevPage) ?>"
       >
-        Previous
+        <?= ServiceI18n::t('partials.pagination.prev') ?>
       </a>
     <?php endif; ?>
     <?php if ($showNext): ?>
@@ -21,7 +21,7 @@ function generateLink($page) {
         href="<?= generateLink($nextPage) ?>"
         class="pagination-next"
       >
-        Next page
+        <?= ServiceI18n::t('partials.pagination.next') ?>
       </a>
     <?php endif; ?>
     <ul class="pagination-list">

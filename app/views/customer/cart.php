@@ -27,12 +27,12 @@
                     href="/checkout"
                     class="button is-success is-medium"
                 >
-                    Checkout
+                    <?= ServiceI18n::t('customer.view_cart.checkout') ?>
                 </a>
             </div>
         <?php else: ?>
             <div class="is-size-3 has-text-centered">
-                The cart is empty
+                <?= ServiceI18n::t('customer.view_cart.empty_placeholder') ?>
             </div>
         <?php endif; ?>
     </div>

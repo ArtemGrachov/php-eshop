@@ -6,10 +6,10 @@
     </div>
     <div class="max-w-600px mx-auto">
         <h1 class="has-text-centered is-size-2 has-text-success">
-            Thanks for your order!
+            <?= ServiceI18n::t('customer.view_checkout_success.title') ?>
         </h1>
         <p class="has-text-centered mb-4">
-            An email with order details was sent to <strong><?= $email ?></strong>
+            <?= ServiceI18n::t('customer.view_checkout_success.email', [ 'email' => $email ]) ?>
         </p>
         <ul class="list-reset mb-4">
             <?php
@@ -34,7 +34,7 @@
                 href="/"
                 class="button is-success is-medium"
             >
-                Home
+                <?= ServiceI18n::t('customer.view_checkout_success.return') ?>
             </a>
         </div>
     </div>

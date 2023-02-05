@@ -5,7 +5,7 @@
 <div class="container">
     <div class="mb-4">
         <a href="/admin/users">
-            Return to user list
+            <?= ServiceI18n::t('admin.view_users_form.return') ?>
         </a>
     </div>
 
@@ -17,14 +17,14 @@
                         for="name"
                         class="label"
                     >
-                        Username
+                        <?= ServiceI18n::t('admin.view_users_form.label_username') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="text"
                             name="username"
-                            placeholder="Name"
+                            placeholder="<?= ServiceI18n::t('admin.view_users_form.placeholder_username') ?>"
                             value="<?= $formValue['username'] ?>"
                         />
                     </div>
@@ -35,14 +35,14 @@
                         for="name"
                         class="label"
                     >
-                        Email
+                        <?= ServiceI18n::t('admin.view_users_form.label_email') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="email"
                             name="email"
-                            placeholder="Email"
+                            placeholder="<?= ServiceI18n::t('admin.view_users_form.placeholder_email') ?>"
                             value="<?= $formValue['email'] ?>"
                         />
                     </div>
@@ -53,21 +53,23 @@
                         for="name"
                         class="label"
                     >
-                        Password
+                        <?= ServiceI18n::t('admin.view_users_form.label_password') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="<?= ServiceI18n::t('admin.view_users_form.placeholder_password') ?>"
                         />
                     </div>
                     <?php (new WidgetFormError($formErrors['password'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.view_users_form.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

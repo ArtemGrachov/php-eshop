@@ -23,7 +23,7 @@
                 href="/admin/products/edit?id=<?= $product->id ?>"
                 class="button is-info"
             >
-                Edit
+                <?= ServiceI18n::t('common.edit') ?>
             </a>
             <form action="/admin/products/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $product->id ?>" />
@@ -31,7 +31,7 @@
                     class="button is-danger delete-trigger"
                     data-question="Are you sure you want to delete product &quot;<?= $product->name ?>&quot;?"
                 >
-                    Delete
+                    <?= ServiceI18n::t('common.delete') ?>
                 </button>
             </form>
         </div>

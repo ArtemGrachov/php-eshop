@@ -8,7 +8,7 @@
 <div class="container">
     <div class="mb-4">
         <a href="/admin/orders">
-            Return to orders list
+            <?= ServiceI18n::t('admin.view_orders_form.return') ?>
         </a>
     </div>
 
@@ -20,14 +20,14 @@
                         for="token"
                         class="label"
                     >
-                        Token
+                        <?= ServiceI18n::t('admin.view_orders_form.label_token') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="text"
                             name="token"
-                            placeholder="Token"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_token') ?>"
                             value="<?= $formValue['token'] ?>"
                         />
                     </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="field">
                     <label for="state" class="label">
-                        State
+                        <?= ServiceI18n::t('admin.view_orders_form.label_state') ?>
                     </label>
                     <div class="select is-fullwidth">
                         <?php (new WidgetOrderStateSelect($formValue['state']))->render(); ?>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="field">
                     <label for="customerId" class="label">
-                        Customer
+                        <?= ServiceI18n::t('admin.view_orders_form.label_customer') ?>
                     </label>
                     <div class="select is-fullwidth">
                         <?php
@@ -56,7 +56,7 @@
                 </div>
                 <div class="field">
                     <label for="addressId" class="label">
-                        Address
+                        <?= ServiceI18n::t('admin.view_orders_form.label_address') ?>
                     </label>
                     <div class="select is-fullwidth">
                         <?php
@@ -67,7 +67,9 @@
                     <?php (new WidgetFormError($formErrors['addressId'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
-                    <label class="label">Note</label>
+                    <label class="label">
+                        <?= ServiceI18n::t('admin.view_orders_form.label_note') ?>
+                    </label>
                     <div class="control">
                         <textarea
                             class="textarea"
@@ -75,14 +77,16 @@
                             id="note"
                             cols="30"
                             rows="10"
-                            placeholder="Note"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_note') ?>"
                         ><?= $formValue['note'] ?></textarea>
                     </div>
                     <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.view_orders_form.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

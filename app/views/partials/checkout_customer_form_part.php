@@ -1,21 +1,21 @@
 <?php require_once(__DIR__ . '/../../widgets/form_error.php'); ?>
 <div class="has-background-white-bis p-4">
     <h2 class="is-size-5 mb-4">
-        Customer information
+        <?= ServiceI18n::t('partials.checkout_customer_form_part.title') ?>
     </h2>
     <div class="field">
         <label
             for="firstName"
             class="label"
         >
-            First name *
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_first_name') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['firstName']) ? ' is-danger' : '' ?>"
                 name="firstName"
                 type="text"
-                placeholder="First name"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_first_name') ?>"
                 value="<?= $formValue['firstName'] ?? '' ?>"
             />
         </div>
@@ -26,14 +26,14 @@
             for="lastName"
             class="label"
         >
-            Last name *
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_last_name') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['lastName']) ? ' is-danger' : '' ?>"
                 name="lastName"
                 type="text"
-                placeholder="Last name"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_last_name') ?>"
                 value="<?= $formValue['lastName'] ?? '' ?>"
             />
         </div>
@@ -44,14 +44,14 @@
             for="email"
             class="label"
         >
-            Email *
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_email') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['email']) ? ' is-danger' : '' ?>"
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_email') ?>"
                 value="<?= $formValue['email'] ?? '' ?>"
             />
         </div>
@@ -62,14 +62,14 @@
             for="phoneNumber"
             class="label"
         >
-            Phone number *
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_phone_number') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['phoneNumber']) ? ' is-danger' : '' ?>"
                 name="phoneNumber"
                 type="text"
-                placeholder="Phone number"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_phone_number') ?>"
                 value="<?= $formValue['phoneNumber'] ?? '' ?>"
             />
         </div>
@@ -82,7 +82,7 @@
                     type="checkbox"
                     name="isCompany"
                 >
-                Is company
+                <?= ServiceI18n::t('partials.checkout_customer_form_part.label_is_company') ?>
             </label>
         </div>
     </div>
@@ -91,7 +91,7 @@
             for="companyName"
             class="label"
         >
-            Company name
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_company_name') ?>
         </label>
         <div
             class="control"
@@ -100,7 +100,7 @@
                 class="input<?= isset($formErrors['companyName']) ? ' is-danger' : '' ?>"
                 name="companyName"
                 type="text"
-                placeholder="Company name"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_company_name') ?>"
                 value="<?= $formValue['companyName'] ?? '' ?>"
             />
         </div>
@@ -111,14 +111,14 @@
             for="companyVatNumber"
             class="label"
         >
-            Company VAT number
+            <?= ServiceI18n::t('partials.checkout_customer_form_part.label_company_vat') ?>
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['companyVatNumber']) ? ' is-danger' : '' ?>"
                 name="companyVatNumber"
                 type="text"
-                placeholder="Company VAT number"
+                placeholder="<?= ServiceI18n::t('partials.checkout_customer_form_part.placeholder_company_vat') ?>"
                 value="<?= $formValue['companyVatNumber'] ?? '' ?>"
             />
         </div>

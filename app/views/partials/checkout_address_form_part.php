@@ -1,21 +1,21 @@
 <?php require_once(__DIR__ . '/../../widgets/form_error.php'); ?>
 <div class="has-background-white-bis p-4">
     <h2 class="is-size-5 mb-4">
-        Customer address
+        <?= ServiceI18n::t('partials.checkout_address_form_part.title') ?>
     </h2>
     <div class="field">
         <label
             for="country"
             class="label"
         >
-            Country *
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_country') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['country']) ? ' is-danger' : '' ?>"
                 name="country"
                 type="text"
-                placeholder="Country"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_country') ?>"
                 value="<?= $formValue['country'] ?? '' ?>"
             />
         </div>
@@ -26,14 +26,14 @@
             for="region"
             class="label"
         >
-            Region
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_region') ?>
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['region']) ? ' is-danger' : '' ?>"
                 name="region"
                 type="text"
-                placeholder="Region"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_region') ?>"
                 value="<?= $formValue['region'] ?? '' ?>"
             />
         </div>
@@ -44,14 +44,14 @@
             for="city"
             class="label"
         >
-            City *
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_city') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['city']) ? ' is-danger' : '' ?>"
                 name="city"
                 type="text"
-                placeholder="City"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_city') ?>"
                 value="<?= $formValue['city'] ?? '' ?>"
             />
         </div>
@@ -62,14 +62,14 @@
             for="street"
             class="label"
         >
-            Street *
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_street') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['street']) ? ' is-danger' : '' ?>"
                 name="street"
                 type="text"
-                placeholder="Street"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_street') ?>"
                 value="<?= $formValue['street'] ?? '' ?>"
             >
         </div>
@@ -80,14 +80,14 @@
             for="houseNumber"
             class="label"
         >
-            House number *
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_house_number') ?>*
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['houseNumber']) ? ' is-danger' : '' ?>"
                 name="houseNumber"
                 type="text"
-                placeholder="House number"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_house_number') ?>"
                 value="<?= $formValue['houseNumber'] ?? '' ?>"
             />
         </div>
@@ -98,14 +98,14 @@
             for="appartmentNumber"
             class="label"
         >
-            Appartment number
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_appartment_number') ?>
         </label>
         <div class="control">
             <input
                 class="input<?= isset($formErrors['appartmentNumber']) ? ' is-danger' : '' ?>"
                 name="appartmentNumber"
                 type="text"
-                placeholder="Appartment number"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_appartment_number') ?>"
                 value="<?= $formValue['appartmentNumber'] ?? '' ?>"
             />
         </div>
@@ -116,13 +116,13 @@
             for="notes"
             class="label"
         >
-            Notes
+            <?= ServiceI18n::t('partials.checkout_address_form_part.label_notes') ?>
         </label>
         <div class="control">
             <textarea
                 name="notes"
                 class="textarea<?= isset($formErrors['notes']) ? ' is-danger' : '' ?>"
-                placeholder="Notes"
+                placeholder="<?= ServiceI18n::t('partials.checkout_address_form_part.placeholder_notes') ?>"
                 rows="5"
             ><?= $formValue['notes'] ?? '' ?></textarea>
         </div>

@@ -17,7 +17,7 @@
                 href="/admin/taxons/edit?id=<?= $taxon->id ?>"
                 class="button is-info"
             >
-                Edit
+                <?= ServiceI18n::t('common.edit') ?>
             </a>
             <form action="/admin/taxons/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $taxon->id ?>" />
@@ -26,7 +26,7 @@
                     class="button is-danger delete-trigger"
                     data-question="Are you sure you want to delete taxon &quot;<?= $taxon->name ?>&quot;?"
                 >
-                    Delete
+                    <?= ServiceI18n::t('common.delete') ?>
                 </button>
             </form>
         </div>

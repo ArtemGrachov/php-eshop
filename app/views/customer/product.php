@@ -25,7 +25,7 @@
             <?php else: ?>
                 <?php if ($product->runningOutOfStock): ?>
                     <span class="tag is-warning is-size-6 mt-4 mb-2">
-                        Is running out of stock
+                        <?= ServiceI18n::t('customer.view_product.out_of_stock') ?>
                     </span>
                 <?php endif ?>
                 <div class="is-size-5 mb-5">

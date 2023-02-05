@@ -7,6 +7,7 @@ require_once('app/router.php');
 require_once('app/routes/index.php');
 require_once('app/services/auth.php');
 require_once('app/services/currency.php');
+require_once('app/services/i18n.php');
 
 $router = new Router($app_routes);
 

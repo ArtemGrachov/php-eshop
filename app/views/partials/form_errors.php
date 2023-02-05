@@ -1,5 +1,5 @@
 <?php foreach ($errorMessages as $errorMessage): ?>
     <p class="help is-danger">
-        <?= $errorMessage ?>
+        <?= <?= ServiceI18n::t($errorMessage) ?> ?>
     </p>
 <?php endforeach ?>

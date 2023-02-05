@@ -5,10 +5,9 @@
 <div class="container">
     <div class="mb-4">
         <a href="/admin/products">
-            Return to product list
+            <?= ServiceI18n::t('admin.view_orders_form.return') ?>
         </a>
     </div>
-
     <div class="columns">
         <div class="column is-half">
             <form action="<?= $formAction ?>" method="post" enctype="multipart/form-data">
@@ -17,7 +16,7 @@
                         for="image"
                         class="label"
                     >
-                        Image
+                        <?= ServiceI18n::t('admin.view_orders_form.image') ?>
                     </label>
                     <div class="file is-boxed">
                       <label class="file-label">
@@ -27,7 +26,7 @@
                             <i class="fas fa-upload"></i>
                           </span>
                           <span class="file-label">
-                            Choose a file…
+                            <?= ServiceI18n::t('admin.view_orders_form.file_placeholder') ?>
                           </span>
                         </span>
                       </label>
@@ -39,21 +38,23 @@
                         for="name"
                         class="label"
                     >
-                        Name
+                        <?= ServiceI18n::t('admin.view_orders_form.label_name') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="text"
                             name="name"
-                            placeholder="Name"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_name') ?>"
                             value="<?= $formValue['name'] ?>"
                         />
                     </div>
                     <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
-                    <label class="label">Description</label>
+                    <label class="label">
+                        <?= ServiceI18n::t('admin.view_orders_form.label_description') ?>
+                    </label>
                     <div class="control">
                         <textarea
                             class="textarea"
@@ -61,7 +62,7 @@
                             id="description"
                             cols="30"
                             rows="10"
-                            placeholder="Description"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_description') ?>"
                         ><?= $formValue['description'] ?></textarea>
                     </div>
                     <?php (new WidgetFormError($formErrors['description'] ?? []))->render(); ?>
@@ -71,14 +72,14 @@
                         for="price"
                         class="label"
                     >
-                        Price
+                        <?= ServiceI18n::t('admin.view_orders_form.label_price') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="number"
                             name="price"
-                            placeholder="Price"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_price') ?>"
                             step="0.01"
                             value="<?= $formValue['price'] ?>"
                         />
@@ -92,7 +93,7 @@
                             name="tracking"
                             <?= ($formValue['tracking'] ?? false) ? 'checked' : '' ?>
                         >
-                        Tracked
+                        <?= ServiceI18n::t('admin.view_orders_form.label_tracked') ?>
                     </label>
                 </div>
                 <div class="field">
@@ -100,14 +101,14 @@
                         for="stock"
                         class="label"
                     >
-                        Stock
+                        <?= ServiceI18n::t('admin.view_orders_form.label_stock') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="number"
                             name="stock"
-                            placeholder="Stock"
+                            placeholder="<?= ServiceI18n::t('admin.view_orders_form.placeholder_stock') ?>"
                             value="<?= $formValue['stock'] ?>"
                         />
                     </div>
@@ -115,7 +116,7 @@
                 </div>
                 <div class="field">
                     <label for="taxonId" class="label">
-                        Taxon
+                        <?= ServiceI18n::t('admin.view_orders_form.label_taxon') ?>
                     </label>
                     <div class="select">
                         <?php
@@ -127,7 +128,9 @@
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.view_orders_form.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

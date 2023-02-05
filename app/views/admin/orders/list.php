@@ -6,27 +6,27 @@
 <div class="container">
     <div class="mb-4 is-flex is-justify-content-space-between is-align-content-center">
         <a href="/admin">
-            Return to dashboard
+            <?= ServiceI18n::t('admin.view_orders_list.return') ?>
         </a>
         <div class="buttons">
             <a
                 href="/admin/orders/create"
                 class="button is-link"
             >
-                Create order
+                <?= ServiceI18n::t('admin.view_orders_list.create_order') ?>
             </a>
         </div>
     </div>
     <table class="table is-fullwidth mb-4">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Token</th>
-                <th>State</th>
-                <th>Customer</th>
-                <th>Address</th>
-                <th>Note</th>
-                <th>Actions</th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.id') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.token') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.state') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.customer') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.address') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.note') ?></th>
+                <th><?= ServiceI18n::t('admin.view_orders_list.actions') ?></th>
             </tr>
         </thead>
         <tbody>

@@ -6,24 +6,24 @@
 <div class="container">
     <div class="mb-4 is-flex is-justify-content-space-between is-align-content-center">
         <a href="/admin">
-            Return to dashboard
+            <?= ServiceI18n::t('admin.view_users_list.return') ?>
         </a>
         <div class="buttons">
             <a
                 href="/admin/users/create"
                 class="button is-link"
             >
-                Create user
+                <?= ServiceI18n::t('admin.view_users_list.create_user') ?>
             </a>
         </div>
     </div>
     <table class="table is-fullwidth mb-4">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Actions</th>
+                <th><?= ServiceI18n::t('admin.view_users_list.id') ?></th>
+                <th><?= ServiceI18n::t('admin.view_users_list.email') ?></th>
+                <th><?= ServiceI18n::t('admin.view_users_list.username') ?></th>
+                <th><?= ServiceI18n::t('admin.view_users_list.actions') ?></th>
             </tr>
         </thead>
         <tbody>

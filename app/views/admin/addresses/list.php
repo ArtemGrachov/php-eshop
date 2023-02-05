@@ -6,28 +6,28 @@
 <div class="container">
     <div class="mb-4 is-flex is-justify-content-space-between is-align-content-center">
         <a href="/admin">
-            Return to dashboard
+            <?= ServiceI18n::t('admin.view_address_list.return') ?>
         </a>
         <div class="buttons">
             <a
                 href="/admin/addresses/create"
                 class="button is-link"
             >
-                Create address
+                <?= ServiceI18n::t('admin.view_address_list.create_address') ?>
             </a>
         </div>
     </div>
     <table class="table is-fullwidth mb-4">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Country</th>
-                <th>Region</th>
-                <th>City</th>
-                <th>Street</th>
-                <th>House number</th>
-                <th>Appartment number</th>
-                <th>Notes</th>
+                <th><?= ServiceI18n::t('admin.view_address_list.id') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.country') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.region') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.city') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.street') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.house_number') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.appartment_number') ?></th>
+                <th><?= ServiceI18n::t('admin.view_address_list.notes') ?></th>
                 <th></th>
             </tr>
         </thead>

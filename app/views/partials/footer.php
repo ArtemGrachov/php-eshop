@@ -12,7 +12,7 @@
                 "
             >
                 <div class="mb-2 mb-0-tablet">
-                    Developed for educational purposes
+                    <?= ServiceI18n::t('partials.footer.note') ?>
                 </div>
                 <div>
                     <a href="https://github.com/ArtemGrachov">

@@ -11,6 +11,8 @@
                 max="<?= $product->tracking ? $product->stock : '' ?>"
             />
         </div>
-        <button class="button is-success is-rounded is-medium">Add to cart</button>
+        <button class="button is-success is-rounded is-medium">
+            <?= ServiceI18n::t('partials.product_cart_form.add_to_cart') ?>
+        </button>
     </div>
 </form>

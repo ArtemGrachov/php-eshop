@@ -14,7 +14,7 @@
                 href="/admin/users/edit?id=<?= $user->id ?>"
                 class="button is-info"
             >
-                Edit
+                <?= ServiceI18n::t('common.edit') ?>
             </a>
             <form action="/admin/users/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $user->id ?>" />
@@ -22,7 +22,7 @@
                     class="button is-danger delete-trigger"
                     data-question="Are you sure you want to delete user &quot;<?= $user->username ?>&quot; (<?= $user->email ?>)?"
                 >
-                    Delete
+                    <?= ServiceI18n::t('common.delete') ?>
                 </button>
             </form>
         </div>

@@ -7,7 +7,7 @@
     <div class="columns">
         <div class="column is-4 order-1-tablet">
             <h2 class="is-size-5 mb-4">
-                Cart cummary
+                <?= ServiceI18n::t('customer.view_checkout.cart_summary') ?>
             </h2>
             <div class="mb-4">
                 <ul class="list-reset">
@@ -27,7 +27,7 @@
             <table class="table is-fullwidth has-background-info-light">
                 <tr class="is-size-6">
                     <td>
-                        Total items:
+                        <?= ServiceI18n::t('customer.view_checkout.totla_items') ?>
                     </td>
                     <td class="has-text-right">
                         <?= $order->itemsCount ?>
@@ -35,7 +35,7 @@
                 </tr>
                 <tr class="is-size-6 has-text-weight-semibold">
                     <td>
-                        Total price:
+                        <?= ServiceI18n::t('customer.view_checkout.total_price') ?>
                     </td>
                     <td class="has-text-right">
                         <?= ServiceCurrency::getInstance()->formatPrice($order->totalPrice); ?>
@@ -52,7 +52,7 @@
                             mode_edit
                         </span>
                     </span>
-                    Edit cart
+                    <?= ServiceI18n::t('customer.view_checkout.edit_cart') ?>
                 </a>
             </div>
         </div>
@@ -73,7 +73,7 @@
                             done
                         </span>
                     </span>
-                    Submit order
+                    <?= ServiceI18n::t('customer.view_checkout.submit_order') ?>
                 </button>
             </form>
         </div>

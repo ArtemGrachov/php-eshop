@@ -6,25 +6,25 @@
 <div class="container">
     <div class="mb-4 is-flex is-justify-content-space-between is-align-content-center">
         <a href="/admin">
-            Return to dashboard
+            <?= ServiceI18n::t('admin.view_taxons_list.return') ?>
         </a>
         <div class="buttons">
             <a
                 href="/admin/taxons/create"
                 class="button is-link"
             >
-                Create taxon
+                <?= ServiceI18n::t('admin.view_taxons_list.create_taxon') ?>
             </a>
         </div>
     </div>
     <table class="table is-fullwidth mb-4">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Products count</th>
-                <th>Actions</th>
+                <th><?= ServiceI18n::t('admin.view_taxons_list.id') ?></th>
+                <th><?= ServiceI18n::t('admin.view_taxons_list.name') ?></th>
+                <th><?= ServiceI18n::t('admin.view_taxons_list.description') ?></th>
+                <th><?= ServiceI18n::t('admin.view_taxons_list.products_count') ?></th>
+                <th><?= ServiceI18n::t('admin.view_taxons_list.actions') ?></th>
             </tr>
         </thead>
         <tbody>

@@ -8,10 +8,9 @@
 <div class="container">
     <div class="mb-4">
         <a href="/admin/addresses">
-            Return to adresses list
+            <?= ServiceI18n::t('admin.view_address_form.return') ?>
         </a>
     </div>
-
     <div class="columns">
         <div class="column is-half">
             <form action="<?= $formAction ?>" method="post">
@@ -20,7 +19,7 @@
                         for="country"
                         class="label"
                     >
-                        Country
+                        <?= ServiceI18n::t('admin.view_address_form.label_country') ?>
                     </label>
                     <div class="control">
                         <input
@@ -28,7 +27,7 @@
                             class="input"
                             type="text"
                             name="country"
-                            placeholder="Country"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_country') ?>"
                             value="<?= $formValue['country'] ?>"
                         />
                     </div>
@@ -39,7 +38,7 @@
                         for="region"
                         class="label"
                     >
-                        Region
+                        <?= ServiceI18n::t('admin.view_address_form.label_region') ?>
                     </label>
                     <div class="control">
                         <input
@@ -47,7 +46,7 @@
                             class="input"
                             type="text"
                             name="region"
-                            placeholder="Region"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_region') ?>"
                             value="<?= $formValue['region'] ?>"
                         />
                     </div>
@@ -58,7 +57,7 @@
                         for="city"
                         class="label"
                     >
-                        City
+                        <?= ServiceI18n::t('admin.view_address_form.label_city') ?>
                     </label>
                     <div class="control">
                         <input
@@ -66,7 +65,7 @@
                             class="input"
                             type="text"
                             name="city"
-                            placeholder="City"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_city') ?>"
                             value="<?= $formValue['city'] ?>"
                         />
                     </div>
@@ -77,7 +76,7 @@
                         for="street"
                         class="label"
                     >
-                        Street
+                        <?= ServiceI18n::t('admin.view_address_form.label_street') ?>
                     </label>
                     <div class="control">
                         <input
@@ -85,7 +84,7 @@
                             class="input"
                             type="text"
                             name="street"
-                            placeholder="Street"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_street') ?>"
                             value="<?= $formValue['street'] ?>"
                         />
                     </div>
@@ -96,7 +95,7 @@
                         for="houseNumber"
                         class="label"
                     >
-                        House number
+                        <?= ServiceI18n::t('admin.view_address_form.label_house_number') ?>
                     </label>
                     <div class="control">
                         <input
@@ -104,7 +103,7 @@
                             class="input"
                             type="text"
                             name="houseNumber"
-                            placeholder="House number"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_house_number') ?>"
                             value="<?= $formValue['houseNumber'] ?>"
                         />
                     </div>
@@ -115,7 +114,7 @@
                         for="appartmentNumber"
                         class="label"
                     >
-                        Appartment number
+                        <?= ServiceI18n::t('admin.view_address_form.label_appartment_number') ?>
                     </label>
                     <div class="control">
                         <input
@@ -123,14 +122,16 @@
                             class="input"
                             type="text"
                             name="appartmentNumber"
-                            placeholder="Appartment number"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_appartment_number') ?>"
                             value="<?= $formValue['appartmentNumber'] ?>"
                         />
                     </div>
                     <?php (new WidgetFormError($formErrors['appartmentNumber'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
-                    <label class="label">Notes</label>
+                    <label class="label">
+                        <?= ServiceI18n::t('admin.view_address_form.label_notes') ?>
+                    </label>
                     <div class="control">
                         <textarea
                             class="textarea"
@@ -138,14 +139,16 @@
                             id="notes"
                             cols="30"
                             rows="10"
-                            placeholder="Notes"
+                            placeholder="<?= ServiceI18n::t('admin.view_address_form.placeholder_notes') ?>"
                         ><?= $formValue['notes'] ?></textarea>
                     </div>
                     <?php (new WidgetFormError($formErrors['notes'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.view_address_form.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

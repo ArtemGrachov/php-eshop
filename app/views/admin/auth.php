@@ -9,14 +9,14 @@
                         for="name"
                         class="label"
                     >
-                        Username
+                        <?= ServiceI18n::t('admin.auth.label_username') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="text"
                             name="username"
-                            placeholder="Name"
+                            placeholder="<?= ServiceI18n::t('admin.auth.placeholder_username') ?>"
                             required
                         />
                     </div>
@@ -26,21 +26,23 @@
                         for="name"
                         class="label"
                     >
-                        Password
+                        <?= ServiceI18n::t('admin.auth.label_password') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="<?= ServiceI18n::t('admin.auth.placeholder_password') ?>"
                             required
                         />
                     </div>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.auth.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

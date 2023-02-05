@@ -23,7 +23,7 @@
             <?php else: ?>
                 <?php if ($product->runningOutOfStock): ?>
                     <span class="tag is-warning mb-2">
-                        Is running out of stock
+                        <?= ServiceI18n::t('partials.product_card.out_of_stock') ?>
                     </span>
                 <?php endif ?>
                 <div class="has-color-dark">

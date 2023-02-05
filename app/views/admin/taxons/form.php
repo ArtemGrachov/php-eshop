@@ -5,7 +5,7 @@
 <div class="container">
     <div class="mb-4">
         <a href="/admin/taxons">
-            Return to taxon list
+            <?= ServiceI18n::t('admin.view_taxons_form.return') ?>
         </a>
     </div>
 
@@ -17,21 +17,23 @@
                         for="name"
                         class="label"
                     >
-                        Name
+                        <?= ServiceI18n::t('admin.view_taxons_form.label_name') ?>
                     </label>
                     <div class="control">
                         <input
                             class="input"
                             type="text"
                             name="name"
-                            placeholder="Name"
+                            placeholder="<?= ServiceI18n::t('admin.view_taxons_form.placeholder_name') ?>"
                             value="<?= $formValue['name'] ?>"
                         />
                     </div>
                     <?php (new WidgetFormError($formErrors['name'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
-                    <label class="label">Description</label>
+                    <label class="label">
+                        <?= ServiceI18n::t('admin.view_taxons_form.label_description') ?>
+                    </label>
                     <div class="control">
                         <textarea
                             class="textarea"
@@ -39,14 +41,16 @@
                             id="description"
                             cols="30"
                             rows="10"
-                            placeholder="Description"
+                            placeholder="<?= ServiceI18n::t('admin.view_taxons_form.placeholder_description') ?>"
                         ><?= $formValue['description'] ?></textarea>
                     </div>
                     <?php (new WidgetFormError($formErrors['description'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">Submit</button>
+                        <button class="button is-link">
+                            <?= ServiceI18n::t('admin.view_taxons_form.label_submit') ?>
+                        </button>
                     </div>
                 </div>
             </form>

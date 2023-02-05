@@ -10,7 +10,9 @@ $widgetCartCounter = new WidgetCartCounter();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP eShop | Admin panel</title>
+    <title>
+        <?= ServiceI18n::t('customer.title') ?>
+    </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/public/styles.css">
@@ -25,7 +27,7 @@ $widgetCartCounter = new WidgetCartCounter();
                     href="/"
                     class="has-text-white"
                 >
-                    PHP E-Commerce Example
+                    <?= ServiceI18n::t('common.title') ?>
                 </a>
             </h1>
             <div class="ml-md-auto mr-md-4 header-search">

@@ -1,6 +1,6 @@
 <select name="taxonId">
     <option value="">
-        Please, select
+        <?= ServiceI18n::t('common.select_placeholder') ?>
     </option>
     <?php foreach ($taxons as $taxon): ?>
         <option

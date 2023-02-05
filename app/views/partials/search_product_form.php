@@ -9,7 +9,7 @@
             class="input is-link"
             name="query"
             type="text"
-            placeholder="Type a query..."
+            placeholder="<?= ServiceI18n::t('partials.search_product_form.placeholder_query') ?>"
             value="<?= $serchFormQuery ?? '' ?>"
         />
     </div>
@@ -18,7 +18,7 @@
             type="submit"
             class="button is-info"
         >
-            Search
+            <?= ServiceI18n::t('partials.search_product_form.label_submit') ?>
         </button>
     </div>
     </div>

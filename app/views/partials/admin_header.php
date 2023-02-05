@@ -11,7 +11,9 @@ $auth = ServiceAuth::getInstance();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP eShop | Admin panel</title>
+    <title>
+        <?= ServiceI18n::t('admin.title') ?>
+    </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="/public/styles.css">
 </head>
@@ -26,11 +28,11 @@ $auth = ServiceAuth::getInstance();
             href="/"
             class="mr-4"
         >
-            Go to the shop
+            <?= ServiceI18n::t('admin.shop') ?>
         </a>
         <?php if ($auth->isAuthenticated()): ?>
             <a href="/admin/sign-out">
-                Logout
+                <?= ServiceI18n::t('admin.logout') ?>
             </a>
         <?php endif; ?>
     </div>
