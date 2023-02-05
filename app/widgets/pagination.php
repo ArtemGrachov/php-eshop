@@ -24,7 +24,7 @@ class WidgetPagination {
         $nextPage = $this->currentPage + 1;
 
         $showFirstPage = $this->currentPage > ($offset + 1);
-        $showLastPage = $this->currentPage < ($this->totalPages - $offset + 2);
+        $showLastPage = $this->currentPage < ($this->totalPages - $offset + 1);
 
         $showEllipsisPrev = ($this->currentPage - ($offset + 1)) > 1;
         $showEllipsisNext = ($this->currentPage + ($offset + 1)) < $lastPage;
