@@ -5,17 +5,23 @@ class ControllerOrderItems {
     public function remove() {
         global $ORDER_TOKEN;
 
-        $orderItemId = (int) $_GET['id'];
+        $productId = (int) $_GET['productId'];
 
-        if (!isset($orderItemId)) {
-            throw new Exception('Order item ID not set');
+        if (!isset($productId)) {
+            throw new Exception('Product ID not set');
         }
 
-        $orderItem = ModelOrderItem::getOrderItem($orderItemId);
+        if (isset($_COOKIE[$ORDER_TOKEN])) {
+            $orderToken = $_COOKIE[$ORDER_TOKEN];
 
-        if ($orderItem) {
-            $orderItem->remove();
+            $order = ModelOrder::getOrderByToken($orderToken);
         }
+
+        if (!$order) {
+            throw new Exception('Order does not exist');
+        }
+
+        $order->removeItem($productId);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

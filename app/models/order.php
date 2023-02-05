@@ -203,6 +203,12 @@ class ModelOrder {
         } else {
             $orderItem->remove();
         }
+
+        $itemsCount = $this->itemsCount;
+
+        if ($itemsCount === 0) {
+            $this->remove();
+        }
     }
 
     public function __get($property) {

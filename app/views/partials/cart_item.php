@@ -1,6 +1,6 @@
 <li class="p-4<?= isset($itemClassNames) ? (' ' . $itemClassNames) : '' ?>">
     <div>
-        <a href="/order-items/remove?id=<?= $cartItem->id ?>">
+        <a href="/order-items/remove?productId=<?= $cartItem->productId ?>">
             delete
         </a>
     </div>
