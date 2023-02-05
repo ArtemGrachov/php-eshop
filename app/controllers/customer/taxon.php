@@ -24,7 +24,7 @@ class ControllerTaxon {
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
                 'link' => "/taxon?id=$taxonId",
@@ -32,7 +32,8 @@ class ControllerTaxon {
             ]
         ];
 
-        $title = $taxon->name;
+        $heading = $taxon->name;
+        $title = ServiceI18n::t('customer.title_page', [ 'page' => $taxon->name ]);
         $description = $taxon->description;
 
         include(__DIR__ . '/../../views/customer/products.php');

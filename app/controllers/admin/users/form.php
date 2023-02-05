@@ -54,7 +54,7 @@ class ControllerAdminUsersForm {
 
     public function index() {
         $this->viewInit([
-            'title' => 'Create user',
+            'title' => ServiceI18n::t('admin.view_users_form.create_user'),
             'formAction' => '/admin/users/create',
             'formErrors' => [],
             'formValue' => [
@@ -77,7 +77,7 @@ class ControllerAdminUsersForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => 'Create user',
+                'title' => ServiceI18n::t('admin.view_users_form.create_user'),
                 'formAction' => '/admin/users/create',
                 'formErrors' => $formErrors,
                 'formValue' => $_POST
@@ -96,7 +96,7 @@ class ControllerAdminUsersForm {
         $user = ModelUser::getUser($userId);
 
         $this->viewInit([
-            'title' => "Edit user $user->email",
+            'title' => ServiceI18n::t('admin.view_users_form.edit_user', [ 'email' => $user->email ]),
             'formAction' => "/admin/users/edit?id=$userId",
             'formErrors' => [],
             'formValue' => [
@@ -120,7 +120,7 @@ class ControllerAdminUsersForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => "Edit user $user->email",
+                'title' => ServiceI18n::t('admin.view_users_form.edit_user', [ 'email' => $user->email ]),
                 'formAction' => "/admin/users/edit?id=$userId",
                 'formErrors' => $formErrors,
                 'formValue' => $_POST

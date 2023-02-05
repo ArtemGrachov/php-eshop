@@ -7,7 +7,7 @@ class ControllerAdminTaxonsForm {
 
     public function index() {
         $this->viewInit([
-            'title' => 'Create taxon',
+            'title' => ServiceI18n::t('admin.view_taxons_form.create_taxon'),
             'formAction' => '/admin/taxons/create',
             'formErrors' => [],
             'formValue' => [
@@ -49,7 +49,7 @@ class ControllerAdminTaxonsForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => 'Create taxon',
+                'title' => ServiceI18n::t('admin.view_taxons_form.create_taxon'),
                 'formAction' => '/admin/taxons/create',
                 'formErrors' => $formErrors,
                 'formValue' => $_POST
@@ -69,7 +69,7 @@ class ControllerAdminTaxonsForm {
         $taxon = ModelTaxon::getTaxon($taxonId);
 
         $this->viewInit([
-            'title' => 'Edit taxon',
+            'title' => ServiceI18n::t('admin.view_taxons_form.edit_taxon'),
             'formAction' => "/admin/taxons/edit?id=$taxonId",
             'taxon' => $taxon,
             'formErrors' => [],
@@ -92,7 +92,7 @@ class ControllerAdminTaxonsForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => 'Edit taxon',
+                'title' => ServiceI18n::t('admin.view_taxons_form.edit_taxon'),
                 'formAction' => "/admin/taxons/edit?id=$taxonId",
                 'taxon' => $taxon,
                 'formErrors' => $formErrors,

@@ -9,10 +9,13 @@ class ControllerProduct {
         $taxonId = $product->taxonId;
         $taxon = ModelTaxon::getTaxon($taxonId);
 
+        $title = ServiceI18n::t('customer.title_page', [ 'page' => $product->name ]);
+        $heading = ServiceI18n::t('customer.title_page', [ 'page' => $product->name ]);
+
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
                 'link' => "/taxon?id=$taxonId",

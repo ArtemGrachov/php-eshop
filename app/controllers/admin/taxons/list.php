@@ -9,7 +9,7 @@ class ControllerAdminTaxonsList {
     public function index() {
         global $PAGINATION_LIMIT;
 
-        $title = 'Taxons';
+        $title = ServiceI18n::t('admin.view_products_list.title');
         $currentPage = $_GET['page'] ?? 1;
 
         $taxons = ModelTaxon::getTaxons(

@@ -22,14 +22,17 @@ class ControllerSearch {
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
                 'label' => "Search results: $query"
             ]
         ];
 
-        $title = "Search results: $query";
+        $heading = ServiceI18n::t('customer.view_search.title', [ 'query' => $query ]);
+
+        $title = ServiceI18n::t('customer.title_page', [ 'page' => $query ]);
+
         $serchFormQuery = $query;
 
         include(__DIR__ . '/../../views/customer/products.php');

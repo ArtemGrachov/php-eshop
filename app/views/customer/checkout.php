@@ -27,7 +27,7 @@
             <table class="table is-fullwidth has-background-info-light">
                 <tr class="is-size-6">
                     <td>
-                        <?= ServiceI18n::t('customer.view_checkout.totla_items') ?>
+                        <?= ServiceI18n::t('customer.view_checkout.total_items') ?>
                     </td>
                     <td class="has-text-right">
                         <?= $order->itemsCount ?>

@@ -94,7 +94,7 @@ class ControllerCheckout {
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
                 'label' => 'Checkout'
@@ -115,13 +115,15 @@ class ControllerCheckout {
             $orderItems = ModelOrderItem::getOrderItemsByOrder($order->id, 999);
         }
 
+        $title = ServiceI18n::t('customer.title_page', [ 'page' => ServiceI18n::t('customer.view_checkout.title') ]);
+
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
-                'label' => 'Checkout'
+                'label' => ServiceI18n::t('customer.view_checkout.title')
             ]
         ];
 

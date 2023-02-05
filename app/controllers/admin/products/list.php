@@ -9,7 +9,7 @@ class ControllerAdminProductsList {
     public function index() {
         global $PAGINATION_LIMIT;
 
-        $title = 'Products';
+        $title = ServiceI18n::t('admin.view_products_list.title');
         $currentPage = $_GET['page'] ?? 1;
 
         $products = ModelProduct::getProducts(

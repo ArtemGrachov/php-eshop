@@ -43,7 +43,7 @@ class ControllerAdminOrdersForm {
         global $ORDER_STATUSES;
 
         $this->viewInit([
-            'title' => 'Create order',
+            'title' => ServiceI18n::t('admin.view_orders_form.create_order'),
             'formAction' => '/admin/orders/create',
             'formErrors' => [],
             'formValue' => [
@@ -80,7 +80,7 @@ class ControllerAdminOrdersForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => 'Create order',
+                'title' => ServiceI18n::t('admin.view_orders_form.create_order'),
                 'formAction' => '/admin/orders/create',
                 'formErrors' => $formErrors,
                 'formValue' => $_POST
@@ -100,7 +100,7 @@ class ControllerAdminOrdersForm {
         $order = ModelOrder::getOrder($orderId);
 
         $this->viewInit([
-            'title' => "Edit order $orderId",
+            'title' => ServiceI18n::t('admin.view_orders_form.edit_order', [ 'orderId' => $orderId ]),
             'formAction' => "/admin/orders/edit?id=$orderId",
             'formErrors' => [],
             'formValue' => [
@@ -128,7 +128,7 @@ class ControllerAdminOrdersForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => "Edit order $orderId",
+                'title' => ServiceI18n::t('admin.view_orders_form.edit_order', [ 'orderId' => $orderId ]),
                 'formAction' => "/admin/orders/edit?id=$orderId",
                 'order' => $order,
                 'formErrors' => $formErrors,

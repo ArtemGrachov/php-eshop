@@ -9,7 +9,7 @@ class ControllerAdminAddressesList {
     public function index() {
         global $PAGINATION_LIMIT;
 
-        $title = 'Addresses';
+        $title = ServiceI18n::t('admin.view_address_list.title');
         $currentPage = $_GET['page'] ?? 1;
 
         $addresses = ModelAddress::getAddresses(

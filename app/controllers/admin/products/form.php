@@ -48,7 +48,7 @@ class ControllerAdminProductsForm {
 
     public function index() {
         $this->viewInit([
-            'title' => 'Create product',
+            'title' => ServiceI18n::t('admin.view_products_form.create_product'),
             'formAction' => '/admin/products/create',
             'formErrors' => [],
             'formValue' => [
@@ -77,7 +77,7 @@ class ControllerAdminProductsForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => 'Create product',
+                'title' => ServiceI18n::t('admin.view_products_form.create_product'),
                 'formAction' => '/admin/products/create',
                 'formErrors' => $formErrors,
                 'formValue' => $_POST
@@ -108,7 +108,7 @@ class ControllerAdminProductsForm {
         $product = ModelProduct::getProduct($productId);
 
         $this->viewInit([
-            'title' => "Edit product $product->name",
+            'title' => ServiceI18n::t('admin.view_products_form.edit_product', [ 'productName' => $product->name ]),
             'formAction' => "/admin/products/edit?id=$productId",
             'formErrors' => [],
             'formValue' => [
@@ -138,7 +138,7 @@ class ControllerAdminProductsForm {
 
         if (count($formErrors)) {
             $this->viewInit([
-                'title' => "Edit product $product->name",
+                'title' => ServiceI18n::t('admin.view_products_form.edit_product', [ 'productName' => $product->name ]),
                 'formAction' => "/admin/products/edit?id=$productId",
                 'formErrors' => $formErrors,
                 'formValue' => $_POST

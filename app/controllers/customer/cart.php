@@ -10,13 +10,15 @@ class ControllerCart {
             $orderItems = ModelOrderItem::getOrderItemsByOrder($order->id);
         }
 
+        $title = ServiceI18n::t('customer.title_page', [ 'page' => ServiceI18n::t('customer.view_cart.title') ]);
+
         $breadcrumbs = [
             [
                 'link' => '/',
-                'label' => 'Home'
+                'label' => ServiceI18n::t('customer.home')
             ],
             [
-                'label' => 'Cart'
+                'label' => ServiceI18n::t('customer.view_cart.title')
             ]
         ];
 

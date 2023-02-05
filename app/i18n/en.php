@@ -39,7 +39,9 @@ $TRANSLATIONS = [
             'placeholder_appartment_number' => 'Appartment number',
             'label_notes' => 'Notes',
             'placeholder_notes' => 'Notes',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'create_address' => 'Create address',
+            'edit_address' => 'Edit address {addressId}'
         ],
         'view_address_list' => [
             'return' => 'Return to dashboard',
@@ -51,7 +53,8 @@ $TRANSLATIONS = [
             'street' => 'Street',
             'house_number' => 'House number',
             'appartment_number' => 'Appartment number',
-            'notes' => 'Notes'
+            'notes' => 'Notes',
+            'title' => 'Addresses'
         ],
         'view_orders_form' => [
             'return' => 'Return to orders list',
@@ -62,7 +65,9 @@ $TRANSLATIONS = [
             'label_address' => 'Address',
             'label_note' => 'Note',
             'placeholder_note' => 'Note',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'create_order' => 'Create order',
+            'title' => 'Edit order {orderId}'
         ],
         'view_orders_list' => [
             'return' => 'Return to dashboard',
@@ -73,7 +78,8 @@ $TRANSLATIONS = [
             'customer' => 'Customer',
             'address' => 'Address',
             'note' => 'Note',
-            'actions' => 'Actions'
+            'actions' => 'Actions',
+            'title' => 'Orders'
         ],
         'view_products_form' => [
             'return' => 'Return to product list',
@@ -88,7 +94,9 @@ $TRANSLATIONS = [
             'label_tracked' => 'Tracked',
             'label_stock' => 'Stock',
             'label_taxon' => 'Taxon',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'create_product' => 'Create product',
+            'edit_product' => 'Edit product {productName}'
         ],
         'view_products_list' => [
             'return' => 'Return to dashboard',
@@ -99,7 +107,8 @@ $TRANSLATIONS = [
             'description' => 'Description',
             'stock' => 'Stock',
             'taxon_name' => 'Taxon name',
-            'actions' => 'Actions'
+            'actions' => 'Actions',
+            'title' => 'Products'
         ],
         'view_taxons_form' => [
             'return' => 'Return to taxon list',
@@ -107,7 +116,9 @@ $TRANSLATIONS = [
             'placeholder_name' => 'Name',
             'label_description' => 'Description',
             'placeholder_description' => 'Description',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'create_taxon' => 'Create taxon',
+            'edit_taxon' => 'Edit taxon'
         ],
         'view_taxons_list' => [
             'return' => 'Return to dashboard',
@@ -117,6 +128,7 @@ $TRANSLATIONS = [
             'description' => 'Description',
             'products_count' => 'Products count',
             'actions' => 'Actions',
+            'title' => 'Taxons'
         ],
         'view_users_form' => [
             'return' => 'Return to user list',
@@ -126,7 +138,9 @@ $TRANSLATIONS = [
             'placeholder_email' => 'Email',
             'label_password' => 'Password',
             'placeholder_password' => 'Password',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'create_user' => 'Create user',
+            'edit_user' => 'Edit user {email}'
         ],
         'view_users_list' => [
             'return' => 'Return to dashboard',
@@ -134,14 +148,16 @@ $TRANSLATIONS = [
             'id' => 'ID',
             'email' => 'Email',
             'username' => 'Username',
-            'actions' => 'Actions'
+            'actions' => 'Actions',
+            'title' => 'Users'
         ],
         'auth' => [
             'label_username' => 'Username',
             'placeholder_username' => 'Name',
             'label_password' => 'Password',
             'placeholder_password' => 'Password',
-            'label_submit' => 'Submit'
+            'label_submit' => 'Submit',
+            'title' => 'Authentication'
         ],
         'dashboard' => [
             'link_taxons' => 'Taxons',
@@ -153,7 +169,10 @@ $TRANSLATIONS = [
     ],
     'customer' => [
         'title' => 'PHP eShop',
-        'cart' => [
+        'title_page' => '{page} | PHP eShop',
+        'home' => 'Home',
+        'view_cart' => [
+            'title' => 'Cart',
             'checkout' => 'Checkout',
             'empty_placeholder' => 'The cart is empty'
         ],
@@ -162,7 +181,8 @@ $TRANSLATIONS = [
             'total_items' => 'Total items:',
             'total_price' => 'Total price:',
             'edit_cart' => 'Edit cart',
-            'submit_order' => 'Submit order'
+            'submit_order' => 'Submit order',
+            'title' => 'Checkout'
         ],
         'view_checkout_success' => [
             'title' => 'Thanks for your order!',
@@ -171,6 +191,9 @@ $TRANSLATIONS = [
         ],
         'view_product' => [
             'out_of_stock' => 'Is running out of stock'
+        ],
+        'view_search' => [
+            'title' => 'Search results: {query}'
         ]
     ],
     'partials' => [

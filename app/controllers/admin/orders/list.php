@@ -9,7 +9,7 @@ class ControllerAdminOrdersList {
     public function index() {
         global $PAGINATION_LIMIT;
 
-        $title = 'Orders';
+        $title = ServiceI18n::t('admin.view_orders_list.title');
         $currentPage = $_GET['page'] ?? 1;
         $totalPages = 99; // @todo
 

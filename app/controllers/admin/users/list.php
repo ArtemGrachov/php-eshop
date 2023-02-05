@@ -9,7 +9,7 @@ class ControllerAdminUsersList {
     public function index() {
         global $PAGINATION_LIMIT;
 
-        $title = 'Users';
+        $title = ServiceI18n::t('admin.view_users_list.title');
         $currentPage = $_GET['page'] ?? 1;
         $totalPages = 99; // @todo
 

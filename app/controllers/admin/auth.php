@@ -7,7 +7,7 @@ class ControllerAdminAuth {
     use TraitPageAdminGuest;
 
     public function index() {
-        $title = 'Authentication';
+        $title = ServiceI18n::t('admin.auth.title');
         $formAction = '/admin/auth';
 
         include(__DIR__ . '/../../views/admin/auth.php');

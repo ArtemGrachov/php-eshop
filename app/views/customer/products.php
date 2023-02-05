@@ -8,7 +8,7 @@
         <?php include(__DIR__ . '/../partials/breadcrumbs.php'); ?>
     </div>
     <h1 class="is-size-2 mb-4">
-        <?= $title ?>
+        <?= $heading ?>
     </h1>
     <div class="columns is-multiline mb-4">
         <?php foreach ($products as $product): ?>
