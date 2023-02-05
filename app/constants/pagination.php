@@ -1,3 +1,3 @@
 <?php
 
-$PAGINATION_LIMIT = 4;
+$PAGINATION_LIMIT = 12;
