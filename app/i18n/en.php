@@ -13,7 +13,7 @@ $TRANSLATIONS = [
         ],
         'validation' => [
             'required' => 'This field is required',
-            'minLength' => 'Minimum length is {minLength}',
+            'minLength' => 'Minimum length is {param}',
             'lowerCase' => 'At least one lower case symbol is required',
             'upperCase' => 'At least one upper case symbol is required',
             'digits' => 'At least one digit is required'

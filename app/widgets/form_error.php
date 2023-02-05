@@ -10,8 +10,18 @@ class WidgetFormError {
         foreach ($this->errors as $errorKey => $errorValue) {
             $errorMessage = $this->getErrorMessage($errorKey);
 
+            $param = null;
+
+            if (is_array($errorValue)) {
+                $param = $errorValue;
+            } else {
+                $param = ['param' => $errorValue];
+            }
+
+            $errorTranslation = ServiceI18n::t($errorMessage, $param);
+
             if (!is_null($errorMessage)) {
-                array_push($result, $errorMessage);
+                array_push($result, $errorTranslation);
             }
         }
 
