@@ -1,7 +1,13 @@
-<li class="p-4<?= isset($itemClassNames) ? (' ' . $itemClassNames) : '' ?>">
-    <div>
-        <a href="/order-items/remove?productId=<?= $cartItem->productId ?>">
-            delete
+<li class="cart-item-row p-4<?= isset($itemClassNames) ? (' ' . $itemClassNames) : '' ?>">
+    <div class="has-text-right">
+        <a
+            class="has-text-grey-light delete-trigger cart-item-delete-trigger"
+            data-question="Are you sure you want to delete &quot;<?= $cartItem->name ?>&quot; from the cart?"
+            href="/order-items/remove?productId=<?= $cartItem->productId ?>"
+        >
+            <span class="material-icons">
+                close
+            </span>
         </a>
     </div>
     <div class="is-flex is-align-items-center">
@@ -27,10 +33,10 @@
             <div class="is-size-6 mb-2">
                 <?= ServiceCurrency::getInstance()->formatPrice($cartItem->price); ?>
             </div>
-            <form action="/order/update" method="POST">
+            <form class="cart-item-form-quantity" action="/order/update" method="POST">
                 <input type="hidden" name="productId" value="<?= $cartItem->productId ?>" />
                 <input
-                    class="input is-small max-w-80px has-text-centered"
+                    class="cart-item-input-quantity input is-small max-w-80px has-text-centered"
                     type="number"
                     name="quantity"
                     value="<?= $cartItem->quantity ?>"

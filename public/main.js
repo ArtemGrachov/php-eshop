@@ -30,3 +30,18 @@ function deleteConfirmation(event, trigger) {
 $('body').on('click', '.delete-trigger', function(event) {
     deleteConfirmation(event, this);
 });
+
+$('.cart-item-form-quantity').on('submit', function(event) {
+    var $this = $(this);
+    var $cartItem = $(this).closest('.cart-item-row');
+    var $counter = $cartItem.find('.cart-item-input-quantity');
+
+    var count = $counter.val();
+
+    if (+count === 0) {
+        var $deleteTrigger = $cartItem.find('.cart-item-delete-trigger');
+
+        event.preventDefault();
+        $deleteTrigger.click();
+    }
+});
