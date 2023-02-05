@@ -152,8 +152,10 @@ class ModelOrder {
     public function addItem($productId, $quantity) {
         $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
 
+        $orderItem = null;
+
         foreach ($orderItems as $item) {
-            if ($item->productId === $productId) {
+            if ($item->productId === (int) $productId) {
                 $orderItem = $item;
                 break;
             }
