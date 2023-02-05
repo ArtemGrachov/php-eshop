@@ -1,3 +1,5 @@
+<?php require_once(__DIR__ . '/../../widgets/form_error.php'); ?>
+
 <?php include(__DIR__ . '/../../views/partials/admin_header.php'); ?>
 
 <div class="container">
@@ -20,6 +22,7 @@
                             required
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['username'] ?? []))->render(); ?>
                 </div>
                 <div class="field">
                     <label
@@ -37,6 +40,7 @@
                             required
                         />
                     </div>
+                    <?php (new WidgetFormError($formErrors['password'] ?? []))->render(); ?>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
@@ -45,6 +49,11 @@
                         </button>
                     </div>
                 </div>
+                <?php if ($formError): ?>
+                    <p class="help is-danger">
+                        <?= $formError ?>
+                    </p>
+                <?php endif ?>
             </form>
         </div>
     </div>

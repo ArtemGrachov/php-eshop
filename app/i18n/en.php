@@ -157,7 +157,8 @@ $TRANSLATIONS = [
             'label_password' => 'Password',
             'placeholder_password' => 'Password',
             'label_submit' => 'Submit',
-            'title' => 'Authentication'
+            'title' => 'Authentication',
+            'auth_error' => 'Incorrect login or password'
         ],
         'dashboard' => [
             'link_taxons' => 'Taxons',
