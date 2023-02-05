@@ -18,7 +18,10 @@
             </a>
             <form action="/admin/users/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $user->id ?>" />
-                <button class="button is-danger">
+                <button
+                    class="button is-danger delete-trigger"
+                    data-question="Are you sure you want to delete user &quot;<?= $user->username ?>&quot; (<?= $user->email ?>)?"
+                >
                     Delete
                 </button>
             </form>

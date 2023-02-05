@@ -27,7 +27,10 @@
             </a>
             <form action="/admin/products/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $product->id ?>" />
-                <button class="button is-danger">
+                <button
+                    class="button is-danger delete-trigger"
+                    data-question="Are you sure you want to delete product &quot;<?= $product->name ?>&quot;?"
+                >
                     Delete
                 </button>
             </form>

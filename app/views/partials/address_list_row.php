@@ -33,7 +33,10 @@
             </a>
             <form action="/admin/addresses/delete" method="POST">
                 <input type="hidden" name="id" value="<?= $address->id ?>" />
-                <button class="button is-danger">
+                <button
+                    class="button is-danger delete-trigger"
+                    data-question="Are you sure you want to delete address &quot;<?= implode(', ', [$address->country, $address->region, $address->city, $address->street, $address->houseNumber, $address->appartmentNumber]) ?>&quot;?"
+                >
                     Delete
                 </button>
             </form>

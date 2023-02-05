@@ -27,7 +27,10 @@
             </a>
             <form action="/admin/orders/delete" metdod="POST">
                 <input type="hidden" name="id" value="<?= $order->id ?>" />
-                <button class="button is-danger">
+                <button
+                    class="button is-danger delete-trigger"
+                    data-question="Are you sure you want to delete order with ID: <?= $order->id ?>, TOKEN: <?= $order->token ?>?"
+                >
                     Delete
                 </button>
             </form>

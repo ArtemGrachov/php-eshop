@@ -38,4 +38,5 @@
     </div>
 </div>
 
+<?php include(__DIR__ . '/../../../views/partials/delete_modal.php'); ?>
 <?php include(__DIR__ . '/../../../views/partials/admin_footer.php'); ?>
