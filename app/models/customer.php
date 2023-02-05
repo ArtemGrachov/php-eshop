@@ -33,6 +33,22 @@ class ModelCustomer {
         return $customers;
     }
 
+    public static function countCustomers($params = null) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT COUNT(*) FROM customers';
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getCustomer($customerId) {
         $db = Database::getInstance()->db;
 

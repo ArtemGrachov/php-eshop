@@ -11,12 +11,13 @@ class ControllerAdminAddressesList {
 
         $title = 'Addresses';
         $currentPage = $_GET['page'] ?? 1;
-        $totalPages = 99; // @todo
 
         $addresses = ModelAddress::getAddresses(
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
         );
+
+        $addressesTotal = ModelAddress::countAddresses();
 
         include(__DIR__ . '/../../../views/admin/addresses/list.php');
     }

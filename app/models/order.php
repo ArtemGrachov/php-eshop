@@ -33,6 +33,22 @@ class ModelOrder {
         return $orders;
     }
 
+    public static function countOrders($params = null) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT COUNT(*) FROM orders';
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getOrder($orderId) {
         $db = Database::getInstance()->db;
 

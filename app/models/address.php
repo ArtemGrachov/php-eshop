@@ -33,6 +33,22 @@ class ModelAddress {
         return $addresses;
     }
 
+    public static function countAddresses($params = null) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT COUNT(*) FROM addresses';
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getAddress($addressId) {
         $db = Database::getInstance()->db;
 

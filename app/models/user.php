@@ -30,6 +30,22 @@ class ModelUser {
         return $users;
     }
 
+    public static function countUsers($params = null) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT COUNT(*) FROM users';
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getUser($userId) {
         $db = Database::getInstance()->db;
 

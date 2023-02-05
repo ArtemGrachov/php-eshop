@@ -28,6 +28,22 @@ class ModelTaxon {
         return $taxons;
     }
 
+    public static function countTaxons($params = null) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT COUNT(*) FROM taxons';
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getTaxon($taxonId) {
         $db = Database::getInstance()->db;
 

@@ -1,16 +1,24 @@
+<?php
+function generateLink($page) {
+  $mergedQuery = array_merge($_GET, [ 'page' => $page ]);
+  $strQuery = http_build_query($mergedQuery);
+  return '?' . $strQuery;
+}
+?>
+
 <?php if ($showPagination): ?>
   <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
     <?php if ($showPrevious): ?>
       <a
         class="pagination-previous"
-        href="?page=<?= $prevPage ?>"
+        href="<?= generateLink($prevPage) ?>"
       >
         Previous
       </a>
     <?php endif; ?>
     <?php if ($showNext): ?>
       <a
-        href="?page=<?= $nextPage ?>"
+        href="<?= generateLink($nextPage) ?>"
         class="pagination-next"
       >
         Next page
@@ -20,7 +28,7 @@
       <?php if ($showFirstPage): ?>
         <li>
           <a
-            href="?page=1"
+            href="<?= generateLink(1) ?>"
             class="pagination-link"
           >
             1
@@ -33,7 +41,7 @@
       <?php for ($i = $rangeStart; $i < $currentPage; $i++) :?>
         <li>
           <a
-            href="?page=<?= $i ?>"
+            href="<?= generateLink($i) ?>"
             class="pagination-link"
           >
             <?= $i ?>
@@ -48,7 +56,7 @@
       <?php for ($i = $currentPage + 1; $i < $rangeEnd; $i++) :?>
         <li>
           <a
-            href="?page=<?= $i ?>"
+            href="<?= generateLink($i) ?>"
             class="pagination-link"
           >
             <?= $i ?>
@@ -61,7 +69,7 @@
       <?php if ($showLastPage): ?>
         <li>
           <a
-            href="?page=<?= $lastPage ?>"
+            href="<?= generateLink($lastPage) ?>"
             class="pagination-link"
           >
             <?= $lastPage ?>

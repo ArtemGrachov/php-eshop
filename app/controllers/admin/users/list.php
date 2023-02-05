@@ -18,6 +18,8 @@ class ControllerAdminUsersList {
             ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
+        $usersTotal = ModelUser::countUsers();
+
         include(__DIR__ . '/../../../views/admin/users/list.php');
     }
 

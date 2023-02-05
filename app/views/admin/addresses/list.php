@@ -38,7 +38,7 @@
         </tbody>
     </table>
     <div class="py-6">
-        <?php (new WidgetPagination($totalPages, $currentPage))->render(); ?>
+        <?php (new WidgetPagination($addressesTotal, $currentPage))->render(); ?>
     </div>
 </div>
 

@@ -11,12 +11,13 @@ class ControllerAdminTaxonsList {
 
         $title = 'Taxons';
         $currentPage = $_GET['page'] ?? 1;
-        $totalPages = 99; // @todo
 
         $taxons = ModelTaxon::getTaxons(
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
         );
+
+        $taxonsTotal = ModelTaxon::countTaxons();
 
         include(__DIR__ . '/../../../views/admin/taxons/list.php');
     }

@@ -8,12 +8,15 @@ class ControllerSearch {
 
         $query = $_GET['query'] ?? '';
         $currentPage = $_GET['page'] ?? 1;
-        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProducts(
             [ 'query' => $query ],
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
+        );
+
+        $productsCount = ModelProduct::countProducts(
+            [ 'query' => $query ]
         );
 
         $breadcrumbs = [

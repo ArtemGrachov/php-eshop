@@ -32,6 +32,9 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <div class="py-6">
+        <?php (new WidgetPagination($usersTotal, $currentPage))->render(); ?>
+    </div>
 </div>
 
 <?php include(__DIR__ . '/../../../views/partials/admin_footer.php'); ?>

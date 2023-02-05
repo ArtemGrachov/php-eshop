@@ -8,12 +8,15 @@ class ControllerTaxon {
 
         $taxonId = $_GET['id'];
         $currentPage = $_GET['page'] ?? 1;
-        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProducts(
             [ 'taxonId' => $taxonId ],
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
+        );
+
+        $productsCount = ModelProduct::countProducts(
+            [ 'taxonId' => $taxonId ]
         );
 
         $taxon = ModelTaxon::getTaxon($taxonId);

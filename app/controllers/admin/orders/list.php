@@ -18,6 +18,8 @@ class ControllerAdminOrdersList {
             ($currentPage - 1) * $PAGINATION_LIMIT
         );
 
+        $ordersTotal = ModelOrder::countOrders();
+
         include(__DIR__ . '/../../../views/admin/orders/list.php');
     }
 

@@ -11,13 +11,14 @@ class ControllerAdminProductsList {
 
         $title = 'Products';
         $currentPage = $_GET['page'] ?? 1;
-        $totalPages = 99; // @todo
 
         $products = ModelProduct::getProducts(
             null,
             $PAGINATION_LIMIT,
             ($currentPage - 1) * $PAGINATION_LIMIT
         );
+
+        $productsTotal = ModelProduct::countProducts();
 
         include(__DIR__ . '/../../../views/admin/products/list.php');
     }

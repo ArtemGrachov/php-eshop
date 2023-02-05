@@ -65,6 +65,53 @@ class ModelProduct {
         return $products;
     }
 
+    public static function countProducts($params = null) {
+        $hasSearchQuery = isset($params['query']);
+        $hasTaxonId = isset($params['taxonId']);
+
+        $db = Database::getInstance()->db;
+
+        $whereStr = '';
+
+        if ($params) {
+            $where = [];
+
+            if ($hasSearchQuery) {
+                array_push($where, '(P.name LIKE :query)');
+            }
+
+            if ($hasTaxonId) {
+                array_push($where, 'P.taxonId = :taxonId');
+            }
+
+            if (!empty($where)) {
+                $whereStr = ' WHERE ' . implode(' AND ', $where) . ' ';
+            }
+        }
+
+        $query = 'SELECT COUNT(*) FROM products P' . $whereStr;
+
+        $statement = $db->prepare($query);
+
+        if ($hasTaxonId) {
+            $taxonId = $params['taxonId'];
+            $statement->bindValue(':taxonId', $taxonId, PDO::PARAM_INT);
+        }
+
+        if ($hasSearchQuery) {
+            $searchQuery = $params['query'];
+            $statement->bindValue(':query', "%$searchQuery%");
+        }
+
+        $statement->execute();
+
+        $count = $statement->fetchColumn();
+
+        $statement->closeCursor();
+
+        return $count;
+    }
+
     public static function getProduct($productId) {
         $db = Database::getInstance()->db;
 

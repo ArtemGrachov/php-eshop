@@ -18,7 +18,7 @@
         <?php endforeach; ?>
     </div>
     <div class="py-6">
-        <?php (new WidgetPagination($totalPages, $currentPage))->render(); ?>
+        <?php (new WidgetPagination($productsCount, $currentPage))->render(); ?>
     </div>
     <?php if (isset($description) && !is_null($description)): ?>
         <div>
