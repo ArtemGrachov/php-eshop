@@ -76,6 +76,7 @@ class ControllerAdminProductsForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_products_form.create_product'),
                 'formAction' => '/admin/products/create',
@@ -144,6 +145,7 @@ class ControllerAdminProductsForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_products_form.edit_product', [ 'productName' => $product->name ]),
                 'formAction' => "/admin/products/edit?id=$productId",

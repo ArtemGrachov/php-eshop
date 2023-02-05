@@ -48,6 +48,7 @@ class ControllerAdminTaxonsForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_taxons_form.create_taxon'),
                 'formAction' => '/admin/taxons/create',
@@ -98,6 +99,7 @@ class ControllerAdminTaxonsForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_taxons_form.edit_taxon'),
                 'formAction' => "/admin/taxons/edit?id=$taxonId",

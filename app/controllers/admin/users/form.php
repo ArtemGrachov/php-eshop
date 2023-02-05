@@ -76,6 +76,7 @@ class ControllerAdminUsersForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_users_form.create_user'),
                 'formAction' => '/admin/users/create',
@@ -126,6 +127,7 @@ class ControllerAdminUsersForm {
         $formErrors = $this->validateForm($_POST, $user);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_users_form.edit_user', [ 'email' => $user->email ]),
                 'formAction' => "/admin/users/edit?id=$userId",

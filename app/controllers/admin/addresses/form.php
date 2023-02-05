@@ -88,6 +88,7 @@ class ControllerAdminAddressesForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_address_form.create_address'),
                 'formAction' => '/admin/addresses/create',
@@ -148,6 +149,7 @@ class ControllerAdminAddressesForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_address_form.edit_address', [ 'addressId' => $addressId ]),
                 'formAction' => "/admin/addresses/edit?id=$addressId",

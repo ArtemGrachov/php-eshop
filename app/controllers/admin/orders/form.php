@@ -79,6 +79,7 @@ class ControllerAdminOrdersForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_orders_form.create_order'),
                 'formAction' => '/admin/orders/create',
@@ -134,6 +135,7 @@ class ControllerAdminOrdersForm {
         $formErrors = $this->validateForm($_POST);
 
         if (count($formErrors)) {
+            http_response_code(422);
             $this->viewInit([
                 'title' => ServiceI18n::t('admin.view_orders_form.edit_order', [ 'orderId' => $orderId ]),
                 'formAction' => "/admin/orders/edit?id=$orderId",

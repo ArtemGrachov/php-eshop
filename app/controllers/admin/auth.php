@@ -96,12 +96,14 @@ class ControllerAdminAuth {
 
             switch ($errorData['type']) {
                 case ControllerAdminAuth::$_AUTH_ERROR_VALIDATION: {
+                    http_response_code(422);
                     $this->viewInit([
                         'formErrors' => $formErrors
                     ]);
                     break;
                 }
                 case ControllerAdminAuth::$_AUTH_ERROR_DEFAULT: {
+                    http_response_code(401);
                     $this->viewInit([
                         'formError' => ServiceI18n::t('admin.auth.auth_error'),
                     ]);
