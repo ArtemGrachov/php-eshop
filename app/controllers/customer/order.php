@@ -78,9 +78,12 @@ class ControllerOrder {
             return;
         }
 
-        $order->updateItem($productId, $quantity);
+        if ($quantity > 0) {
+            $order->updateItem($productId, $quantity);
+        } else {
+            $order->removeItem($productId);
+        }
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-
 }

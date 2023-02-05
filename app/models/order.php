@@ -60,7 +60,6 @@ class ModelOrder {
 
         $order = $statement->fetch();
 
-        
         $statement->closeCursor();
 
         if (!$order) {
@@ -187,6 +186,23 @@ class ModelOrder {
         }
 
         $orderItem->save();
+    }
+
+    public function removeItem($productId) {
+        $orderItems = ModelOrderItem::getOrderItemsByOrder($this->id);
+
+        foreach ($orderItems as $item) {
+            if ($item->productId === $productId) {
+                $orderItem = $item;
+                break;
+            }
+        }
+
+        if (!isset($orderItem)) {
+            throw new Exception('Order item not found');
+        } else {
+            $orderItem->remove();
+        }
     }
 
     public function __get($property) {

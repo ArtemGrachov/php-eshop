@@ -2,6 +2,7 @@
 require_once(__DIR__.'/../controllers/customer/home.php');
 require_once(__DIR__.'/../controllers/customer/product.php');
 require_once(__DIR__.'/../controllers/customer/order.php');
+require_once(__DIR__.'/../controllers/customer/order-items.php');
 require_once(__DIR__.'/../controllers/customer/cart.php');
 require_once(__DIR__.'/../controllers/customer/checkout.php');
 require_once(__DIR__.'/../controllers/customer/taxon.php');
@@ -28,6 +29,11 @@ $routes_customer = [
         ],
         'update' => [
             'POST' => 'ControllerOrder/update'
+        ]
+    ],
+    'order-items' => [
+        'remove' => [
+            'GET' => 'ControllerOrderItems/remove'
         ]
     ],
     'cart' => [

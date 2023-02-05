@@ -10,6 +10,26 @@ class ModelOrderItem {
     public $productId = null;
     public $orderId = null;
 
+    public static function getOrderItem($orderItemId) {
+        $db = Database::getInstance()->db;
+
+        $query = 'SELECT * FROM order_items WHERE id = :id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $orderItemId);
+        $statement->execute();
+
+        $order = $statement->fetch();
+
+        $statement->closeCursor();
+
+        if (!$order) {
+            return null;
+        }
+
+        return new ModelOrderItem($order);
+    }
+
     public static function getOrderItemsByOrder($orderId, $limit = null, $offset = null) {
         $db = Database::getInstance()->db;
 
