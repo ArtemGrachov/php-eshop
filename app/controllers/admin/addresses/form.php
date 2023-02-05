@@ -108,6 +108,13 @@ class ControllerAdminAddressesForm {
 
         $address = ModelAddress::getAddress($addressId);
 
+        if (is_null($address)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $this->viewInit([
             'title' => ServiceI18n::t('admin.view_address_form.edit_address', [ 'addressId' => $addressId ]),
             'formAction' => "/admin/addresses/edit?id=$addressId",

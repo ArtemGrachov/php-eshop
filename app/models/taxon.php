@@ -57,6 +57,10 @@ class ModelTaxon {
 
         $statement->closeCursor();
 
+        if (!$taxon) {
+            return null;
+        }
+
         return new ModelTaxon($taxon);
     }
 

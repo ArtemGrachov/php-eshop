@@ -59,6 +59,10 @@ class ModelUser {
 
         $statement->closeCursor();
 
+        if (!$user) {
+            return null;
+        }
+
         return new ModelUser($user);
     }
 

@@ -23,6 +23,16 @@ class ControllerError {
             }
         }
 
+        $breadcrumbs = [
+            [
+                'link' => '/',
+                'label' => ServiceI18n::t('customer.home')
+            ],
+            [
+                'label' => $errorTitle
+            ]
+        ];
+
         include(__DIR__ . '/../views/error.php');
     }
 }

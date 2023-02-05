@@ -125,6 +125,10 @@ class ModelProduct {
 
         $statement->closeCursor();
 
+        if (!$product) {
+            return null;
+        }
+
         return new ModelProduct($product);
     }
 

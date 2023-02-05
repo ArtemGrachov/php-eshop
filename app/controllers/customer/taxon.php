@@ -21,6 +21,13 @@ class ControllerTaxon {
 
         $taxon = ModelTaxon::getTaxon($taxonId);
 
+        if (is_null($taxon)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $breadcrumbs = [
             [
                 'link' => '/',

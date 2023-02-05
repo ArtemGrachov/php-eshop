@@ -62,6 +62,10 @@ class ModelAddress {
 
         $statement->closeCursor();
 
+        if (!$address) {
+            return null;
+        }
+
         return new ModelAddress($address);
     }
 

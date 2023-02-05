@@ -6,6 +6,13 @@ class ControllerProduct {
         $productId = $_GET['id'];
         $product = ModelProduct::getProduct($productId);
 
+        if (is_null($product)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $taxonId = $product->taxonId;
         $taxon = ModelTaxon::getTaxon($taxonId);
 

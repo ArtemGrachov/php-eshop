@@ -19,15 +19,15 @@ class ModelOrderItem {
         $statement->bindValue(':id', $orderItemId);
         $statement->execute();
 
-        $order = $statement->fetch();
+        $orderItem = $statement->fetch();
 
         $statement->closeCursor();
 
-        if (!$order) {
+        if (!$orderItem) {
             return null;
         }
 
-        return new ModelOrderItem($order);
+        return new ModelOrderItem($orderItem);
     }
 
     public static function getOrderItemsByOrder($orderId, $limit = null, $offset = null) {

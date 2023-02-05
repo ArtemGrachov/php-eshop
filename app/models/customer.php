@@ -62,6 +62,10 @@ class ModelCustomer {
 
         $statement->closeCursor();
 
+        if (!$customer) {
+            return null;
+        }
+
         return new ModelCustomer($customer);
     }
 

@@ -99,6 +99,13 @@ class ControllerAdminOrdersForm {
 
         $order = ModelOrder::getOrder($orderId);
 
+        if (is_null($order)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $this->viewInit([
             'title' => ServiceI18n::t('admin.view_orders_form.edit_order', [ 'orderId' => $orderId ]),
             'formAction' => "/admin/orders/edit?id=$orderId",

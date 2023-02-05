@@ -68,6 +68,13 @@ class ControllerAdminTaxonsForm {
 
         $taxon = ModelTaxon::getTaxon($taxonId);
 
+        if (is_null($taxon)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $this->viewInit([
             'title' => ServiceI18n::t('admin.view_taxons_form.edit_taxon'),
             'formAction' => "/admin/taxons/edit?id=$taxonId",

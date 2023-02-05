@@ -95,6 +95,13 @@ class ControllerAdminUsersForm {
         $userId = $_GET['id'];
         $user = ModelUser::getUser($userId);
 
+        if (is_null($user)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $this->viewInit([
             'title' => ServiceI18n::t('admin.view_users_form.edit_user', [ 'email' => $user->email ]),
             'formAction' => "/admin/users/edit?id=$userId",

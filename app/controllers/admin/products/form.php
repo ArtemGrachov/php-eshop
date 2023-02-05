@@ -107,6 +107,13 @@ class ControllerAdminProductsForm {
         $productId = $_GET['id'];
         $product = ModelProduct::getProduct($productId);
 
+        if (is_null($product)) {
+            throw new ExtendedException(
+                'Not found',
+                ['code' => 404]
+            );
+        }
+
         $this->viewInit([
             'title' => ServiceI18n::t('admin.view_products_form.edit_product', [ 'productName' => $product->name ]),
             'formAction' => "/admin/products/edit?id=$productId",
