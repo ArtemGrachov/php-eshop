@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2023 at 08:56 PM
+-- Generation Time: Feb 05, 2023 at 07:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -95,18 +95,12 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `stock` int(11) NOT NULL,
   `tracking` tinyint(1) NOT NULL,
-  `taxonId` int(11) DEFAULT NULL
+  `taxonId` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `name`, `price`, `description`, `stock`, `tracking`, `taxonId`) VALUES
-(1, 'Laptop 5000', 30000, 'Good laptop', 15, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -120,12 +114,19 @@ CREATE TABLE `taxons` (
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `taxons`
+-- Table structure for table `users`
 --
 
-INSERT INTO `taxons` (`id`, `name`, `description`) VALUES
-(1, 'Laptops', 'Laptops for work and fun');
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -173,6 +174,12 @@ ALTER TABLE `taxons`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -204,13 +211,19 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `taxons`
 --
 ALTER TABLE `taxons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
