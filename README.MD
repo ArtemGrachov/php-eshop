@@ -15,7 +15,7 @@ This is an e-Shop with the following features:
 - admin users
 - internationalization
 
-All the project is written from scratch, third-party libs used only for the front-end path (Bulma.css and jQuery).
+All the project is written from scratch, third-party libs used only for the front-end part ([Bulma](https://bulma.io/) and [jQuery](https://jquery.com/)).
 
 ## Configs
 
